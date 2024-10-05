@@ -8,9 +8,31 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+      fontFamily: {
+        jost: ['Jost', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 
+               'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 
+               'Open Sans', 'Helvetica Neue', 'sans-serif']
+      },
+      backgroundColor: {
+        "theme": "var(--theme-bg)",
+        "btn": "var(--btn-bg)",
+        "btn-hover": "var(--btn-hover-bg)",
+      },
+      borderColor: {
+        "theme": "var(--theme-bg)",
+      },
+      textColor: {
+        "theme": "var(--btn-bg)",
+      },
+      height: {
+        '80vh': '80vh',
+        '70vh': '70vh',
+        '60vh': '60vh',
+        '50vh': '50vh',
+        '40vh': '40vh',
+        '30vh': '30vh',
+        '20vh': '20vh',
+        '10vh': '10vh',
       },
     },
   },
