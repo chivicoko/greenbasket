@@ -16,7 +16,7 @@ const HomePage: React.FC = () => {
           categories.slice(0,5).map(category => 
             <div key={category.id} className="flex justify-start gap-4 bg-white p-4 rounded-xl transform transition-transform duration-300 hover:-rotate-3 hover:shadow-lg">
               <span className='self-start'>
-                <h2 className='text-lg font-semibold text-[#064f38]'>{category.name}</h2>
+                <h2 className='text-lg font-semibold text-theme'>{category.name}</h2>
                 <p className='text-gray-500 font-semibold'>{category.desc}</p>
               </span>
               <span className="relative w-14 h-14 self-end mt-8 rotate-12">
@@ -33,8 +33,10 @@ const HomePage: React.FC = () => {
         }
 
         <button className='flex flex-col items-center h-full w-fit justify-center gap-4 bg-[#bbea70] hover:bg-[#bbea70d3] p-4 rounded-xl'>
-          <span className="text-sm md:text-lg text-[#064f38] bg-white rounded-full p-2 flex items-center"> <East/> </span>
-          <p className='text-sm text-[#064f38] font-semibold'>See all</p>
+          <span className="text-sm md:text-lg text-theme bg-white rounded-full p-2 flex items-center"> 
+            <p className='transition-transform duration-300 ease-in-out transform hover:translate-x-1'><East/> </p>
+          </span>
+          <p className='text-sm text-theme font-semibold'>See all</p>
         </button>
 
       </section>
@@ -54,12 +56,12 @@ const HomePage: React.FC = () => {
               </div>
 
               <span className='px-4 w-full'>
-                <h2 className='text-center text-lg font-semibold text-[#064f38]'>{product.name}</h2>
+                <h2 className='text-center text-lg font-semibold text-theme'>{product.name}</h2>
                 <p className='text-center text-sm text-gray-500 font-semibold'>{product.weight}gm</p>
-                <p className='text-center text-xl py-3 font-bold text-[#064f38]'>${product.price}</p>
+                <p className='text-center text-xl py-3 font-bold text-theme'>${product.price}</p>
                 <div className='bg-[#cee1af90] w-full flex items-center py-1 rounded-lg justify-around'>
-                  <button className='p-1 bg-white hover:bg-[#cee9a490] text-[#064f38] rounded-full'><Remove/></button>
-                  <button className='p-1 bg-white hover:bg-[#cee9a490] text-[#064f38] rounded-full'><Add/></button>
+                  <button className='p-1 bg-white hover:bg-[#cee9a490] text-theme rounded-full'><Remove/></button>
+                  <button className='p-1 bg-white hover:bg-[#cee9a490] text-theme rounded-full'><Add/></button>
                 </div>
               </span>
             </div>

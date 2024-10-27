@@ -1,6 +1,11 @@
-
 import AdminSidebar from "@/components/admin/AdminSidebar";
 import AdminNavbar from "@/components/admin/AdminNavbar";
+
+
+export const metadata = {
+  title: "Admin Area",
+  description: "GreenBasket Stores is the number 1 Online store for groceries of all sorts, making buying and selling of groceries of all sorts really easy for everyone.",
+}
 
 export default function Layout({ children }) {
   return (

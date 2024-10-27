@@ -8,9 +8,9 @@
 
 @media (prefers-color-scheme: light) {
   :root {
-    --theme-bg: #452b1f;
-    --btn-bg: #aa5600;
-    --btn-hover-bg: #aa5500e6;
+    --theme-bg: #064f38;
+    --btn-bg: #bbea70;
+    --btn-hover-bg: #bbea70d3;
   }
 }
 

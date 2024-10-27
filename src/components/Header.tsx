@@ -17,14 +17,14 @@ const Header = () => {
 
   return (
     <>
-      <Navbar firstDivClasses={`transition-all duration-300 ease-in-out bg-zinc-200 ${isVisible ? "sticky top-0 left-0 right-0 z-50" : "text-white bg-white py-2 px-2 md:py-4 md:px-6"}`} secondDivClasses={`transition-all duration-300 ease-in-out flex items-center justify-between gap-2 ${isVisible ? "p-4 sticky top-0 left-0 right-0 z-50 bg-[#064f38] md:py-4 md:px-16 shadow-md" : "md:p-4 rounded-md md:rounded-lg px-4 py-3 bg-[#064f38]"}`}/>
+      <Navbar firstDivClasses={`transition-all duration-300 ease-in-out bg-zinc-200 ${isVisible ? "sticky top-0 left-0 right-0 z-50" : "text-white bg-white py-2 px-2 md:py-4 md:px-6"}`} secondDivClasses={`transition-all duration-300 ease-in-out flex items-center justify-between gap-2 ${isVisible ? "p-4 sticky top-0 left-0 right-0 z-50 bg-theme md:py-4 md:px-16 shadow-md" : "md:p-4 rounded-md md:rounded-lg px-4 py-3 bg-theme"}`}/>
       <header className="bennetCurve text-white bg-zinc-200 xl:h-70vh mb-6 px-2 md:px-6">
         {/* <div className="text-white bg-[#08271d] bg-opacity-100 bg-[url('./bgHeader3.jpeg')] bg-no-repeat bg-center bg-cover bg-blend-overlay mb-14 py-6 md:py-auto px-1 md:px-4 h-full rounded-lg flex flex-col lg:flex-row items-center justify-between"> */}
-        <div className="text-white bg-[#064f38] mb-14 py-6 md:py-auto px-1 md:px-4 h-full rounded-lg flex flex-col lg:flex-row items-center justify-between">
+        <div className="text-white bg-theme mb-14 py-6 md:py-auto px-1 md:px-4 h-full rounded-lg flex flex-col lg:flex-row items-center justify-between">
           <div className="lg:w-2/3 text self-start px-4 md:pl-14 lg:pl-20 text-gray-950">
             <h2 className='text-4xl text-white md:text-5xl font-semibold xl:font-bold mt-4 md:mt-20 mb-2 md:mb-4'>The store, at your doorstep today.</h2>
             <p className='w-full md:w-2/3 text-lg text-white md:text-2xl'>Get organic produce' and sustainably sourced groceries' delivery at up to <em>4%</em> discount.</p>
-            <button onClick={handleScroll} className='bg-[#bbea70] hover:bg-[#bbea70d3] mt-4 md:mt-16 mb-4 font-bold rounded-md text-[#064f38] py-[11px] px-[27px] hover:cursor-pointer shadow-md'>
+            <button onClick={handleScroll} className='flex items-center gap-3 bg-btn hover:bg-btn-hover mt-4 md:mt-16 mb-4 font-bold rounded-md text-theme py-[11px] px-[27px] hover:cursor-pointer shadow-md'>
               Shop now
             </button>
           </div>

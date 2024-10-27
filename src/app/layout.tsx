@@ -3,7 +3,10 @@ import './globals.css';
 import ScrollToTopButton from '@/components/ScrollToTopButton';
 
 export const metadata = {
-  title: "GreenBasket Stores | Online Store for Groceries of all sorts",
+  title: {
+    default: "GreenBasket Stores | Online Store for Groceries of all sorts",
+    template: "%s | GreenBasket Stores"
+  },
   description: "GreenBasket Stores is the number 1 Online store for groceries of all sorts, making buying and selling of groceries of all sorts really easy for everyone.",
   keywords: "Next.js, TypeScript, TailwindCSS, E-commerce, Groceries, store, Product Listing, Product Management, CRUD, Admin",
   openGraph: {

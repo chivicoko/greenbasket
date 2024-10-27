@@ -22,7 +22,7 @@ const config: Config = {
         "theme": "var(--theme-bg)",
       },
       textColor: {
-        "theme": "var(--btn-bg)",
+        "theme": "var(--theme-bg)",
       },
       height: {
         '80vh': '80vh',
@@ -35,6 +35,9 @@ const config: Config = {
         '10vh': '10vh',
       },
     },
+    // colors:{
+    //   mainColor: "#064f38"
+    // },
   },
   plugins: [],
 };

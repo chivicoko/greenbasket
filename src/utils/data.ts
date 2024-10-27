@@ -30,3 +30,13 @@ export const products = [
     { id: 12, name: 'Leavening Yeast', desc: 'Baking fluids/powders', img: "/images/yeast.png", price: '43.60', weight: '410' },
     { id: 13, name: 'Butt Wiper', desc: 'House cleaning supplies', img: "/images/wiper.png", price: '23.44', weight: '510' },
 ]
+
+
+export const categoryList = [
+    'Audio and Sound Devices', 'Computers and Accessories', 'Cameras and Photography Equipment', 
+    'Smart Home and Automation', 'Wearable Technology', 'Mobile Devices and Accessories', 
+    'Home Appliances', 'TVs and Home Entertainment', 'Gaming', 
+    'Motor Gadgets and Electronics', 'Health and Personal Care Electronics', 
+    'Networking and Connectivity', 'Office Electronics'
+];
+  

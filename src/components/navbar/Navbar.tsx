@@ -32,17 +32,17 @@ const Navbar: React.FC<NavbarProps> = ({ firstDivClasses, secondDivClasses }) =>
           />
           <button
             type="button"
-            className="bg-[#bbea70] hover:bg-[#bbea70d3] text-[#064f38] font-semibold rounded-full px-2 md:px-4 py-1 md:py-3 md:ml-2 focus:ring-2 focus:ring-[#bbea70d3]"
+            className="bg-btn hover:bg-btn-hover text-[#064f38] font-semibold rounded-full px-2 md:px-4 py-1 md:py-3 md:ml-2 focus:ring-2 focus:ring-[#bbea70d3]"
           >
             <Search className='h-4 w-4 md:h-6 md:w-6' />
           </button>
         </div>
 
         <div className="flex gap-2 items-center justify-end">
-          <button className="bg-[#bbea70] hover:bg-[#bbea70d3] flex items-center justify-center p-2 text-[#064f38] rounded-full text-sm">
+          <button className="bg-btn hover:bg-btn-hover flex items-center justify-center p-2 text-[#064f38] rounded-full text-sm">
             <Favorite className='h-4 w-4 md:h-6 md:w-6' />
           </button>
-          <button className="bg-[#bbea70] hover:bg-[#bbea70d3] flex items-center justify-center p-2 text-[#064f38] rounded-full text-sm">
+          <button className="bg-btn hover:bg-btn-hover flex items-center justify-center p-2 text-[#064f38] rounded-full text-sm">
             <ShoppingCart className='h-4 w-4 md:h-6 md:w-6' />
           </button>
         </div>

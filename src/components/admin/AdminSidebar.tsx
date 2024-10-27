@@ -1,11 +1,13 @@
 'use client';
 
+import { Product } from '@/utils/types';
 import { Add, Campaign, HelpOutline, HomeOutlined, KeyboardArrowDown, Settings, Tungsten } from '@mui/icons-material';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import React from 'react';
+import React, { useState } from 'react';
+import ProductModal from './ProductModal';
 
 interface SidebarProps {
     show?: string;
@@ -13,6 +15,11 @@ interface SidebarProps {
 }
   
 const AdminSidebar: React.FC<SidebarProps> = ({ show = 'hidden', closeSidebar = () => {} }) => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+    const [modalMode, setModalMode] = useState<'view' | 'edit'>('view');
+    
+
     const pathName = usePathname();
     // console.log(pathName);
 
@@ -25,14 +32,46 @@ const AdminSidebar: React.FC<SidebarProps> = ({ show = 'hidden', closeSidebar = 
 
     const isActivePath = (route: string | null) => {
         if (!route) return false;
-        return route === '/' ? pathName === route : pathName.startsWith(route);
+    
+        if (route === '/admin') {
+            return pathName === route;
+        } else {
+            return pathName.startsWith(route);
+        }
     };
+
+
+    const addProduct = (p) => {
+        console.log('Adding product',p);
+    }
+
+
+    const updateProduct = (po,p) => {
+        console.log('Updating product', po,p);
+    }
+    
+  const handleAddEditProduct = (product?: Product) => {
+    setSelectedProduct(product || null);
+    setModalMode(product ? 'edit' : 'edit');
+    setIsModalOpen(true);
+  };
+
+    
+  const handleSaveProduct = (product: Product) => {
+    if (selectedProduct) {
+      updateProduct(selectedProduct.id, product);
+    } else {
+      addProduct(product);
+    }
+    setIsModalOpen(false);
+  };
+
 
         return (
     <nav className={`overflow-auto ${show === 'block' ? 'fixed lg:hidden' : 'hidden'} lg:block top-0 left-0 z-50 lg:z-auto w-4/5 sm:w-3/5 lg:w-1/5 min-h-screen bg-[#F0F4F4] flex flex-col justify-start items-center transition-transform duration-200`}>
         <button className='self-end mr-3 md:mr-8 mt-2 text-3xl lg:hidden' onClick={closeSidebar}>&times;</button>
         <div className="flex flex-col justify-start items-center gap-8 lg:gap-12 pb-6 lg:py-6">
-            <Link href="/" className="flex items-center justify-start gap-2">
+            <Link href="/admin" className="flex items-center justify-start gap-2">
                 <div className="relative w-[48px] h-[48px]">
                     <Image
                         src="/images/logo.png"
@@ -56,9 +95,9 @@ const AdminSidebar: React.FC<SidebarProps> = ({ show = 'hidden', closeSidebar = 
             </div>
 
             <div className="tabs px-2">
-                <Link href='/createcampaign' className="flex items-center text-white w-full hover:text-[#064f38] bg-[#064f38] hover:bg-transparent border border-transparent hover:border-[#064f38] py-2 px-14 lg:px-10 xl:px-14 rounded-[4px] text-sm font-semibold">
+                <button  onClick={() => handleAddEditProduct()} className="flex items-center text-white w-full hover:text-[#064f38] bg-[#064f38] hover:bg-transparent border border-transparent hover:border-[#064f38] py-2 px-14 lg:px-10 xl:px-14 rounded-[4px] text-sm font-semibold">
                     <Add /> New Product
-                </Link>
+                </button>
 
                 <ul className="flex flex-col items-center gap-3 mt-10 w-full">
                     {menuItems.map(item => 
@@ -87,6 +126,17 @@ const AdminSidebar: React.FC<SidebarProps> = ({ show = 'hidden', closeSidebar = 
                 <button className="text-xs border border-[#064f38] text-[#064f38] hover:text-white bg-transparent hover:bg-[#064f38] hover:border-transparent rounded-[4px] py-2 px-6">Get help</button>
             </div>
         </div>
+
+        {isModalOpen && (
+            <ProductModal
+              isOpen={isModalOpen}
+              onClose={() => setIsModalOpen(false)}
+              product={selectedProduct}
+              onSave={handleSaveProduct}
+              mode={modalMode}
+            />
+        )}
+
     </nav>
   );
 };

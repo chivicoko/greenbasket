@@ -6,4 +6,4 @@ const MarketIntelligence = () => {
   )
 }
 
-export default MarketIntelligence
+export default MarketIntelligence;

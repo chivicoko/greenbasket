@@ -52,22 +52,22 @@ const Footer = () => {
               </li>
               <li className="listItem itemIcons">
                 <span className="flex gap-2 flex-wrap items-center mt-2">
-                  <Link href={'https://www.instagram.com/chivicoko'} target="_blank" className="bg-[#bbea70] hover:bg-[#bbea70d3] p-2 text-[#064f38] rounded-full text-sm transition-transform duration-300 ease-in-out transform hover:translate-y-1">
+                  <Link href={'https://www.instagram.com/chivicoko'} target="_blank" className="bg-btn hover:bg-btn-hover p-2 text-[#064f38] rounded-full text-sm transition-transform duration-300 ease-in-out transform hover:translate-y-1">
                     <Instagram className="h-4 w-4 md:h-6 md:w-6" />
                   </Link>
-                  <Link href={'https://twitter.com/chivicoko'} target="_blank" className="bg-[#bbea70] hover:bg-[#bbea70d3] p-2 text-[#064f38] rounded-full text-sm transition-transform duration-300 ease-in-out transform hover:translate-y-1">
+                  <Link href={'https://twitter.com/chivicoko'} target="_blank" className="bg-btn hover:bg-btn-hover p-2 text-[#064f38] rounded-full text-sm transition-transform duration-300 ease-in-out transform hover:translate-y-1">
                     <Twitter className="h-4 w-4 md:h-6 md:w-6" />
                   </Link>
-                  <Link href={'https://github.com/chivicoko'} target="_blank" className="bg-[#bbea70] hover:bg-[#bbea70d3] p-2 text-[#064f38] rounded-full text-sm transition-transform duration-300 ease-in-out transform hover:translate-y-1">
+                  <Link href={'https://github.com/chivicoko'} target="_blank" className="bg-btn hover:bg-btn-hover p-2 text-[#064f38] rounded-full text-sm transition-transform duration-300 ease-in-out transform hover:translate-y-1">
                     <GitHub className="h-4 w-4 md:h-6 md:w-6" />
                   </Link>
-                  <Link href={'https://www.victorokoye.com/'} target="_blank" className="bg-[#bbea70] hover:bg-[#bbea70d3] p-2 text-[#064f38] rounded-full text-sm transition-transform duration-300 ease-in-out transform hover:translate-y-1">
+                  <Link href={'https://www.victorokoye.com/'} target="_blank" className="bg-btn hover:bg-btn-hover p-2 text-[#064f38] rounded-full text-sm transition-transform duration-300 ease-in-out transform hover:translate-y-1">
                     <Language className="h-4 w-4 md:h-6 md:w-6" />
                   </Link>
-                  <Link href={'https://www.linkedin.com/in/chivicoko'} target="_blank" className="bg-[#bbea70] hover:bg-[#bbea70d3] p-2 text-[#064f38] rounded-full text-sm transition-transform duration-300 ease-in-out transform hover:translate-y-1">
+                  <Link href={'https://www.linkedin.com/in/chivicoko'} target="_blank" className="bg-btn hover:bg-btn-hover p-2 text-[#064f38] rounded-full text-sm transition-transform duration-300 ease-in-out transform hover:translate-y-1">
                     <LinkedIn className="h-4 w-4 md:h-6 md:w-6" />
                   </Link>
-                  <Link href={'https://wa.me/+2348028845693'} target="_blank" className="bg-[#bbea70] hover:bg-[#bbea70d3] p-2 text-[#064f38] rounded-full text-sm transition-transform duration-300 ease-in-out transform hover:translate-y-1">
+                  <Link href={'https://wa.me/+2348028845693'} target="_blank" className="bg-btn hover:bg-btn-hover p-2 text-[#064f38] rounded-full text-sm transition-transform duration-300 ease-in-out transform hover:translate-y-1">
                     <WhatsApp className="h-4 w-4 md:h-6 md:w-6" />
                   </Link>
                 </span>
@@ -85,13 +85,13 @@ const Footer = () => {
             </span>
             <input
               type="email"
-              placeholder="Email..."
+              placeholder="eg. john@gmail.com"
               name="email"
               className="bg-transparent p-3 ml-2 rounded-full shadow-lg w-full border-0 text-sm md:text-base text-white leading-tight focus:outline-0 focus:ring-0"
             />
             <button
               type="button"
-              className="bg-[#bbea70] hover:bg-[#bbea70d3] text-[#064f38] font-semibold rounded-full px-4 py-3 ml-2 focus:ring-2 focus:ring-[#064f38]"
+              className="bg-btn hover:bg-btn-hover text-[#064f38] font-semibold rounded-full px-4 py-3 ml-2 focus:ring-2 focus:ring-[#064f38]"
             >
               <Send className='-rotate-45 h-4 w-4 md:h-6 md:w-6' />
             </button>
