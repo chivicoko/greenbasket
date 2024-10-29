@@ -42,7 +42,8 @@ const AdminSidebar: React.FC<SidebarProps> = ({ show = 'hidden', closeSidebar = 
 
 
     const addProduct = (p) => {
-        console.log('Adding product',p);
+        console.log(null);
+        // console.log('Adding product',p);
     }
 
 

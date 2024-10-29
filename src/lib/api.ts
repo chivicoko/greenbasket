@@ -24,7 +24,7 @@ export const createProduct = async (ProductData: Product) => {
   try {
     // console.log('Data being sent:', ProductData);
     const response = await axios.post(`${API_URL}`, ProductData);
-    console.log(response.data);
+    // console.log(response.data);
     return response.data;
   } catch (error) {
     console.error('Error creating product:', error);

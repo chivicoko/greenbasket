@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Product from '../../../models/ProductModel';
 import { connectToDb } from '@/lib/mongodb';
+import { revalidatePath } from 'next/cache';
 
 
 export const GET = async () => {
@@ -32,8 +33,9 @@ export const POST = async (req: NextRequest) => {
         try {
           await product.save();
           return NextResponse.json(product);
+        //   revalidatePath('/admin/products');
         } catch (error) {
-          console.error("Error saving product:", error);
+            console.error("Error saving product:", error);
           return NextResponse.json({ error }, { status: 400 });
         }
         

@@ -18,7 +18,7 @@ const ProductSchema: Schema = new Schema(
     // Custom 'id' field with default UUID value
     id: {
       type: String,
-      default: () => uuidv4(), // Generate a unique id using a function to call UUID
+      // default: () => uuidv4(), // Generate a unique id using a function to call UUID
       unique: true, // Ensure uniqueness of the custom 'id' field
     },
     name: {

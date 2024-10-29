@@ -9,6 +9,7 @@ import BasicPagination from './Pagination';
 import Image from 'next/image';
 import { getProducts } from '@/lib/api';
 import { Product } from '@/utils/types';
+import Loading from '@/app/loading';
 
 // Define the Product interface
 // interface Product {
@@ -20,16 +21,16 @@ import { Product } from '@/utils/types';
 // }
 
 interface CampaignTableProps {
-  loading: boolean;
   error: string | null;
 }
 
-const ProductTable: React.FC<CampaignTableProps> = ({ loading, error }) => {
+const ProductTable: React.FC<CampaignTableProps> = ({ error }) => {
   const router = useRouter();
   const [showDeleteModal, setShowDeleteModal] = useState<boolean>(false);
   const [showDeletedModal, setShowDeletedModal] = useState<boolean>(false);
   const [deletingId, setDeletingId] = useState<string | null>(null);
   const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   if (error) return <p className='text-red-500'>{error}</p>;
 
@@ -73,13 +74,18 @@ const ProductTable: React.FC<CampaignTableProps> = ({ loading, error }) => {
     const getData = async () => {
       const products = await getProducts();
       setProducts(products);
+      setLoading(false);
     };
     getData();
   }, []);
 
+
   return (
     <>
-      {products && products.length > 0 ? (
+      {
+        loading ? <Loading/> : 
+      
+        products && products.length > 0 ? (
         <div className='custom-scrollbar overflow-x-scroll'>
           <table className='min-w-full divide-y divide-gray-200'>
             <thead className='bg-gray-50'>

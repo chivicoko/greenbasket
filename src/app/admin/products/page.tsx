@@ -5,7 +5,6 @@ import { DateRange, KeyboardArrowDown, Logout } from '@mui/icons-material';
 import ProductTable from '@/components/admin/ProductTable';
 
 const Products = () => {
-  const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   return (
@@ -31,7 +30,7 @@ const Products = () => {
         </div>
 
         <div className='mt-6'>
-            <ProductTable loading={loading} error={error} />
+            <ProductTable error={error} />
         </div>
     </section>
   )

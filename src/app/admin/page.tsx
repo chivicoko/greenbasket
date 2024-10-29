@@ -7,6 +7,7 @@ import { Add } from '@mui/icons-material';
 import { Product } from '@/utils/types';
 import ProductModal from '@/components/admin/ProductModal';
 import { getProducts } from '@/lib/api';
+import Loading from '../loading';
 
 // export const generateMetadata = {
 //     title: "Admin Overview",
@@ -19,6 +20,7 @@ const AdminProductForm = () => {
     const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
     const [modalMode, setModalMode] = useState<'view' | 'edit'>('view');
     const [products, setProducts] = useState<Product[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
 
     
     const addProduct = (p) => {
@@ -51,6 +53,7 @@ const AdminProductForm = () => {
     const getData = async () => {
       const products = await getProducts();
       setProducts(products);
+      setLoading(false);
     };
     getData();
   }, []);
@@ -62,38 +65,41 @@ const AdminProductForm = () => {
             <h1 className='text-[#064f38] text-xl font-bold'>Overview</h1>
         </div>
 
-        {products && products?.length > 0
+        {
+          loading ? <Loading/> : 
+          products && products?.length > 0
         ?
-        <div className='py-8 flex flex-col sm:flex-row items-center justify-between flex-wrap gap-4 md:gap-6 lg:gap-10'>
-            <div className='bg-[#bbea70] py-6 md:py-4 px-2 md:px-4 w-full flex-1 rounded-lg flex flex-col justify-center items-center gap-2 md:gap-4 h-40'>
-                <span className='text-2xl text-center uppercase font-semibold'>products</span>
-                <span className='text-xl'>{products.length}</span>
-            </div>
-            <div className='bg-[#7e70ea] py-6 md:py-4 px-2 md:px-4 w-full flex-1 rounded-lg flex flex-col justify-center items-center gap-2 md:gap-4 h-40'>
-                <span className='text-2xl text-center uppercase font-semibold'>Total users</span>
-                <span className='text-xl'>1,500</span>
-            </div>
-            <div className='bg-[#eaa570] py-6 md:py-4 px-2 md:px-4 w-full flex-1 rounded-lg flex flex-col justify-center items-center gap-2 md:gap-4 h-40'>
-                <span className='text-2xl text-center uppercase font-semibold'>Active Users</span>
-                <span className='text-xl'>1,500</span>
-            </div>
-        </div>
+          <div className='py-8 flex flex-col sm:flex-row items-center justify-between flex-wrap gap-4 md:gap-6 lg:gap-10'>
+              <div className='bg-[#bbea70] py-6 md:py-4 px-2 md:px-4 w-full flex-1 rounded-lg flex flex-col justify-center items-center gap-2 md:gap-4 h-40'>
+                  <span className='text-2xl text-center uppercase font-semibold'>products</span>
+                  <span className='text-xl'>{products.length}</span>
+              </div>
+              <div className='bg-[#7e70ea] py-6 md:py-4 px-2 md:px-4 w-full flex-1 rounded-lg flex flex-col justify-center items-center gap-2 md:gap-4 h-40'>
+                  <span className='text-2xl text-center uppercase font-semibold'>Total users</span>
+                  <span className='text-xl'>1,500</span>
+              </div>
+              <div className='bg-[#eaa570] py-6 md:py-4 px-2 md:px-4 w-full flex-1 rounded-lg flex flex-col justify-center items-center gap-2 md:gap-4 h-40'>
+                  <span className='text-2xl text-center uppercase font-semibold'>Active Users</span>
+                  <span className='text-xl'>1,500</span>
+              </div>
+          </div>
         :
-        <div className="flex flex-col items-center justify-center gap-8 py-12">
-            <div className="relative w-full max-w-md mx-auto">
-                <Image
-                    src="/emptypage.svg"
-                    alt="emptypage svg"
-                    width={500}
-                    height={300}
-                    className="object-contain w-full h-auto"
-                />
-            </div>
-            <p className='text-sm text-center'>No product yet. Create a new product to get started</p>
-            <button  onClick={() => handleAddEditProduct()} className="flex items-center text-white hover:text-[#064f38] bg-[#064f38] hover:bg-transparent border border-transparent hover:border-[#064f38] py-2 px-14 rounded-[4px] text-sm font-semibold">
-                <Add /> New Product
-            </button>
-        </div>}
+          <div className="flex flex-col items-center justify-center gap-8 py-12">
+              <div className="relative w-full max-w-md mx-auto">
+                  <Image
+                      src="/emptypage.svg"
+                      alt="emptypage svg"
+                      width={500}
+                      height={300}
+                      className="object-contain w-full h-auto"
+                  />
+              </div>
+              <p className='text-sm text-center'>No product yet. Create a new product to get started</p>
+              <button  onClick={() => handleAddEditProduct()} className="flex items-center text-white hover:text-[#064f38] bg-[#064f38] hover:bg-transparent border border-transparent hover:border-[#064f38] py-2 px-14 rounded-[4px] text-sm font-semibold">
+                  <Add /> New Product
+              </button>
+          </div>
+        }
 
 
         {isModalOpen && (

@@ -7,8 +7,8 @@ import { Product } from '@/utils/types';
 import { Add } from '@mui/icons-material';
 import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
-import { useRouter, useParams } from 'next/navigation';
-// import { v4 as uuidv4 } from 'uuid';
+import { useRouter, useParams, usePathname } from 'next/navigation';
+import { v4 as uuidv4 } from 'uuid';
 
 interface ProductModalProps {
   isOpen: boolean;
@@ -21,8 +21,11 @@ interface ProductModalProps {
 const ProductModal: React.FC<ProductModalProps> = ({ isOpen, onClose, onSave, product, mode }) => {
   const router = useRouter();
   const params = useParams();
+  const pathname = usePathname();
+  // console.log(params, router);
+
   const id = Array.isArray(params.id) ? params.id[0] : params.id;
-  console.log(id);
+  // console.log(id);
   
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [isEditMode, setIsEditMode] = useState(false);
@@ -141,6 +144,7 @@ const ProductModal: React.FC<ProductModalProps> = ({ isOpen, onClose, onSave, pr
     try {
       const payload = {
         ...formData,
+        id: uuidv4()
         // startDate: formatDateToISO(formData.startDate),
         // endDate: formatDateToISO(formData.endDate),
         // linkedKeywords: keywords,
@@ -148,12 +152,18 @@ const ProductModal: React.FC<ProductModalProps> = ({ isOpen, onClose, onSave, pr
       };
 
       if (isEditMode) {
-        await updateProduct(id!, { ...payload, id });
+        await updateProduct(id!, payload);
       } else {
         await createProduct(payload);
       }
 
-      router.push('/admin/products');
+      // console.log(pathname);
+      if (pathname === '/admin/products') {
+        router.refresh();
+      } else {
+        router.push('/admin/products');
+      }
+
     } catch (err) {
       // setError('Failed to save the campaign. Please try again.');
       console.error('Error saving campaign:', err);
