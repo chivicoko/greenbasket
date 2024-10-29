@@ -22,10 +22,8 @@ const ProductModal: React.FC<ProductModalProps> = ({ isOpen, onClose, onSave, pr
   const router = useRouter();
   const params = useParams();
   const pathname = usePathname();
-  // console.log(params, router);
 
   const id = Array.isArray(params.id) ? params.id[0] : params.id;
-  // console.log(id);
   
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [isEditMode, setIsEditMode] = useState(false);

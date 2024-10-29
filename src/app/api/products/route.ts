@@ -33,7 +33,6 @@ export const POST = async (req: NextRequest) => {
         try {
           await product.save();
           return NextResponse.json(product);
-        //   revalidatePath('/admin/products');
         } catch (error) {
             console.error("Error saving product:", error);
           return NextResponse.json({ error }, { status: 400 });

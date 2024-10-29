@@ -1,5 +1,6 @@
 import { Product } from '@/utils/types';
 import axios from 'axios';
+// import { revalidatePath } from 'next/cache';
 
 const API_URL = '/api/products';
 
@@ -25,6 +26,7 @@ export const createProduct = async (ProductData: Product) => {
     // console.log('Data being sent:', ProductData);
     const response = await axios.post(`${API_URL}`, ProductData);
     // console.log(response.data);
+    // revalidatePath('/admin/products');
     return response.data;
   } catch (error) {
     console.error('Error creating product:', error);

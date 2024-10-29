@@ -1,10 +1,8 @@
 import { categoryList } from '@/utils/data';
 import mongoose, { Schema, Document } from 'mongoose';
-import { v4 as uuidv4 } from 'uuid'; // Import UUID to generate unique ids
 
-// Define the Product interface extending Mongoose's Document
 export interface IProduct extends Document {
-  id: string; // Custom id field
+  id: string;
   name: string;
   price: number;
   category: string;
@@ -12,14 +10,11 @@ export interface IProduct extends Document {
   image: string;
 }
 
-// Create the Product schema
 const ProductSchema: Schema = new Schema(
   {
-    // Custom 'id' field with default UUID value
     id: {
       type: String,
-      // default: () => uuidv4(), // Generate a unique id using a function to call UUID
-      unique: true, // Ensure uniqueness of the custom 'id' field
+      unique: true,
     },
     name: {
       type: String,
@@ -48,14 +43,13 @@ const ProductSchema: Schema = new Schema(
     },
   },
   {
-    timestamps: true, // Automatically manage createdAt and updatedAt fields
+    timestamps: true,
   }
 );
 
 // Create an index for better search performance on 'name' and 'category'
 ProductSchema.index({ name: 'text', category: 'text' });
 
-// Export the Product model
 const Product = mongoose.models.Product || mongoose.model<IProduct>('Product', ProductSchema);
 
 export default Product;
