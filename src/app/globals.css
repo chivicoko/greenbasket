@@ -1,0 +1,223 @@
+/* globals.css */
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --theme-bg: #064f38;
+    --btn-bg: #bbea70;
+    --btn-hover-bg: #bbea70d3;
+  }
+}
+
+.boxShadowWithTransition:hover {
+  box-shadow: 0 0 5px black;
+  transform: scale(1.03);
+}
+
+* {
+  font-family: "Jost", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  transition: all .3s ease !important;
+}
+
+body {
+  height: 100vh;
+  min-height: 100vh;
+}
+
+.bennetCurve {
+  /* clip-path: ellipse(100% 50% at 50% 50%); */
+  clip-path: ellipse(100% 100% at 50% 0%);
+}
+
+.bennetCurve2 {
+  clip-path: ellipse(100% 100% at 50% 100%);
+  /* clip-path: ellipse(100% 100% at 50% 0%); */
+  /* background: url(./yt-banner-howhow.jpg) center center/cover no-repeat fixed padding-box border-box #ccc; */
+  /* opacity: .3; */
+}
+
+.img1 {
+  animation: soft-bounce 2s infinite alternate;
+}
+
+@keyframes soft-bounce {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(5px);
+  }
+}
+
+.bg-theme {
+  background-color: #064f38;
+}
+.bg-btn {
+  background-color: #bbea70 !important;
+}
+.bg-btn:hover {
+  background-color: #bbea70d3 !important;
+}
+
+
+/* loader */
+.loader {
+  display: inline-grid;
+  width: 40px;
+  aspect-ratio: 1;
+}
+.loader:before,
+.loader:after {
+  content: "";
+  grid-area: 1/1;
+  border-radius: 50%;
+  background: repeating-conic-gradient(#bbea70 0 60deg, #bbea70d3 0 120deg);
+  animation: l6 4s linear infinite;
+}
+.loader:before {
+  translate: 0 -100%;
+}
+.loader:after {
+  padding: 20%;
+  mask: conic-gradient(#000 0 0) content-box exclude, conic-gradient(#000 0 0);
+  animation-direction: reverse;
+}
+@keyframes l6 {to { rotate: 1turn; }}
+
+
+/* scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  /* display: none; */
+  height: 4px;
+  width: 5px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #E3E4E6;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #bbea70;
+  border-radius: 8px;
+  width: 2px;
+  cursor: pointer;
+}
+
+
+/* custom pagination */
+/* right side */
+.MuiStack-root nav {
+  background: transparent;
+  box-shadow: none;
+}
+  
+.MuiStack-root .MuiPagination-ul {
+  justify-content: center;
+  gap: 0;
+}
+  
+.MuiStack-root .MuiPaginationItem-root {
+  color: #545F7D;
+  font-size: 16px;
+  border-radius: 50%;
+  padding: 0;
+}
+
+.MuiStack-root .MuiPaginationItem-root:hover {
+  background: #cee1af90;
+}
+  
+.MuiStack-root .MuiPaginationItem-root:disabled {
+  cursor: not-allowed;
+}
+  
+/* The active/current page */
+.MuiStack-root .Mui-selected {
+  background-color: transparent !important;
+  color: #545F7D !important;
+  font-weight: bold;
+}
+  
+/* The arrow icons (next/previous) */
+.MuiStack-root .MuiPaginationItem-previousNext {
+  background: #cee1af90;
+  color: #545F7D;
+  /* background-color: #213F7D1A; */
+  width: 20px;
+  height: 26px;
+  border-radius: 4px;
+}
+
+.MuiStack-root .MuiPaginationItem-previousNext:hover {
+  background: #bbea70d3;
+}
+
+/* The ellipsis (dots) */
+.MuiStack-root .MuiPaginationItem-ellipsis {
+  color: #6c757d;
+  font-size: 20px;
+}
+
+
+/* left side */
+.pagination {
+  margin-top: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pagination .pages {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.pagination .pages span {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.42px;
+  color: #545F7D;
+}
+
+.pagination .pages .select-container {
+  /* background: #213F7D1A; */
+  background: #cee1af90;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  border: none;
+}
+
+.pagination .pages .select-container .span {
+  padding: .35rem 2.2rem;
+  padding-left: .8rem;
+  cursor: pointer;
+  flex: 1;
+  /* appearance: none; */
+  box-sizing: border-box;
+  font-weight: 500;
+  /* color: #213F7D; */
+  display: flex;
+  border: none;
+  align-items: center;
+  /* gap: 1rem; */
+
+  appearance: none; /* Remove default styling */
+  background: url('/images/np_next_2236826_000000 2.svg') no-repeat right 10px center; /* Custom arrow */
+  background-size: 14px; /* Adjust size of arrow */
+}
+
+
+/* back button */
+button.backBtn:hover .userleftArrowIcon {
+  transform: translateX(-5px);
+  transition: all 0.3 ease-in;
+}
