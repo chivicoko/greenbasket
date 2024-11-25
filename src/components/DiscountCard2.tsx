@@ -1,6 +1,5 @@
 import Image from 'next/image';
-import Link from 'next/link';
-import { Speaker } from '@mui/icons-material';
+import { BrightnessLowOutlined } from '@mui/icons-material';
 import { discountCard2 } from '@/utils/data';
 
 const DiscountCard2: React.FC = () => {
@@ -19,7 +18,7 @@ const DiscountCard2: React.FC = () => {
                     <span className={`font-bold text-3xl md:text-5xl ${card.color2}`}><sup className='text-xl md:text-2xl'>{card.text2extra}</sup>{card.text2}</span>
                   </div>
                   <span className='self-start'>
-                    <Speaker/>
+                    <BrightnessLowOutlined/>
                   </span>
                 </div>
                 
