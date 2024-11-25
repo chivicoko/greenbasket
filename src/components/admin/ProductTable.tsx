@@ -41,7 +41,7 @@ const ProductTable: React.FC<CampaignTableProps> = ({ error }) => {
 
   // ============== pagination =================
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [productsPerPage, setProductsPerPage] = useState<number>(10);
+  const [productsPerPage, setProductsPerPage] = useState<number>(5);
   const [totalProducts, setTotalProducts] = useState<number>(0);
 
   useEffect(() => {
@@ -115,7 +115,7 @@ const ProductTable: React.FC<CampaignTableProps> = ({ error }) => {
   
   // ============== pagination =================
   const handleRowsPerPageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setProductsPerPage(totalProducts < 10 ? totalProducts : Number(event.target.value));
+    setProductsPerPage(Number(event.target.value));
     // setProductsPerPage(products.length < Number(event.target.value) ? products.length : Number(event.target.value));
     setCurrentPage(1);
   };
@@ -131,7 +131,7 @@ const ProductTable: React.FC<CampaignTableProps> = ({ error }) => {
       
         products && products.length > 0 ? (
           <>
-            <div className='h-[65vh] min-h-[65vh] custom-scrollbar overflow-scroll'>
+            <div className='custom-scrollbar overflow-x-scroll'>
               <table className='min-w-full divide-y divide-gray-200'>
                 <thead className='bg-gray-50'>
                   <tr className='border-0 rounded-[4px]'>
@@ -145,7 +145,7 @@ const ProductTable: React.FC<CampaignTableProps> = ({ error }) => {
                 </thead>
                 <tbody className='bg-white divide-y divide-gray-200'>
                   {/* {products.slice(0, 10).map((product, index) => ( */}
-                  {currentProducts.map((product, index) => (
+                  {currentProducts.slice(0, 10).map((product, index) => (
                     <tr key={product._id} className='border-b'>
                       <td className='px-6 py-2 text-xs whitespace-nowrap'>{index + 1}.</td>
                       <td className='px-6 py-2 text-xs whitespace-nowrap'>
@@ -191,13 +191,11 @@ const ProductTable: React.FC<CampaignTableProps> = ({ error }) => {
                     onChange={handleRowsPerPageChange}
                     className="span"
                   >
-                    <option value={totalProducts < 10 ? totalProducts : 10}>{totalProducts < 10 ? totalProducts : 10}</option>
+                    <option value={5}>5</option>
+                    <option value={10}>10</option>
                     <option value={20}>20</option>
                     <option value={50}>50</option>
                     <option value={100}>100</option>
-                    {/* <option value={20}>20</option>
-                    <option value={50}>50</option>
-                    <option value={100}>100</option> */}
                   </select>
                 </div>
 

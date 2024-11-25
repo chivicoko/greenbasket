@@ -1,6 +1,5 @@
 'use client';
 
-import { addProduct } from '@/lib/actions';
 import { createProduct, updateProduct } from '@/lib/api';
 import { categoryList } from '@/utils/data';
 import { Product } from '@/utils/types';
@@ -177,14 +176,14 @@ const ProductModal: React.FC<ProductModalProps> = ({ isOpen, onClose, onSave, pr
     }
   };
 
-  const handleSaveProduct = (product: Product) => {
-    if (selectedProduct) {
-      updateProduct(selectedProduct.id, product);
-    } else {
-      addProduct(product);
-    }
-    setIsModalOpen(false);
-  };
+  // const handleSaveProduct = (product: Product) => {
+  //   if (selectedProduct) {
+  //     updateProduct(selectedProduct.id, product);
+  //   } else {
+  //     addProduct(product);
+  //   }
+  //   setIsModalOpen(false);
+  // };
 
   return (
     isOpen ? (
@@ -352,15 +351,15 @@ const ProductModal: React.FC<ProductModalProps> = ({ isOpen, onClose, onSave, pr
   );
 
   
-  {isModalOpen && (
-    <ProductModal
-      isOpen={isModalOpen}
-      onClose={() => setIsModalOpen(false)}
-      product={selectedProduct}
-      onSave={handleSaveProduct}
-      mode={modalMode}
-    />
-  )}
+  // {isModalOpen && (
+  //   <ProductModal
+  //     isOpen={isModalOpen}
+  //     onClose={() => setIsModalOpen(false)}
+  //     product={selectedProduct}
+  //     // onSave={handleSaveProduct}
+  //     mode={modalMode}
+  //   />
+  // )}
 
 };
 
