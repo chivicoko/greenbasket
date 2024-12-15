@@ -7,6 +7,7 @@ import React, { useEffect, useState } from 'react'
 import BasicPagination from './Pagination';
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Button from './button/Button';
 
 const Products: React.FC = () => {
     const [loading, setLoading] = useState<boolean>(true);
@@ -93,8 +94,8 @@ const Products: React.FC = () => {
                     <p className='text-center text-sm text-gray-500 font-semibold'>120gm</p>
                     <p className='text-center text-xl py-3 font-bold text-theme'>${product.price}</p>
                     <div className='bg-[#cee1af90] w-full flex items-center py-1 rounded-lg justify-around'>
-                      <button className='p-1 bg-white hover:bg-[#cee9a490] text-theme rounded-full'><Remove/></button>
-                      <button className='p-1 bg-white hover:bg-[#cee9a490] text-theme rounded-full'><Add/></button>
+                      <Button icon1={<Remove/>} classes="p-1 bg-white hover:bg-[#cee9a490] text-theme rounded-full" />
+                      <Button icon1={<Add/>} classes="p-1 bg-white hover:bg-[#cee9a490] text-theme rounded-full" />
                     </div>
                   </div>
                 </div>

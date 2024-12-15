@@ -37,10 +37,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className='font-jost overflow-x-hidden bg-zinc-50'>
         {children}
 
-        {/* <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon_io/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon_io/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon_io/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_io/favicon-16x16.png" />
-        <link rel="manifest" href="/images/favicon_io/site.webmanifest" /> */}
+        <link rel="manifest" href="/images/favicon_io/site.webmanifest" />
 
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />

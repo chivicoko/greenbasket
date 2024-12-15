@@ -1,6 +1,6 @@
 import React from 'react';
 import DiscountCard from '../DiscountCard';
-import ConstantProducts from '../ConstantProducts';
+import ProductsJustForYou from '../ProductsJustForYou';
 
 const Prefoot = () => {
   return (
@@ -9,7 +9,7 @@ const Prefoot = () => {
         <DiscountCard/>
       </div>
 
-      <ConstantProducts/>
+      <ProductsJustForYou/>
 
       <div className='bg-[#fffbeb] w-full h-[80vh]'>
         <div

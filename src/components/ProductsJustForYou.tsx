@@ -1,15 +1,20 @@
+"use client";
+
 import { products } from '@/utils/data';
 import { Add, ArrowForward, Remove } from '@mui/icons-material';
 import Image from 'next/image';
 import Link from 'next/link';
 import ButtonLink from './button/ButtonLink';
+import { usePathname } from 'next/navigation';
+import Button from './button/Button';
 
-const ConstantProducts: React.FC = () => {
+const ProductsJustForYou: React.FC = () => {
+  const pathName = usePathname();
     
   return (
     <div className='bg-[#fffbeb] w-full pt-10 md:pt-16 pb-20 px-4 lg:px-8 xl:px-20 2xl:px-32'>
       <div className="flex items-center justify-between mb-8">
-        <h3 className='text-lg md:text-xl lg:text-3xl font-bold text-[#064f38]'>Just for you</h3>
+        <h3 className='text-lg md:text-xl lg:text-3xl font-bold text-[#064f38]'>{pathName === '/' ? 'Just for you' : 'Most selling products'}</h3>
         <ButtonLink url='/products' btnText='See more' classes='text-orange-950 font-semibold gap-2' icon2={<ArrowForward />}  />
       </div>
 
@@ -36,8 +41,8 @@ const ConstantProducts: React.FC = () => {
                   <p className='text-center text-sm text-gray-500 font-semibold'>120gm</p>
                   <p className='text-center text-xl py-3 font-bold text-theme'>${product.price}</p>
                   <div className='bg-[#cee1af90] w-full flex items-center py-1 rounded-lg justify-around'>
-                    <button className='p-1 bg-white hover:bg-[#cee9a490] text-theme rounded-full'><Remove/></button>
-                    <button className='p-1 bg-white hover:bg-[#cee9a490] text-theme rounded-full'><Add/></button>
+                    <Button icon1={<Remove/>} classes="p-1 bg-white hover:bg-[#cee9a490] text-theme rounded-full" />
+                    <Button icon1={<Add/>} classes="p-1 bg-white hover:bg-[#cee9a490] text-theme rounded-full" />
                   </div>
                 </span>
               </div>
@@ -48,4 +53,4 @@ const ConstantProducts: React.FC = () => {
   )
 }
 
-export default ConstantProducts;
+export default ProductsJustForYou;

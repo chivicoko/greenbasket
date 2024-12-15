@@ -22,7 +22,7 @@ const config: Config = {
         "theme": "var(--theme-bg)",
       },
       textColor: {
-        "theme": "var(--theme-bg)",
+        "theme": "var(--theme-text)",
       },
       height: {
         '80vh': '80vh',

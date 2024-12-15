@@ -3,7 +3,8 @@
 import Button from '@/components/button/Button';
 import CountDownTimer from '@/components/CountDownTimer';
 import DiscountBadge from '@/components/DiscountBadge';
-import DiscountCard2 from '@/components/DiscountCard2';
+import DiscountCardTwo from '@/components/DiscountCardTwo';
+import WeeklyBestSellingProducts from '@/components/WeeklyBestSellingProducts';
 import { categories, extraImages } from '@/utils/data';
 import { AddShoppingCart, FavoriteBorder, Star, StarHalf, StarOutline, Storefront } from '@mui/icons-material';
 import Image from 'next/image';
@@ -145,7 +146,9 @@ const SingleProduct = () => {
 
       </div>
 
-      <DiscountCard2/>
+      <DiscountCardTwo/>
+
+      <WeeklyBestSellingProducts/>
     </section>
 
     // <section className='px-4 md:px-[85px] md:pt-1'>

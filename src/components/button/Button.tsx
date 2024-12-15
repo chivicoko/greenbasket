@@ -4,6 +4,7 @@ import { useFormStatus } from 'react-dom';
 import React, { ReactNode } from 'react';
 
 type ButtonProps = {
+  key?: number;
   processText?: string;
   btnText?: string;
   icon1?: ReactNode;
@@ -15,6 +16,7 @@ type ButtonProps = {
 };
 
 const Button: React.FC<ButtonProps> = ({
+  key = null,
   processText = 'Processing...',
   btnText = '',
   icon1 = null,
@@ -28,6 +30,7 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
+      key={key}
       type={type}
       className={`flex items-center justify-center ${classes} ${pending || disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
       disabled={pending || disabled}
