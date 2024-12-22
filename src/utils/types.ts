@@ -73,19 +73,6 @@ export interface SEOProps {
   url?: string;
 }
 
-// export interface Campaign {
-//   _id: string;
-//   campaignName: string;
-//   campaignDescription: string;
-//   startDate: string;
-//   endDate: string;
-//   digestCampaign: boolean;
-//   linkedKeywords: string[];
-//   dailyDigest: string;
-//   campaignStatus: string;
-// }
-
-
 export interface ExtrasProduct {
   id: string;
   title: string;
@@ -123,4 +110,10 @@ export interface ExtrasProduct {
     barcode: string;
     qrCode: string;
   };
+}
+
+export interface ChartData {
+  monthYear: string;
+  non_projects: number;
+  projects: number;
 }

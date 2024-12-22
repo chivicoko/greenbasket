@@ -8,6 +8,8 @@ import { Product } from '@/utils/types';
 import ProductModal from '@/components/admin/ProductModal';
 import { getProducts } from '@/lib/api';
 import Loading from '../loading';
+import UsageChart from '@/components/admin/UsageChart';
+import { UsageHistory } from '@/utils/data';
 
 // export const generateMetadata = {
 //     title: "Admin Overview",
@@ -69,6 +71,7 @@ const AdminProductForm = () => {
           loading ? <Loading/> : 
           products && products?.length > 0
         ?
+        <>
           <div className='py-8 flex flex-col sm:flex-row items-center justify-between flex-wrap gap-4 md:gap-6 lg:gap-10'>
               <div className='bg-[#bbea70] py-6 md:py-4 px-2 md:px-4 w-full flex-1 rounded-lg flex flex-col justify-center items-center gap-2 md:gap-4 h-40'>
                   <span className='text-2xl text-center uppercase font-semibold'>products</span>
@@ -83,6 +86,9 @@ const AdminProductForm = () => {
                   <span className='text-xl'>1,500</span>
               </div>
           </div>
+          
+          <UsageChart data={UsageHistory}/>
+        </>
         :
           <div className="flex flex-col items-center justify-center gap-8 py-12">
               <div className="relative w-full max-w-md mx-auto">
