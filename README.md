@@ -12,13 +12,13 @@ npm install
 ```
 
 ### 3. Run the Development Server
-Once the dependencies are installed, you can start the Vue development server:
+Once the dependencies are installed, you can start the development server:
 ```bash
 npm run dev
 ```
 This will start the application at `http://localhost:3000/`.
 
-Visit [the preview of the application here](https://okoye-victor-chibuzo-lendsqr-fe-test.vercel.app/) .
+Visit [the preview of the application here](https://greenbasket.vercel.app/) .
 
 More information in the `PROJECT_DOCUMENTATION.md` file.
 

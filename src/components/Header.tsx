@@ -5,7 +5,7 @@ import Navbar from './navbar/Navbar';
 import useScrollVisibility from '@/hooks/useScrollVisibility';
 
 const Header = () => {
-  const isVisible = useScrollVisibility(85);
+  const isVisible = useScrollVisibility();
 
   const handleScroll = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
