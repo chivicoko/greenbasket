@@ -7,6 +7,14 @@ export interface Product {
   description: string;
   image: string;
 }
+export interface DummyProduct {
+  id: number;
+  name: string;
+  desc: string;
+  img: string;
+  price: string;
+  weight: string;
+}
 
 export interface SingleItemProps {
   params: {

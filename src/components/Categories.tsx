@@ -28,9 +28,9 @@ const Categories: React.FC = () => {
         )
       }
 
-      <Link href='/products' className='flex flex-col items-center h-full w-fit justify-center gap-4 bg-[#bbea70] hover:bg-[#bbea70d3] p-4 rounded-xl'>
+      <Link href='/products' className='flex flex-col items-center h-full w-fit justify-center gap-4 bg-[#bbea70] hover:bg-[#bbea70d3] p-4 rounded-xl group'>
         <span className="text-sm md:text-lg text-theme bg-white rounded-full p-2 flex items-center"> 
-          <p className='transition-transform duration-300 ease-in-out transform hover:translate-x-1'><East/> </p>
+          <p className='transition-all duration-300 ease-in-out transform group-hover:translate-x-1'><East/> </p>
         </span>
         <p className='text-sm text-theme font-semibold'>See all</p>
       </Link>
