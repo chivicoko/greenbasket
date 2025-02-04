@@ -65,7 +65,7 @@ export const getDummyJsonProducts = async () => {
     throw error;
   }
 };
-getDummyJsonProducts();
+// getDummyJsonProducts();
 
 export const getDummyJsonProductById = async (id: string) => {
   try {

@@ -401,5 +401,6 @@ export const tableHead = [
   {id: 3, title: 'Title'},
   {id: 4, title: 'Price'},
   {id: 5, title: 'Category'},
-  {id: 6, title: 'Action'},
+  {id: 6, title: 'Wishlist'},
+  {id: 7, title: 'Cart'},
 ]

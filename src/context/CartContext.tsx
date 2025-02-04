@@ -1,4 +1,4 @@
-"use client"; // Add this line
+"use client";
 
 import { Product2 } from '@/utils/types';
 import React, { createContext, useState, useEffect, useContext, ReactNode } from 'react';
@@ -10,6 +10,7 @@ interface CartContextType {
   removeFromCart: (productId: string) => void;
   clearCart: () => void;
   totalCount: number;
+  totalCartCount: number;
   getProductQuantity: (productId: string) => number;
   getTotalPrice: () => string;
   isProductInCart: (productId: string) => boolean;
@@ -60,6 +61,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const totalCount = cart.reduce((total, product) => total + (product.quantity || 1), 0);
+  const totalCartCount = cart.length;
 
   const getProductQuantity = (productId: string): number => {
     const product = cart.find((item) => item.id === productId);
@@ -110,6 +112,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         removeFromCart,
         clearCart,
         totalCount,
+        totalCartCount,
         getProductQuantity,
         getTotalPrice,
         isProductInCart,

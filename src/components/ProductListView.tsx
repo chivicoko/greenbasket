@@ -3,11 +3,12 @@
 import { useCart } from '@/context/CartContext';
 import { tableHead } from '@/utils/data'
 import { Product2 } from '@/utils/types'
-import { Add, AddShoppingCart, Remove } from '@mui/icons-material'
+import { Add, AddShoppingCart, Favorite, Remove } from '@mui/icons-material'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useState } from 'react'
 import Button from './button/Button';
+import { useWishlist } from '@/context/WishlistContext';
 
 interface ProductViewProps {
   products: Product2[],
@@ -15,6 +16,7 @@ interface ProductViewProps {
 
 const ProductListView = ({products}: ProductViewProps) => {
   const {addToCart, isProductInCart, increaseProductQuantity, decreaseProductQuantity, getProductQuantity} = useCart();
+    const {toggleWishlistBtn, isProductInWishlist} = useWishlist();
 
   return (
     <div className="w-full overflow-x-scroll custom-scrollbar">
@@ -22,7 +24,7 @@ const ProductListView = ({products}: ProductViewProps) => {
             <thead className="bg-transparent rounded-xl">
                 <tr className="border bg-neutral-300 rounded-[4px]">
                     {tableHead.map(item => (
-                    <th key="item.id" className={`${item.title === 'Action' ? 'text-center' : 'text-left'} pl-6 py-3 text-[#064f38] uppercase text-xs font-bold tracking-wider`}>{ item.title }</th>
+                    <th key="item.id" className={`${item.title === 'Cart' || item.title === 'Wishlist' ? 'text-center' : 'text-left'} pl-6 py-3 text-[#064f38] uppercase text-xs font-bold tracking-wider`}>{ item.title }</th>
                     ))}
                 </tr>
             </thead>
@@ -48,10 +50,15 @@ const ProductListView = ({products}: ProductViewProps) => {
                         <td className="relative pl-6 py-2 text-[15px] whitespace-nowrap w-2">
                             <Link href="`product-details/${product.id}`" className="text-[#064f38] font-semibold">{ product.title }</Link>
                         </td>
-                        <td className="relative pl-6 py-2 text-[15px] whitespace-nowrap w-2">{ product.price }</td>
-                        <td className="relative pl-6 py-2 text-[15px] whitespace-nowrap w-2">{ product.category }</td>
+                        <td className="relative pl-6 py-2 text-[15px] whitespace-nowrap w-2">{ product.price } (<Remove/>{ product.discountPercentage }%)</td>
+                        <td className="relative pl-6 py-2 text-[15px] whitespace-nowrap w-2 capitalize">{ product.category }</td>
+                        <td className="relative pl-6 py-2 text-[15px] whitespace-nowrap w-2">
+                          <div className="flex items-center justify-center">
+                            <Button onClick={() => toggleWishlistBtn(product)} icon1={<Favorite className={`${isProductInWishlist(product.id) ? 'text-red-700' : 'text-[#064f38]'} h-4 w-4 md:h-6 md:w-6`} />} classes="flex items-center justify-center rounded-full text-sm" />
+                          </div>
+                        </td>
                         <td className="relative pl-6 text-[15px] whitespace-nowrap w-2">
-                          <div className='bg-[#cee1af90] w-full md:w-[80%] mx-auto flex items-center py-1 px-2 rounded-lg justify-around'>
+                          <div className='bg-[#cee1af90] w-full mx-auto flex items-center py-1 px-2 rounded-lg justify-around'>
                             <button onClick={() => addToCart(product)} className={`${isProductInCart(product.id) ? 'hidden' : 'flex items-center justify-center'} w-full`} > 
                               <span className="py-[5px] px-2 bg-white hover:bg-[#cee9a490] rounded-full transition-all duration-200 ease-in-out">
                                 <AddShoppingCart style={{fontSize: '16px'}} />

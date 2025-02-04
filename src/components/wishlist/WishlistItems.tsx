@@ -1,19 +1,21 @@
 'use client';
 
 import { useCart } from '@/context/CartContext';
-import { Add, DeleteOutline, Remove } from '@mui/icons-material';
+import { Add, AddShoppingCart, DeleteOutline, Remove } from '@mui/icons-material';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
 import Button from '../button/Button';
+import { useWishlist } from '@/context/WishlistContext';
 
-const CartItems = () => {
-  const { cart, removeFromCart, clearCart, getProductQuantity, increaseProductQuantity, decreaseProductQuantity } = useCart();
+const WishlistItems = () => {
+  const { wishlist, clearWishlist, toggleWishlistBtn } = useWishlist();
+    const {addToCart, isProductInCart, increaseProductQuantity, decreaseProductQuantity, getProductQuantity} = useCart();
 
   return (
-    <div className="w-3/4">
-        <div className="w-full space-y-6">
-            {cart.map(product => (
+    <div className="w-full space-y-6">
+        <div className="w-full grid grid-cols-2 gap-6">
+            {wishlist.map(product => (
                 <div key={product.id} className="relative w-full rounded-2xl border border-[#064f38] p-2 flex items-center gap-12">
                     <p className="absolute top-2 left-2 z-50 bg-orange-950 text-white px-2 rounded-sm text-xs flex items-center justify-center">
                         <Remove/>{ product.discountPercentage }%
@@ -46,27 +48,36 @@ const CartItems = () => {
                             <p className="whitespace-wrap text-[15px]"><strong>Quantity: </strong> { product.quantity }</p>
                             <p className="whitespace-wrap text-[15px]"><strong>Rate: </strong> { product.rating }</p>
                             <p className="whitespace-wrap text-[15px]"><strong>Stock: </strong> { product.stock }</p>
-                            <p className="whitespace-wrap text-[15px]"><strong>Discount: </strong> { product.discountPercentage }%</p>
+                            {/* <p className="whitespace-wrap text-[15px]"><strong>Discount: </strong> { product.discountPercentage }%</p> */}
                         </div>
             
                         <div className="w-full flex items-center gap-3 justify-between mt-4 pr-4">
-                            <div className="flex items-center justify-between gap-6 px-2">
-                                <Button onClick={() => decreaseProductQuantity(product.id)} icon1={<Remove className='h-4 w-4 md:h-6 md:w-6' />} classes="bg-btn hover:bg-btn-hover flex items-center justify-center p-2 text-[#064f38] rounded-full text-sm shadow-md" />
-                                <span className="flex items-center justify-center rounded-full text-[#064f38] text-2xl">{ getProductQuantity(product.id) }</span>
-                                <Button onClick={() => increaseProductQuantity(product.id)} icon1={<Add className='h-4 w-4 md:h-6 md:w-6' />} classes="bg-btn hover:bg-btn-hover flex items-center justify-center p-2 text-[#064f38] rounded-full text-sm shadow-md" />
+                            <div className='bg-[#cee1af90] w-fit flex items-center py-1 px-2 rounded-lg justify-around'>
+                                <button onClick={() => addToCart(product)} className={`${isProductInCart(product.id) ? 'hidden' : 'flex items-center justify-center'} w-full`} > 
+                                <span className="py-[5px] px-2 bg-white hover:bg-[#cee9a490] rounded-full transition-all duration-200 ease-in-out">
+                                    <AddShoppingCart style={{fontSize: '16px'}} />
+                                </span>
+                                </button>
+                                <div className={`${isProductInCart(product.id) ? 'flex items-center justify-around gap-3' : 'hidden'} w-full`} >
+                                    <Button onClick={() => decreaseProductQuantity(product.id)} icon1={<Remove/>} classes="p-1 bg-white hover:bg-[#cee9a490] text-theme rounded-full" />
+                                    <p>{getProductQuantity(product.id)}</p>
+                                    <Button onClick={() => increaseProductQuantity(product.id)} icon1={<Add/>} classes="p-1 bg-white hover:bg-[#cee9a490] text-theme rounded-full" />
+                                </div>
                             </div>
 
-                            <Button icon1={<DeleteOutline className='h-4 w-4 md:h-6 md:w-6' />} onClick={() => removeFromCart(product.id)} classes="bg-red-700 hover:bg-red-600 flex items-center justify-center p-2 text-white rounded-full text-sm shadow-md" />
+                            <Button icon1={<DeleteOutline className='h-4 w-4 md:h-6 md:w-6' />} onClick={() => toggleWishlistBtn(product)} classes="bg-red-700 hover:bg-red-600 flex items-center justify-center p-2 text-white rounded-full text-sm shadow-md" />
                         </div>
 
                     </div>
                 </div>
             ))}
-
-            <Button onClick={clearCart} btnText='Clear cart' classes="bg-red-700 hover:bg-red-600 py-[8px] lg:py-[8px] px-[16px] lg:px-[24px] capitalize font-bold rounded-md text-lg text-white hover:cursor-pointer shadow-md w-1/3" />
+        </div>
+        
+        <div className="flex items-center justify-center">
+            <Button onClick={clearWishlist} btnText='Clear Wishlist' classes="bg-red-700 hover:bg-red-600 py-[8px] lg:py-[8px] px-[16px] lg:px-[24px] capitalize font-bold rounded-md text-lg text-white hover:cursor-pointer shadow-md w-1/3" />
         </div>
     </div>
   )
 }
 
-export default CartItems;
+export default WishlistItems;
