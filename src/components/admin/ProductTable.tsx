@@ -2,10 +2,10 @@
 
 import React, { useEffect, useState } from 'react';
 import { VisibilityOutlined, DeleteOutline, EditNote } from '@mui/icons-material';
-import { useRouter } from 'next/navigation';
+import { useParams, usePathname, useRouter, useSearchParams } from 'next/navigation';
 import ProductDeleteModal from '@/components/admin/ProductDeleteModal';
 import ProductDeletedModal from '@/components/admin/ProductDeletedModal';
-import BasicPagination from '../Pagination';
+import BasicPagination from '../pagination/Pagination';
 import Image from 'next/image';
 import { deleteProduct, getProducts } from '@/lib/api';
 import { Product } from '@/utils/types';
@@ -28,6 +28,15 @@ interface CampaignTableProps {
 // const ProductTable: React.FC<CampaignTableProps> = ({ onEdit, error }) => {
 const ProductTable: React.FC<CampaignTableProps> = ({ error }) => {
   const router = useRouter();
+  
+  const params = useParams();
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+
+  console.log("Params: ", params);
+  console.log("searchParams: ", searchParams);
+  console.log("pathname: ", pathname);
+
   const [showDeleteModal, setShowDeleteModal] = useState<boolean>(false);
   const [showDeletedModal, setShowDeletedModal] = useState<boolean>(false);
   const [deletingId, setDeletingId] = useState<string | null>(null);

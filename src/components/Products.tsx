@@ -1,27 +1,35 @@
 import Loading from '@/app/loading';
 import { getProducts } from '@/lib/api';
 import { Product } from '@/utils/types';
-import { Add, Remove } from '@mui/icons-material';
-import Image from 'next/image';
 import React, { useEffect, useState } from 'react'
-import BasicPagination from './Pagination';
 import { usePathname, useRouter } from 'next/navigation';
-import Link from 'next/link';
-import Button from './button/Button';
+import ProductCard from './ProductCard';
+import FullPagination from './pagination/FullPagination';
+import ButtonLink from './button/ButtonLink';
+import { ArrowForward } from '@mui/icons-material';
 
 const Products: React.FC = () => {
-    const [loading, setLoading] = useState<boolean>(true);
-    const [products, setProducts] = useState<Product[]>([]);
-
-    const router = useRouter();
-    const path = usePathname();
-    // console.log(path);
-    
-  // ============== pagination =================
+  const [gridView, setGridView] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [cart, setCart] = useState<Product[]>([]);
+  
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [productsPerPage, setProductsPerPage] = useState<number>(10);
   const [totalProducts, setTotalProducts] = useState<number>(0);
 
+  const router = useRouter();
+  const pathName = usePathname();
+
+  // Load cart from localStorage on mount
+  useEffect(() => {
+    const productCart = localStorage.getItem('cart');
+    if (productCart) {
+      setCart(JSON.parse(productCart));
+    }
+  }, []);
+
+  // Fetch products data
   useEffect(() => {
     const getData = async () => {
       setLoading(true);
@@ -32,7 +40,6 @@ const Products: React.FC = () => {
         setTotalProducts(products.length);
       } catch (error) {
         console.error('Error fetching products:', error);
-        // setError('Failed to fetch products.');
       } finally {
         setLoading(false);
       }
@@ -41,6 +48,7 @@ const Products: React.FC = () => {
     getData();
   }, []);
 
+  // Paginate products
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
@@ -48,16 +56,13 @@ const Products: React.FC = () => {
   
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
-
+  // Update rows per page
   const handleRowsPerPageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setProductsPerPage(totalProducts < 10 ? totalProducts : Number(event.target.value));
-    // setProductsPerPage(products.length < Number(event.target.value) ? products.length : Number(event.target.value));
+    setProductsPerPage(Number(event.target.value));
     setCurrentPage(1);
   };
-  // ============== pagination =================
 
-  
-  
+  // Refresh the page
   const refreshPage = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     router.refresh();
@@ -65,68 +70,27 @@ const Products: React.FC = () => {
 
   if (loading) return <Loading />;
 
-    
   return (
     products.length > 0 ?
       <section className='py-3 md:py-5 px-2 md:px-6'>
         <div className="grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-6">
-            {
-              loading ? <Loading/> : 
-              currentProducts.map(product => 
-                <div key={product.id} className="pt-0 pb-4 flex-1 flex flex-col justify-center items-center bg-white rounded-xl shadow-md">
-                  <Link href={`/products/${product._id}`} className="relative w-full h-48 mb-4 self-center cursor-pointer rounded-t-md overflow-hidden">
-                    <Image
-                      // src={product.img}
-                      src={product.image}
-                      alt={`${product.name} preview`}
-                      fill
-                      className="object-cover rounded-t-md transition-transform duration-300 ease-in-out transform hover:scale-105"
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                    />
-                  </Link>
-
-                  <div className='px-4 w-full'>
-                    <h2 className='text-center text-lg font-semibold text-theme hover:text-[#bbea70]'>
-                      <Link href={`/products/${product._id}`} className="">
-                        {product.name}
-                      </Link>
-                    </h2>
-                    <p className='text-center text-sm text-gray-500 font-semibold'>120gm</p>
-                    <p className='text-center text-xl py-3 font-bold text-theme'>${product.price}</p>
-                    <div className='bg-[#cee1af90] w-full flex items-center py-1 rounded-lg justify-around'>
-                      <Button icon1={<Remove/>} classes="p-1 bg-white hover:bg-[#cee9a490] text-theme rounded-full" />
-                      <Button icon1={<Add/>} classes="p-1 bg-white hover:bg-[#cee9a490] text-theme rounded-full" />
-                    </div>
-                  </div>
-                </div>
-              )
-            }
-
+          {
+            currentProducts.map(product =>
+              <ProductCard key={product._id} product={product} />
+              // <ProductCard key={product._id} product={product} addToCart={addToCart} />
+            )
+          }
         </div>
 
-        {
-          path === '/products' &&
-          <div className='pagination mt-6 flex flex-col md:flex-row items-center justify-center gap-2'>
-            <div className='pages flex items-center justify-between gap-3'>
-              <span>Showing</span>
-
-              <div className="select-container">
-                <select
-                  value={productsPerPage}
-                  onChange={handleRowsPerPageChange}
-                  className="span"
-                >
-                  <option value={totalProducts < 10 ? totalProducts : 10}>{totalProducts < 10 ? totalProducts : 10}</option>
-                  <option value={20}>20</option>
-                  <option value={50}>50</option>
-                  <option value={100}>100</option>
-                </select>
-              </div>
-
-              <span>out of {totalProducts}</span>
-            </div>
-            <BasicPagination count={totalPages} onPageChange={paginate} currentPage={currentPage} />
-          </div>
+        {pathName === '/products' &&
+          <FullPagination
+            productsPerPage={productsPerPage}
+            handleRowsPerPageChange={handleRowsPerPageChange}
+            totalProducts={totalProducts}
+            totalPages={totalPages}
+            paginate={paginate}
+            currentPage={currentPage}
+          />
         }
 
       </section>
@@ -137,7 +101,7 @@ const Products: React.FC = () => {
         Refresh Page
       </button>
     </div>
-  )
+  );
 }
 
 export default Products;

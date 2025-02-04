@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import './globals.css';
 import ScrollToTopButton from '@/components/ScrollToTopButton';
+import { CartProvider } from '@/context/CartContext';
 
 export const metadata = {
   title: {
@@ -36,7 +37,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body className='font-jost overflow-x-hidden bg-zinc-50'>
-        {children}
+        <CartProvider>
+          {children}
+        </CartProvider>
         <ScrollToTopButton/>
 
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />

@@ -76,7 +76,7 @@ body {
   content: "";
   grid-area: 1/1;
   border-radius: 50%;
-  background: repeating-conic-gradient(#bbea70 0 60deg, #bbea70d3 0 120deg);
+  background: repeating-conic-gradient(#bbea70 0 60deg, #064f38 0 120deg);
   animation: l6 4s linear infinite;
 }
 .loader:before {
@@ -214,11 +214,4 @@ body {
   appearance: none; /* Remove default styling */
   background: url('/images/np_next_2236826_000000 2.svg') no-repeat right 10px center; /* Custom arrow */
   background-size: 14px; /* Adjust size of arrow */
-}
-
-
-/* back button */
-button.backBtn:hover .userleftArrowIcon {
-  transform: translateX(-5px);
-  transition: all 0.3 ease-in;
 }

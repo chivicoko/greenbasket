@@ -14,7 +14,7 @@ const DiscountCard = () => {
         return (
             <div
                 key={discountCard.id}
-                className="flex-1 relative w-full h-56 md:h-60 xl:h-56 bg-cover bg-center rounded-3xl transform transition-transform duration-300 hover:-rotate-3 shadow-md hover:shadow-2xl"
+                className="flex-1 relative w-full h-56 md:h-60 xl:h-56 bg-cover bg-center rounded-3xl transform transition-all duration-300 hover:-rotate-3 shadow-md hover:shadow-2xl"
                 style={{ backgroundImage: discountCard.bgImg }}
             >
                 <div className={`${discountCard.mainBgColor} absolute inset-0 bg-opacity-90 rounded-3xl`}></div>

@@ -8,6 +8,7 @@ export interface IProduct extends Document {
   category: string;
   description: string;
   image: string;
+  rating: number;
 }
 
 const ProductSchema: Schema = new Schema(
@@ -41,6 +42,7 @@ const ProductSchema: Schema = new Schema(
       type: String,
       required: [true, 'Image is required'],
     },
+    rating: Number,
   },
   {
     timestamps: true,

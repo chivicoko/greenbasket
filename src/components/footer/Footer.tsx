@@ -106,7 +106,7 @@ const Footer = () => {
               {
                 myLinks.map(link => {
                   return(
-                    <ButtonLink key={+link.id} target="_blank" url={link.url} icon1={link.icon} classes="bg-btn hover:bg-btn-hover p-2 text-[#064f38] rounded-full text-sm transition-transform duration-300 ease-in-out transform hover:translate-y-1" />
+                    <ButtonLink key={link.id} target="_blank" url={link.url} icon1={link.icon} classes="bg-btn hover:bg-btn-hover p-2 text-[#064f38] rounded-full text-sm transition-transform duration-300 ease-in-out transform hover:translate-y-1" />
                   )
                 })
               }

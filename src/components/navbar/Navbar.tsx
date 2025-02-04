@@ -5,8 +5,10 @@ import { NavbarProps } from '@/utils/types';
 import { Favorite, Search, ShoppingCart } from '@mui/icons-material';
 import Button from '../button/Button';
 import ButtonLink from '../button/ButtonLink';
+import { useCart } from '@/context/CartContext';
 
 const Navbar: React.FC<NavbarProps> = ({ firstDivClasses, secondDivClasses }) => {
+  const {totalCount} = useCart();
 
   return (    
     <nav className={`z-30 ${firstDivClasses}`}>
@@ -37,7 +39,14 @@ const Navbar: React.FC<NavbarProps> = ({ firstDivClasses, secondDivClasses }) =>
 
         <div className="flex gap-2 items-center justify-end">
           <Button icon1={<Favorite className='h-4 w-4 md:h-6 md:w-6' />} classes="bg-btn hover:bg-btn-hover flex items-center justify-center p-2 text-[#064f38] rounded-full text-sm" />
-          <ButtonLink url='/products/cart' classes='bg-btn hover:bg-btn-hover flex items-center justify-center p-2 text-[#064f38] rounded-full text-sm' icon2={<ShoppingCart className='h-4 w-4 md:h-6 md:w-6' />}  />
+          <div className="relative">
+            <ButtonLink url='/products/cart' classes='bg-btn hover:bg-btn-hover flex items-center justify-center p-2 text-[#064f38] rounded-full text-sm' icon2={<ShoppingCart className='h-4 w-4 md:h-6 md:w-6' />}  />
+            {totalCount > 0 && 
+              <div className="absolute -top-2 -right-1 size-6 bg-white rounded-full">
+                <p className='w-full h-full flex items-center justify-center text-center text-black text-xs'>{totalCount}</p>
+              </div>
+            }
+          </div>
         </div>
 
       </div>

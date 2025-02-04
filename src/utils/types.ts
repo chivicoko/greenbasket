@@ -7,13 +7,14 @@ export interface Product {
   description: string;
   image: string;
 }
+
 export interface DummyProduct {
   id: number;
   name: string;
   desc: string;
   img: string;
-  price: string;
-  weight: string;
+  price: number;
+  weight: number;
 }
 
 export interface SingleItemProps {
@@ -22,15 +23,16 @@ export interface SingleItemProps {
   };
 }
 
-export interface ExtrasProduct {
+export interface Product2 {
   id: string;
   title: string;
   description: string;
-  price: string;
   category: string;
+  price: string;
   discountPercentage: number;
   rating: number;
   stock: number;
+  quantity?: number;
   thumbnail: string;
   images: string[];
   dimensions: {
