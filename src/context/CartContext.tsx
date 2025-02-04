@@ -31,11 +31,13 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       setCart(JSON.parse(savedCart));
     }
   }, []);
-
-  // Save cart to localStorage whenever the cart state changes
+  
+  // Save cart to localStorage whenever the cart state changes, but only if it's not empty
   useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cart));
-  }, [cart]);
+    if (cart.length > 0) {
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+  }, [cart]);  
 
   const addToCart = (product: Product2) => {
     setCart((prevCart) => {
