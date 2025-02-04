@@ -17,7 +17,11 @@ const Prefoot = () => {
         <DiscountCard/>
       </div>
 
+      {pathName === '/' ? 
       <ProductsJustForYou />
+      : null
+      }
+
       <WeeklyBestSellingProducts />
 
       <div className="px-4 py-12 lg:px-8 xl:px-20">

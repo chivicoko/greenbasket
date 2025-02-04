@@ -12,7 +12,7 @@ type ButtonProps = {
   classes?: string;
   type?: 'button' | 'submit' | 'reset';
   disabled?: boolean;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 const Button: React.FC<ButtonProps> = ({

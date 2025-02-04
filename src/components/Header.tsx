@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Navbar from './navbar/Navbar';
 import useScrollVisibility from '@/hooks/useScrollVisibility';
+import Button from './button/Button';
 
 const Header = () => {
   const isVisible = useScrollVisibility();
@@ -27,9 +28,8 @@ const Header = () => {
           <div className="relative z-10 lg:w-2/3 text self-start px-4 md:pl-14 lg:pl-20 text-gray-950">
             <h2 className='text-4xl text-white md:text-5xl font-semibold xl:font-bold mt-4 md:mt-20 mb-2 md:mb-4'>The store, at your doorstep today.</h2>
             <p className='w-full md:w-2/3 text-lg text-white md:text-2xl'>Get organic products&apos; and sustainably sourced groceries&apos; delivery at up to <em>4%</em> discount.</p>
-            <button onClick={handleScroll} className='flex items-center gap-3 bg-btn hover:bg-btn-hover mt-4 md:mt-16 mb-4 font-bold rounded-md text-theme py-[11px] px-[27px] hover:cursor-pointer shadow-md'>
-              Shop now
-            </button>
+            
+            <Button onClick={handleScroll} btnText='Shop now' classes="flex items-center gap-3 bg-btn hover:bg-btn-hover mt-4 md:mt-16 mb-4 font-bold rounded-md text-theme py-[11px] px-[27px] hover:cursor-pointer shadow-md" />
           </div>
           <div className="relative z-10 lg:w-1/3 flex justify-start mb-4 lg:mb-auto">
             <div className="relative w-72 h-72 md:w-96 md:h-96 -rotate-6 justify-self-start">
