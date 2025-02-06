@@ -23,7 +23,7 @@ const DiscountCardTwo: React.FC = () => {
                     </span>
                   </div>
                   
-                  <p className='text-start py-3 text-theme'>{card.text3}</p>
+                  <p className='text-start py-3 text-primary'>{card.text3}</p>
                 </div>
 
                 <div

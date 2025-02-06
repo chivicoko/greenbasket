@@ -64,7 +64,7 @@ const AdminProductForm = () => {
   return (
     <section className='px-4 md:px-[85px] pt-8'>
         <div className="headArea flex flex-col md:flex-row items-center justify-between">
-            <h1 className='text-[#064f38] text-xl font-bold'>Overview</h1>
+            <h1 className='text-primary text-xl font-bold'>Overview</h1>
         </div>
 
         {
@@ -101,7 +101,7 @@ const AdminProductForm = () => {
                   />
               </div>
               <p className='text-sm text-center'>No product yet. Create a new product to get started</p>
-              <button  onClick={() => handleAddEditProduct()} className="flex items-center text-white hover:text-[#064f38] bg-[#064f38] hover:bg-transparent border border-transparent hover:border-[#064f38] py-2 px-14 rounded-[4px] text-sm font-semibold">
+              <button  onClick={() => handleAddEditProduct()} className="flex items-center text-white hover:text-primary bg-primary hover:bg-transparent border border-transparent hover:border-primary py-2 px-14 rounded-[4px] text-sm font-semibold">
                   <Add /> New Product
               </button>
           </div>

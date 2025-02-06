@@ -1,5 +1,6 @@
 "use client";
 
+import { products } from '@/utils/data';
 import { Product2 } from '@/utils/types';
 import React, { createContext, useState, useEffect, useContext, ReactNode } from 'react';
 
@@ -93,16 +94,23 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   // Decrease the quantity of a product in the cart
   const decreaseProductQuantity = (productId: string) => {
-    setCart((prevCart) =>
-      prevCart
-        .map((item) =>
+    const product = cart.find((item) => item.id === productId);
+  
+    if (product && product.quantity === 1) {
+      // Remove the product if the quantity is 1
+      setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
+    } else {
+      // Decrease the quantity if it's greater than 1
+      setCart((prevCart) =>
+        prevCart.map((item) =>
           item.id === productId && item.quantity! > 1
             ? { ...item, quantity: item.quantity! - 1 }
             : item
         )
-        .filter((item) => item.quantity! > 0) // Ensure products with quantity 0 are removed
-    );
+      );
+    }
   };
+  
 
   return (
     <CartContext.Provider
@@ -125,7 +133,6 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-// Hook to use CartContext
 export const useCart = () => {
   const context = useContext(CartContext);
   if (!context) {

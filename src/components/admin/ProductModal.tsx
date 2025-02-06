@@ -218,7 +218,7 @@ const ProductModal: React.FC<ProductModalProps> = ({ isOpen, onClose, onSave, pr
                 value={formData.name}
                 onChange={handleInputChange}
                 placeholder="Product Name"
-                className="bg-transparent text-gray-700 border rounded-lg border-[#064f38] focus-within:border-[#064f38] focus-within:ring-1 focus-within:ring-[#064f38] focus-within:shadow-[0_0_10px_0_rgba(142,68,173,0.5),0_0_20px_5px_rgba(142,68,173,0.05)] p-3 shadow-lg w-full text-base leading-tight focus:outline-0 focus:ring-0"
+                className="bg-transparent text-gray-700 border rounded-lg border-primary focus-within:border-primary focus-within:ring-1 focus-within:ring-primary focus-within:shadow-[0_0_10px_0_rgba(142,68,173,0.5),0_0_20px_5px_rgba(142,68,173,0.05)] p-3 shadow-lg w-full text-base leading-tight focus:outline-0 focus:ring-0"
               />
               {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
               
@@ -227,7 +227,7 @@ const ProductModal: React.FC<ProductModalProps> = ({ isOpen, onClose, onSave, pr
                 name="category"
                 value={formData.category}
                 onChange={handleSelectChange}
-                className="bg-transparent text-gray-700 border rounded-lg border-[#064f38] focus-within:border-[#064f38] focus-within:ring-1 focus-within:ring-[#064f38] focus-within:shadow-[0_0_10px_0_rgba(142,68,173,0.5),0_0_20px_5px_rgba(142,68,173,0.05)] p-3 shadow-lg w-full text-base leading-tight focus:outline-0 focus:ring-0"
+                className="bg-transparent text-gray-700 border rounded-lg border-primary focus-within:border-primary focus-within:ring-1 focus-within:ring-primary focus-within:shadow-[0_0_10px_0_rgba(142,68,173,0.5),0_0_20px_5px_rgba(142,68,173,0.05)] p-3 shadow-lg w-full text-base leading-tight focus:outline-0 focus:ring-0"
               >
                 <option value="">Select Category</option>
                 {categoryList.map(cat => (
@@ -242,7 +242,7 @@ const ProductModal: React.FC<ProductModalProps> = ({ isOpen, onClose, onSave, pr
                 value={formData.description}
                 onChange={handleInputChange}
                 placeholder="Description"
-                className="bg-transparent text-gray-700 border rounded-lg border-[#064f38] focus-within:border-[#064f38] focus-within:ring-1 focus-within:ring-[#064f38] focus-within:shadow-[0_0_10px_0_rgba(142,68,173,0.5),0_0_20px_5px_rgba(142,68,173,0.05)] p-3 shadow-lg w-full text-base leading-tight focus:outline-0 focus:ring-0"
+                className="bg-transparent text-gray-700 border rounded-lg border-primary focus-within:border-primary focus-within:ring-1 focus-within:ring-primary focus-within:shadow-[0_0_10px_0_rgba(142,68,173,0.5),0_0_20px_5px_rgba(142,68,173,0.05)] p-3 shadow-lg w-full text-base leading-tight focus:outline-0 focus:ring-0"
               />
               {errors.description && <p className="text-red-500 text-sm">{errors.description}</p>}
               
@@ -253,14 +253,14 @@ const ProductModal: React.FC<ProductModalProps> = ({ isOpen, onClose, onSave, pr
                 value={formData.price}
                 onChange={handleInputChange}
                 placeholder="Price"
-                className="bg-transparent w-full text-gray-700 border rounded-lg border-[#064f38] focus-within:border-[#064f38] focus-within:ring-1 focus-within:ring-[#064f38] focus-within:shadow-[0_0_10px_0_rgba(142,68,173,0.5),0_0_20px_5px_rgba(142,68,173,0.05)] p-3 shadow-lg text-base leading-tight focus:outline-0 focus:ring-0"
+                className="bg-transparent w-full text-gray-700 border rounded-lg border-primary focus-within:border-primary focus-within:ring-1 focus-within:ring-primary focus-within:shadow-[0_0_10px_0_rgba(142,68,173,0.5),0_0_20px_5px_rgba(142,68,173,0.05)] p-3 shadow-lg text-base leading-tight focus:outline-0 focus:ring-0"
               />
               {errors.price && <p className="text-red-500 text-sm">{errors.price}</p>}
               
               {formData.image && (
                 <label
                   htmlFor="imageFile" 
-                  className='cursor-pointer flex-1 flex items-center gap-1 p-2 border rounded-lg border-[#064f38] focus-within:border-[#064f38] focus-within:ring-1 focus-within:ring-[#064f38] focus-within:shadow-[0_0_10px_0_rgba(142,68,173,0.5),0_0_20px_5px_rgba(142,68,173,0.05)]'
+                  className='cursor-pointer flex-1 flex items-center gap-1 p-2 border rounded-lg border-primary focus-within:border-primary focus-within:ring-1 focus-within:ring-primary focus-within:shadow-[0_0_10px_0_rgba(142,68,173,0.5),0_0_20px_5px_rgba(142,68,173,0.05)]'
                   tabIndex={0}
                   onKeyDown={(e) => {
                     if (e.key === 'Enter') {
@@ -268,7 +268,7 @@ const ProductModal: React.FC<ProductModalProps> = ({ isOpen, onClose, onSave, pr
                     }
                   }}
                 >
-                  <div className='w-1/2 text-lg font-semibold text-center underline hover:text-theme'>
+                  <div className='w-1/2 text-lg font-semibold text-center underline hover:text-primary'>
                     {/* Image File */}
                     <span className='flex flex-col gap-2 text-gray-800 text-sm'>
                       Image selected
@@ -291,7 +291,7 @@ const ProductModal: React.FC<ProductModalProps> = ({ isOpen, onClose, onSave, pr
               {!formData.image && (
                 <label 
                   htmlFor="imageFile" 
-                  className='cursor-pointer flex-1 flex items-center gap-1 p-2 border rounded-lg border-[#064f38] focus-within:border-[#064f38] focus-within:ring-1 focus-within:ring-[#064f38] focus-within:shadow-[0_0_10px_0_rgba(142,68,173,0.5),0_0_20px_5px_rgba(142,68,173,0.05)]'
+                  className='cursor-pointer flex-1 flex items-center gap-1 p-2 border rounded-lg border-primary focus-within:border-primary focus-within:ring-1 focus-within:ring-primary focus-within:shadow-[0_0_10px_0_rgba(142,68,173,0.5),0_0_20px_5px_rgba(142,68,173,0.05)]'
                   tabIndex={0}
                   onKeyDown={(e) => {
                     if (e.key === 'Enter') {
@@ -299,12 +299,12 @@ const ProductModal: React.FC<ProductModalProps> = ({ isOpen, onClose, onSave, pr
                     }
                   }}
                 >
-                  <div className='w-1/2 text-lg font-semibold text-center underline hover:text-theme'>
+                  <div className='w-1/2 text-lg font-semibold text-center underline hover:text-primary'>
                     <span className='flex flex-col gap-2 text-gray-800 text-sm'>
                       Select Image
                     </span>
                   </div>
-                  <div className="relative w-full h-24 sm:h-28 self-start border-2 border-[#064f38] rounded-lg overflow-hidden p-4">
+                  <div className="relative w-full h-24 sm:h-28 self-start border-2 border-primary rounded-lg overflow-hidden p-4">
                     <span className='text-[#064f38a6] z-50 absolute top-4 md:top-5 left-1/2 transform -translate-x-1/2 transition-transform duration-300 ease-in-out hover:scale-125'> <Add className='text-7xl'/> </span>
                     <Image
                       src='/images/imagePlaceholder.jpeg'
@@ -332,13 +332,13 @@ const ProductModal: React.FC<ProductModalProps> = ({ isOpen, onClose, onSave, pr
                   // onClick={handleSubmit}
                   disabled={isLoading}
                   type='submit'
-                  className="bg-[#064f38] hover:bg-transparent border border-transparent hover:border-[#064f38] w-full text-white hover:text-[#064f38] rounded-lg px-4 py-3 mt-6 focus:ring-2 focus:ring-[#064f38]"
+                  className="bg-primary hover:bg-transparent border border-transparent hover:border-primary w-full text-white hover:text-primary rounded-lg px-4 py-3 mt-6 focus:ring-2 focus:ring-primary"
                 >
                   {isLoading ? 'Saving...' : 'Save'}
                 </button>
                 <button
                   onClick={onClose}
-                  className="border border-[#064f38] text-[#064f38] hover:border-transparent bg-transparent hover:bg-[#064f38] w-full hover:text-white transition-all duration-300 ease-in-out rounded-lg px-4 py-3 mt-6 focus:outline-none focus:ring-2 focus:ring-[#064f38]"
+                  className="border border-primary text-primary hover:border-transparent bg-transparent hover:bg-primary w-full hover:text-white transition-all duration-300 ease-in-out rounded-lg px-4 py-3 mt-6 focus:outline-none focus:ring-2 focus:ring-primary"
                 >
                   Cancel
                 </button>

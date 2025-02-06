@@ -32,20 +32,20 @@ const AdminNavbar: React.FC = () => {
               </div>
             </Link>
 
-            <button onClick={() => setOpen(!open)} className="lg:hidden text-gray-700 focus:outline-[#064f38]">
+            <button onClick={() => setOpen(!open)} className="lg:hidden text-gray-700 focus:outline-primary">
               <Menu />
             </button>
           </div>
 
           <div className="flex items-center gap-1 md:gap-3 w-4/5 md:px-2 md:w-2/5 justify-self-start">
-            <div className="px-1 bg-transparent border border-[#064f38] w-full flex items-center justify-between rounded-[4px] focus-within:ring-1 focus-within:ring-[#064f38] hover:ring-[#064f38]">
+            <div className="px-1 bg-transparent border border-primary w-full flex items-center justify-between rounded-[4px] focus-within:ring-1 focus-within:ring-primary hover:ring-primary">
               <input
                 type="text"
                 placeholder="Search..."
                 name="searchText"
                 className="bg-transparent w-full py-2 border-0 text-xs pl-1 focus:outline-0 focus:ring-0 placeholder:text-xs md:text-base text-[#666666] leading-tight"
               />
-              <button type="button" className="focus:outline-[#064f38]">
+              <button type="button" className="focus:outline-primary">
                 <span className="text-[#666666]"><Search className="h-4 w-4 md:h-6 md:w-6" /></span>
               </button>
             </div>
@@ -54,7 +54,7 @@ const AdminNavbar: React.FC = () => {
           </div>
 
           <div className="hidden md:w-2/5 md:flex items-center justify-end">
-            <button className="border-r-2 border-[#064f38] px-2 text-[#333333]"><NotificationsOutlined /></button>
+            <button className="border-r-2 border-primary px-2 text-[#333333]"><NotificationsOutlined /></button>
             
             {/* <ClerkLoading>
               <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-surface motion-reduce:animate-[spin_1.5s_linear_infinite] dark:text-white" role="status">

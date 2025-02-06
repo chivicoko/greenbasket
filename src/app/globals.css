@@ -5,15 +5,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@media (prefers-color-scheme: light) {
-  :root {
-    --theme-bg: #064f38;
-    --theme-text: #096f4f;
-    --btn-bg: #bbea70;
-    --btn-hover-bg: #bbea70d3;
-  }
-}
-
 .boxShadowWithTransition:hover {
   box-shadow: 0 0 5px black;
   transform: scale(1.03);
@@ -53,17 +44,6 @@ body {
     transform: translateY(5px);
   }
 }
-
-.bg-theme {
-  background-color: #064f38;
-}
-.bg-btn {
-  background-color: #bbea70 !important;
-}
-.bg-btn:hover {
-  background-color: #bbea70d3 !important;
-}
-
 
 /* loader */
 .loader {
@@ -105,7 +85,28 @@ body {
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #bbea70;
+  background: #064f38;
+  border-radius: 8px;
+  width: 2px;
+  cursor: pointer;
+}
+
+/* scrollbar2 */
+.custom-scrollbar2::-webkit-scrollbar {
+  width: 8px;
+  /* display: none; */
+  height: 4px;
+  width: 2px;
+}
+
+.custom-scrollbar2::-webkit-scrollbar-track {
+  background: #E3E4E6;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.custom-scrollbar2::-webkit-scrollbar-thumb {
+  background: #064f38;
   border-radius: 8px;
   width: 2px;
   cursor: pointer;

@@ -32,7 +32,7 @@ const Button: React.FC<ButtonProps> = ({
     <button
       key={key}
       type={type}
-      className={`flex items-center justify-center ${classes} ${pending || disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
+      className={`flex items-center justify-center focus:ring-2 focus:ring-primary focus:ring-offset-2 outline-none ${classes} ${pending || disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
       disabled={pending || disabled}
       onClick={onClick}
     >

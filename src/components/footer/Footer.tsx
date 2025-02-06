@@ -36,7 +36,7 @@ const Footer = () => {
                     sizes="100%"
                   />
                 </span>
-                <p className="text-[#064f38] text-xl md:text-2xl font-bold flex items-center gap-2">
+                <p className="text-primary text-xl md:text-2xl font-bold flex items-center gap-2">
                   GreenBasket
                 </p>
               </Link>
@@ -106,7 +106,7 @@ const Footer = () => {
               {
                 myLinks.map(link => {
                   return(
-                    <ButtonLink key={link.id} target="_blank" url={link.url} icon1={link.icon} classes="bg-btn hover:bg-btn-hover p-2 text-[#064f38] rounded-full text-sm transition-transform duration-300 ease-in-out transform hover:translate-y-1" />
+                    <ButtonLink key={link.id} target="_blank" url={link.url} icon1={link.icon} classes="bg-secondary hover:bg-secondary_hover p-2 text-primary rounded-full text-sm transition-transform duration-300 ease-in-out transform hover:translate-y-1" />
                   )
                 })
               }
@@ -115,8 +115,8 @@ const Footer = () => {
           
           <div className="flex flex-col items-center justify-center gap-3">
             <p className="self-center">Subscribe To Our Newsletter</p>
-            <div className="bg-[#1b2943] pl-3 flex items-center border rounded-full border-[#bbea70] focus-within:border-[#bbea70] focus-within:ring-1 focus-within:ring-[#064f38] focus-within:shadow-[0_0_10px_0_rgba(142,68,173,0.5),0_0_20px_5px_rgba(142,68,173,0.05)]">
-              <span className="relative flex items-center w-4 h-5 text-[#bbea70] flex-shrink-0">
+            <div className="bg-[#1b2943] pl-3 flex items-center border rounded-full border-secondary focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 outline-none focus-within:shadow-[0_0_10px_0_rgba(142,68,173,0.5),0_0_20px_5px_rgba(142,68,173,0.05)]">
+              <span className="relative flex items-center w-4 h-5 text-secondary flex-shrink-0">
                 <Mail />
               </span>
               <input
@@ -125,7 +125,7 @@ const Footer = () => {
                 name="email"
                 className="bg-transparent p-3 ml-2 rounded-full shadow-lg w-full border-0 text-sm md:text-base text-white leading-tight focus:outline-0 focus:ring-0"
               />
-              <Button icon1={<Send className='-rotate-45 h-4 w-4 md:h-6 md:w-6' />} classes="bg-btn hover:bg-btn-hover text-[#064f38] font-semibold rounded-full px-4 py-3 ml-2 focus:ring-2 focus:ring-[#064f38]" />
+              <Button icon1={<Send className='-rotate-45 h-4 w-4 md:h-6 md:w-6' />} classes="bg-secondary hover:bg-secondary_hover text-primary font-semibold rounded-full px-4 py-3 ml-2 focus:ring-2 focus:ring-primary" />
             </div>
           </div>
         </div>

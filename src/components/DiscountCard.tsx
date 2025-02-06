@@ -5,7 +5,7 @@ import React from 'react'
 
 const discountCards = [
     { id: 1, bgImg: `url('/images/bg-1.jpg')`, mainBgColor: 'bg-blue-950', badgeBgcolor: 'bg-blue-500', textColor: 'text-blue-300', icon: <DeliveryDiningOutlined/>, badgeText: 'Free Delivery', mainText: "Get up to 50% off delivery by 12:15pm, Fast and Free.", img: "/images/gift-box.png" },
-    { id: 2, bgImg: `url('/images/bg-2.jpg')`, mainBgColor: 'bg-orange-950', badgeBgcolor: 'bg-orange-500', textColor: 'text-orange-400', icon: <CardMembershipOutlined/>, badgeText: 'Membership Card', mainText: "You can enjoy a 5% discount using your membership card.", img: "/images/alarm-clock.png" },
+    { id: 2, bgImg: `url('/images/bg-2.jpg')`, mainBgColor: 'bg-dark_orange', badgeBgcolor: 'bg-orange-500', textColor: 'text-orange-400', icon: <CardMembershipOutlined/>, badgeText: 'Membership Card', mainText: "You can enjoy a 5% discount using your membership card.", img: "/images/alarm-clock.png" },
 ];
 
 const DiscountCard = () => {

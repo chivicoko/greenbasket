@@ -28,7 +28,7 @@ const ButtonLink: React.FC<ButtonLinkProps> = ({
       key={key}
       href={url}
       target={target}
-      className={`flex items-center justify-center ${classes}`}
+      className={`flex items-center justify-center focus:ring-2 focus:ring-primary focus:ring-offset-2 outline-none ${classes}`}
     >
       {icon1 && <span>{icon1}</span>}
       {btnText}

@@ -122,6 +122,18 @@ const ProductForm: React.FC = () => {
 
       {/* Submit button */}
       <button type="submit">Submit</button>
+      
+        <button
+            disabled={isSubmitting}
+            type="submit"
+            className={`${isSubmitting ? "opacity-60" : ""} py-2 px-3 bg-blue-600 hover:bg-blue-700 rounded-md`}
+        >
+            {isSubmitting ? "Loading..." : "Submit"}
+        </button>
+
+          {errors.root && (
+            <div className="text-red-600 text-sm">{errors.root.message}</div>
+          )}
     </form>
   );
 };

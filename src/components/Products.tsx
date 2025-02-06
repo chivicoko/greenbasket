@@ -7,6 +7,7 @@ import ProductCard from './ProductCard';
 import FullPagination from './pagination/FullPagination';
 import ButtonLink from './button/ButtonLink';
 import { ArrowForward } from '@mui/icons-material';
+import Button from './button/Button';
 
 const Products: React.FC = () => {
   const [gridView, setGridView] = useState<boolean>(true);
@@ -97,9 +98,7 @@ const Products: React.FC = () => {
     : 
     <div className='w-full flex flex-col items-center gap-4'>
       <p>Products could not be fetched at this time</p>
-      <button onClick={refreshPage} className='flex items-center gap-3 bg-btn hover:bg-btn-hover border border-transparent hover:border-theme font-bold rounded-md text-theme py-[11px] px-[27px] hover:cursor-pointer shadow-md'>
-        Refresh Page
-      </button>
+      <Button onClick={refreshPage} btnText='Refresh Page' classes="flex items-center gap-3 bg-secondary hover:bg-secondary_hover font-bold rounded-xl text-primary py-[11px] px-[27px] hover:cursor-pointer shadow-md" />
     </div>
   );
 }

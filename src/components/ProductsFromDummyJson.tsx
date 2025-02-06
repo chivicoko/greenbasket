@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowForward } from '@mui/icons-material';
+import { East } from '@mui/icons-material';
 import ButtonLink from './button/ButtonLink';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -71,11 +71,11 @@ const ProductsFromDummyJson: React.FC = () => {
   return (
     <div className={`${pathName !== '/dummyjson-products' ? 'bg-[#fffbeb]' : ''} w-full pt-12 pb-20 px-4 lg:px-8 xl:px-20`}>
       <div className="flex items-center justify-between gap-4 mb-8 flex-wrap">
-        <h3 className='text-xl lg:text-3xl mx-auto md:mx-0 font-bold text-[#064f38]'>{pathName === '/' ? 'From DummyJson API' : 'Products from DummyJson API'}</h3>
+        <h3 className='text-xl lg:text-3xl mx-auto md:mx-0 font-bold text-primary'>{pathName === '/' ? 'From DummyJson API' : 'Products from DummyJson API'}</h3>
         <div className="w-full md:w-auto flex items-center justify-between gap-6 flex-wrap">
           <ViewButton gridView={gridView} setGridView={setGridView} />
           {pathName !== '/dummyjson-products' ? 
-          <ButtonLink url='/dummyjson-products' btnText='See more' classes='text-orange-950 font-semibold gap-2 group' icon2={<ArrowForward className='transition-all duration-300 ease-in-out transform group-hover:translate-x-1' />}  />
+          <ButtonLink url='/dummyjson-products' btnText='See more' classes='text-dark_orange font-semibold gap-2 group' icon2={<East className='transition-all duration-300 ease-in-out transform group-hover:translate-x-1' />}  />
           : null
           }
         </div>

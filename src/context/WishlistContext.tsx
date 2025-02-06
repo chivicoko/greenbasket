@@ -71,7 +71,6 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-// Hook to use WishlistContext
 export const useWishlist = () => {
   const context = useContext(WishlistContext);
   if (!context) {

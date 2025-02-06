@@ -3,6 +3,8 @@ import './globals.css';
 import ScrollToTopButton from '@/components/ScrollToTopButton';
 import { CartProvider } from '@/context/CartContext';
 import { WishlistProvider } from '@/context/WishlistContext';
+import { ProductFormProvider } from '@/context/ProductFormContext';
+import { UserFormProvider } from '@/context/UserFormContext';
 
 export const metadata = {
   title: {
@@ -40,7 +42,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className='font-jost overflow-x-hidden bg-zinc-50'>
         <CartProvider>
           <WishlistProvider>
-            {children}
+            <ProductFormProvider>
+              <UserFormProvider>
+                {children}
+              </UserFormProvider>
+            </ProductFormProvider>
           </WishlistProvider>
         </CartProvider>
         

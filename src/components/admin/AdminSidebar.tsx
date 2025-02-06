@@ -82,7 +82,7 @@ const AdminSidebar: React.FC<SidebarProps> = ({ show = 'hidden', closeSidebar = 
                         sizes="(max-width: 768px) 100vw, 50vw"
                     />
                 </div>
-                <h1 className='text-2xl xl:text-3xl text-[#064f38] font-bold'>GreenBasket</h1>
+                <h1 className='text-2xl xl:text-3xl text-primary font-bold'>GreenBasket</h1>
             </Link>
             
             <div className="flex items-center justify-end md:hidden">
@@ -96,13 +96,13 @@ const AdminSidebar: React.FC<SidebarProps> = ({ show = 'hidden', closeSidebar = 
             </div>
 
             <div className="tabs px-2">
-                <button  onClick={() => handleAddEditProduct()} className="flex items-center text-white w-full hover:text-[#064f38] bg-[#064f38] hover:bg-transparent border border-transparent hover:border-[#064f38] py-2 px-14 lg:px-10 xl:px-14 rounded-[4px] text-sm font-semibold">
+                <button  onClick={() => handleAddEditProduct()} className="flex items-center text-white w-full hover:text-primary bg-primary hover:bg-transparent border border-transparent hover:border-primary py-2 px-14 lg:px-10 xl:px-14 rounded-[4px] text-sm font-semibold">
                     <Add /> New Product
                 </button>
 
                 <ul className="flex flex-col items-center gap-3 mt-10 w-full">
                     {menuItems.map(item => 
-                        <li key={item.title} className={`${isActivePath(item.path) ? "text-[#064f38] bg-[#cee1af90]" : "text-[#455454]"} w-full py-2 px-8 rounded-[4px] text-sm text-[#455454] lg:hover:text-[#064f38] lg:hover:bg-[#cee1af90] group transition-all duration-300 ease-linear`}>
+                        <li key={item.title} className={`${isActivePath(item.path) ? "text-primary bg-[#cee1af90]" : "text-[#455454]"} w-full py-2 px-8 rounded-[4px] text-sm text-[#455454] lg:hover:text-primary lg:hover:bg-[#cee1af90] group transition-all duration-300 ease-linear`}>
                             <Link href={item.path} className="flex items-center gap-3">
                                 <span className="">{item.icon}</span>
                                 <span className="font-semibold">{item.title}</span>
@@ -113,7 +113,7 @@ const AdminSidebar: React.FC<SidebarProps> = ({ show = 'hidden', closeSidebar = 
             </div>
 
             <div className="card bg-white w-5/6 py-8 px-10 rounded-[4px] flex flex-col items-center gap-2">
-                <span className="text-[#064f38]"><HelpOutline /></span>
+                <span className="text-primary"><HelpOutline /></span>
                 <div className="relative w-[72px] h-[20px] border border-transparent">
                 <Image
                     src="/needhelp.svg"
@@ -124,7 +124,7 @@ const AdminSidebar: React.FC<SidebarProps> = ({ show = 'hidden', closeSidebar = 
                 />
                 </div>
                 <p className="text-xs text-center text-[#666666]">We are readily available to provide help</p>
-                <button className="text-xs border border-[#064f38] text-[#064f38] hover:text-white bg-transparent hover:bg-[#064f38] hover:border-transparent rounded-[4px] py-2 px-6">Get help</button>
+                <button className="text-xs border border-primary text-primary hover:text-white bg-transparent hover:bg-primary hover:border-transparent rounded-[4px] py-2 px-6">Get help</button>
             </div>
         </div>
 

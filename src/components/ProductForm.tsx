@@ -115,7 +115,7 @@ const ProductForm = ({ productData }: ProductFormProps) => {
             {...register("name")}
             type="text"
             placeholder="Product Name"
-            className="bg-transparent text-gray-700 border rounded-lg border-[#064f38] focus:border-[#064f38] focus:ring-1 focus:ring-[#064f38] p-3 shadow-lg w-full text-base leading-tight focus:outline-0"
+            className="bg-transparent text-gray-700 border rounded-lg border-primary focus:border-primary focus:ring-1 focus:ring-primary p-3 shadow-lg w-full text-base leading-tight focus:outline-0"
           />
           {errors.name && (
             <p className="text-red-500 text-sm">{errors.name.message}</p>
@@ -124,7 +124,7 @@ const ProductForm = ({ productData }: ProductFormProps) => {
           <textarea
             {...register("description")}
             placeholder="Description"
-            className="bg-transparent text-gray-700 border rounded-lg border-[#064f38] focus:border-[#064f38] focus:ring-1 focus:ring-[#064f38] p-3 shadow-lg w-full text-base leading-tight focus:outline-0"
+            className="bg-transparent text-gray-700 border rounded-lg border-primary focus:border-primary focus:ring-1 focus:ring-primary p-3 shadow-lg w-full text-base leading-tight focus:outline-0"
           />
           {errors.description && (
             <p className="text-red-500 text-sm">{errors.description.message}</p>
@@ -135,7 +135,7 @@ const ProductForm = ({ productData }: ProductFormProps) => {
             type="number"
             placeholder="Price"
             step="0.01"
-            className="bg-transparent text-gray-700 border rounded-lg border-[#064f38] focus:border-[#064f38] focus:ring-1 focus:ring-[#064f38] p-3 shadow-lg w-full text-base leading-tight focus:outline-0"
+            className="bg-transparent text-gray-700 border rounded-lg border-primary focus:border-primary focus:ring-1 focus:ring-primary p-3 shadow-lg w-full text-base leading-tight focus:outline-0"
           />
           {errors.price && (
             <p className="text-red-500 text-sm">{errors.price.message}</p>
@@ -143,7 +143,7 @@ const ProductForm = ({ productData }: ProductFormProps) => {
 
           <select
             {...register("category", { required: "Category is required" })}
-            className="bg-transparent text-gray-700 border rounded-lg border-[#064f38] focus-within:border-[#064f38] focus-within:ring-1 focus-within:ring-[#064f38] p-3 shadow-lg w-full text-base leading-tight focus:outline-0 focus:ring-0"
+            className="bg-transparent text-gray-700 border rounded-lg border-primary focus-within:border-primary focus-within:ring-1 focus-within:ring-primary p-3 shadow-lg w-full text-base leading-tight focus:outline-0 focus:ring-0"
           >
             <option value="">Select Category</option>
             {categoryList.map((cat) => (
@@ -158,9 +158,9 @@ const ProductForm = ({ productData }: ProductFormProps) => {
 
           <label
             htmlFor="imageFile"
-            className="cursor-pointer flex items-center gap-1 p-2 border rounded-lg border-[#064f38] focus:border-[#064f38] focus:ring-1 focus:ring-[#064f38] shadow-lg"
+            className="cursor-pointer flex items-center gap-1 p-2 border rounded-lg border-primary focus:border-primary focus:ring-1 focus:ring-primary shadow-lg"
           >
-            <div className="w-1/2 text-lg font-semibold text-center underline hover:text-theme">
+            <div className="w-1/2 text-lg font-semibold text-center underline hover:text-primary">
               <span className="flex flex-col gap-2 text-gray-800 text-sm">
                 {imagePreview ?
                   <div>
@@ -170,7 +170,7 @@ const ProductForm = ({ productData }: ProductFormProps) => {
                 :'Select Image'}
               </span>
             </div>
-            <div className="relative w-full h-24 sm:h-28 self-start border-2 border-[#064f38] rounded-lg overflow-hidden p-4">
+            <div className="relative w-full h-24 sm:h-28 self-start border-2 border-primary rounded-lg overflow-hidden p-4">
               <span className="text-[#064f38a6] z-50 absolute top-4 md:top-5 left-1/2 transform -translate-x-1/2 transition-transform duration-300 ease-in-out hover:scale-125">
                 {" "}
                 <Add className="text-7xl" />{" "}

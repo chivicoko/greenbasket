@@ -29,19 +29,19 @@ const Navbar: React.FC<NavbarProps> = ({ firstDivClasses, secondDivClasses }) =>
           <span className='hidden md:block text-white text-xl md:text-2xl font-bold'>GreenBasket</span>
         </Link>
 
-        <div className="bg-[#11192899] w-fit md:w-[40%] md:pl-3 flex items-center rounded-full focus-within:ring-1 focus-within:ring-[#bbea70d3] focus-within:shadow-[0_0_10px_0_rgba(142,68,173,0.5),0_0_20px_5px_rgba(142,68,173,0.05)]">
+        <div className="bg-[#11192899] w-fit md:w-[40%] md:pl-3 flex items-center rounded-full focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 outline-none focus-within:shadow-[0_0_10px_0_rgba(142,68,173,0.5),0_0_20px_5px_rgba(142,68,173,0.05)]">
           <input
             type="text"
             placeholder="Search for groceries, vegetables..."
             name="searchText"
             className="bg-transparent p-2 md:p-3 ml-2 w-full border-0 text-sm md:text-base text-white leading-tight focus:outline-0 focus:ring-0"
           />
-          <Button icon1={<Search className='h-4 w-4 md:h-6 md:w-6' />} classes="bg-btn hover:bg-btn-hover text-[#064f38] font-semibold rounded-full px-2 md:px-4 py-1 md:py-3 md:ml-2 focus:ring-2 focus:ring-[#bbea70d3]" />
+          <Button icon1={<Search className='h-4 w-4 md:h-6 md:w-6' />} classes="bg-secondary hover:bg-secondary_hover text-primary font-semibold rounded-full px-2 md:px-4 py-1 md:py-3 md:ml-2 focus:ring-2 focus:ring-[#bbea70d3]" />
         </div>
 
         <div className="flex gap-2 items-center justify-end">
           <div className="relative">
-            <ButtonLink url='/products/wishlist' icon1={<Favorite className='h-4 w-4 md:h-6 md:w-6' />} classes="bg-btn hover:bg-btn-hover flex items-center justify-center p-2 text-[#064f38] rounded-full text-sm" />
+            <ButtonLink url='/products/wishlist' icon1={<Favorite className='h-4 w-4 md:h-6 md:w-6' />} classes="bg-secondary hover:bg-secondary_hover flex items-center justify-center p-2 text-primary rounded-full text-sm" />
             {totalWishlistCount > 0 && 
               <div className="absolute -top-2 -right-1 size-6 bg-white rounded-full">
                 <p className='w-full h-full flex items-center justify-center text-center text-black text-xs'>{totalWishlistCount}</p>
@@ -49,7 +49,7 @@ const Navbar: React.FC<NavbarProps> = ({ firstDivClasses, secondDivClasses }) =>
             }
           </div>
           <div className="relative">
-            <ButtonLink url='/products/cart' classes='bg-btn hover:bg-btn-hover flex items-center justify-center p-2 text-[#064f38] rounded-full text-sm' icon2={<ShoppingCart className='h-4 w-4 md:h-6 md:w-6' />}  />
+            <ButtonLink url='/products/cart' classes='bg-secondary hover:bg-secondary_hover flex items-center justify-center p-2 text-primary rounded-full text-sm' icon2={<ShoppingCart className='h-4 w-4 md:h-6 md:w-6' />}  />
             {totalCount > 0 && 
               <div className="absolute -top-2 -right-1 size-6 bg-white rounded-full">
                 <p className='w-full h-full flex items-center justify-center text-center text-black text-xs'>{totalCount}</p>

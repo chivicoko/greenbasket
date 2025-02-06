@@ -23,12 +23,35 @@ export interface SingleItemProps {
   };
 }
 
+export interface ProductFormOneProps {
+  // id: string;
+  title: string;
+  description: string;
+  category: string;
+  thumbnail: string;
+}  
+
+export interface ProductFormTwoProps {
+  tags: string[];
+  images: string[];
+}
+  
+export interface ProductFormThreeProps {
+  stock: number;
+  price: number;
+  discountPercentage: number;
+  returnPolicy: string;
+  minimumOrderQuantity: number;
+  weight: number;
+}
+  
+
 export interface Product2 {
   id: string;
   title: string;
   description: string;
   category: string;
-  price: string;
+  price: number;
   discountPercentage: number;
   rating: number;
   stock: number;
@@ -75,47 +98,92 @@ export interface SEOProps {
   url?: string;
 }
 
-export interface ExtrasProduct {
-  id: string;
-  title: string;
-  description: string;
-  price: string;
-  category: string;
-  discountPercentage: number;
-  rating: number;
-  stock: number;
-  thumbnail: string;
-  images: string[];
-  dimensions: {
-    width: number;
-    height: number;
-    depth: number;
-  };
-  warrantyInformation: string;
-  shippingInformation: string;
-  availabilityStatus: string;
-  tags: string[];
-  sku: string;
-  weight: number;
-  returnPolicy: string;
-  minimumOrderQuantity: number;
-  reviews: {
-    date: string;
-    rating: number;
-    comment: string;
-    reviewerName: string;
-    reviewerEmail: string;
-  }[];
-  meta: {
-    createdAt: string;
-    updatedAt: string;
-    barcode: string;
-    qrCode: string;
-  };
-}
+// export interface ExtrasProduct {
+//   id: string;
+//   title: string;
+//   description: string;
+//   price: string;
+//   category: string;
+//   discountPercentage: number;
+//   rating: number;
+//   stock: number;
+//   thumbnail: string;
+//   images: string[];
+//   dimensions: {
+//     width: number;
+//     height: number;
+//     depth: number;
+//   };
+//   warrantyInformation: string;
+//   shippingInformation: string;
+//   availabilityStatus: string;
+//   tags: string[];
+//   sku: string;
+//   weight: number;
+//   returnPolicy: string;
+//   minimumOrderQuantity: number;
+//   reviews: {
+//     date: string;
+//     rating: number;
+//     comment: string;
+//     reviewerName: string;
+//     reviewerEmail: string;
+//   }[];
+//   meta: {
+//     createdAt: string;
+//     updatedAt: string;
+//     barcode: string;
+//     qrCode: string;
+//   };
+// }
 
+
+
+// chart
 export interface ChartData {
   monthYear: string;
   non_projects: number;
   projects: number;
 }
+
+// about the user
+export type UserFormData = {
+  email: string,
+  fullName: string,
+  userName: string,
+  phoneNumber: string,
+  storeName: string,
+  storeTagName: string,
+  storePhoneNumber: string,
+  storeEmail: string,
+  storeCategory: string,
+}
+
+export type UserProductsDataProps = {
+  productTitle: string,
+  productDesc: string,
+  productPrice: string,
+  productOldPrice: string,
+  productCollections: string,
+  productInventoryStocks: string,
+}
+
+// for the user form three individual steps
+export type UserEmailProps = {
+  email: string
+}
+
+export type UserBasicDataProps = {
+  fullName: string
+  userName: string
+  phoneNumber: string
+  email: string
+}
+
+export type UserStoreDataProps = {
+  storeName: string
+  storeTagName: string
+  storePhoneNumber: string
+  storeEmail: string
+  storeCategory: string
+};

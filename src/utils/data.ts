@@ -404,3 +404,134 @@ export const tableHead = [
   {id: 6, title: 'Wishlist'},
   {id: 7, title: 'Cart'},
 ]
+
+export const PRODUCT = {
+  id: '1',
+  title: 'Beef Steak',
+  description: 'High-quality beef steak, great for grilling or cooking to your preferred level of doneness.',
+  category: 'groceries',
+  price: 12.99,
+  discountPercentage: 17.99,
+  rating: 2.88,
+  stock: 96,
+  thumbnail: "/images/spinach.jpeg",
+  images: ['/images/spinach.jpeg', '/images/fish.jpeg', '/images/cake.jpeg', '/images/coffee.jpeg'],
+  weight: 9,
+  dimensions: {
+    width: 23.35,
+    height: 13.48,
+    depth: 26.4,
+  },
+  warrantyInformation: '2 year warranty',
+  shippingInformation: 'Ships overnight',
+  availabilityStatus: 'In Stock',
+  tags: ['meat', 'goat meat', 'protein'],
+  sku: 'BWWA2MSO',
+  returnPolicy: '90 days return policy',
+  minimumOrderQuantity: 21,
+  reviews: [
+    {
+      date: 'May 23, 2024',
+      rating: 4,
+      comment: 'Very pleased!',
+      reviewerName: 'Ethan Martinez',
+      reviewerEmail: 'ethan.martinez@x.dummyjson.com',
+    },
+    {
+      date: 'May 23, 2024',
+      rating: 2,
+      comment: 'Disappointing product!',
+      reviewerName: 'Owen Fisher',
+      reviewerEmail: 'owen.fisher@x.dummyjson.com',
+    },
+    {
+      date: 'May 23, 2024',
+      rating: 3,
+      comment: 'Very happy with my purchase!',
+      reviewerName: 'Scarlett Wright',
+      reviewerEmail: 'scarlett.wright@x.dummyjson.com',
+    }
+  ],
+  meta: {
+    createdAt: '2024-05-23T08:56:21.620Z',
+    updatedAt: '2024-05-23T08:56:21.620Z',
+    barcode: '"8335515097879"',
+    qrCode: '/images/qrCode.png',
+  },
+}
+
+
+export const INITIAL_PRODUCT_DATA = {
+  id: '1',
+  title: 'Beef Steak',
+  description: 'High-quality beef steak, great for grilling or cooking to your preferred level of doneness.',
+  category: 'groceries',
+  price: 12.99,
+  discountPercentage: 17.99,
+  rating: 2.88,
+  stock: 96,
+  thumbnail: "/images/spinach.jpeg",
+  images: ['/images/spinach.jpeg', '/images/fish.jpeg', '/images/cake.jpeg', '/images/coffee.jpeg'],
+  weight: 9,
+  dimensions: {
+    width: 23.35,
+    height: 13.48,
+    depth: 26.4,
+  },
+  warrantyInformation: '2 year warranty',
+  shippingInformation: 'Ships overnight',
+  availabilityStatus: 'In Stock',
+  tags: ['meat', 'goat meat', 'protein'],
+  sku: 'BWWA2MSO',
+  returnPolicy: '90 days return policy',
+  minimumOrderQuantity: 21,
+  reviews: [
+    {
+      date: 'May 23, 2024',
+      rating: 4,
+      comment: 'Very pleased!',
+      reviewerName: 'Ethan Martinez',
+      reviewerEmail: 'ethan.martinez@x.dummyjson.com',
+    },
+    {
+      date: 'May 23, 2024',
+      rating: 2,
+      comment: 'Disappointing product!',
+      reviewerName: 'Owen Fisher',
+      reviewerEmail: 'owen.fisher@x.dummyjson.com',
+    },
+    {
+      date: 'May 23, 2024',
+      rating: 3,
+      comment: 'Very happy with my purchase!',
+      reviewerName: 'Scarlett Wright',
+      reviewerEmail: 'scarlett.wright@x.dummyjson.com',
+    }
+  ],
+  meta: {
+    createdAt: '2024-05-23T08:56:21.620Z',
+    updatedAt: '2024-05-23T08:56:21.620Z',
+    barcode: '"8335515097879"',
+    qrCode: '/images/qrCode.png',
+  },
+}
+
+
+export const INITIAL_USER_DATA = {
+  email: '',
+  fullName: '',
+  userName: '',
+  phoneNumber: '',
+  storeName: '',
+  storeTagName: '',
+  storePhoneNumber: '',
+  storeEmail: '',
+  storeCategory: '',
+  productTitle: '',
+  productDesc: '',
+  productPrice: '',
+  productOldPrice: '',
+  productCollections: '',
+  productInventoryStocks: '',
+}
+

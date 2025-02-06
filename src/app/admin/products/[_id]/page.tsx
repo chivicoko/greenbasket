@@ -40,7 +40,7 @@ const SingleProduct = () => {
 
   return (
     <section className='px-4 md:px-[85px] pt-8'>
-      <div className='w-max px-1 border-b-2 border-[#064f38]'>
+      <div className='w-max px-1 border-b-2 border-primary'>
         <button onClick={()=>router.back()} className='backBtn flex items-center gap-2 font-bold text-black pt-[11px] px-1 hover:cursor-pointer'>
           <div className="userleftArrowIcon relative w-[27px] h-[10px]">
             <Image
@@ -56,7 +56,7 @@ const SingleProduct = () => {
       </div>
 
       <div className='mt-12 flex flex-col md:flex-row items-center justify-start gap-10'>
-        <div className='rounded-lg p-1 border-2 border-dashed border-[#064f38]'>
+        <div className='rounded-lg p-1 border-2 border-dashed border-primary'>
           <div className="relative w-64 h-64">
             <Image
               src={product.image}
@@ -69,7 +69,7 @@ const SingleProduct = () => {
         </div>
 
         <div className="text">
-          <h1 contentEditable className='text-[#064f38] text-2xl md:text-3xl font-bold'>{product.name}</h1>
+          <h1 contentEditable className='text-primary text-2xl md:text-3xl font-bold'>{product.name}</h1>
           <p>{product.description}</p>
           <p className='font-semibold'>Price: ${product.price}</p>
         </div>

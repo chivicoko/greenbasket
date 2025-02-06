@@ -17,7 +17,7 @@ const CampaignDeletedModal: React.FC<CampaignDeletedModalProps> = ({ onClose }) 
         <p className="mb-4 text-center text-sm">Product has been deleted.</p>
         <button 
           onClick={() => {onClose; router.refresh();}} 
-          className='text-white hover:text-[#064f38] bg-[#064f38] hover:bg-transparent border border-transparent hover:border-[#064f38] py-2 px-8 rounded-[4px] text-sm'
+          className='text-white hover:text-primary bg-primary hover:bg-transparent border border-transparent hover:border-primary py-2 px-8 rounded-[4px] text-sm'
         >
           Go Back to product list
         </button>
