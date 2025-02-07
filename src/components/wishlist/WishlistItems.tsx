@@ -17,16 +17,16 @@ const WishlistItems = () => {
         <div className="w-full grid grid-cols-2 gap-6">
             {wishlist.map(product => (
                 <div key={product.id} className="relative w-full rounded-2xl border border-primary p-2 flex items-center gap-12">
-                    <p className="absolute top-2 left-2 z-50 bg-dark_orange text-white px-2 rounded-sm text-xs flex items-center justify-center">
+                    <p className="absolute top-2 left-2 z-40 bg-dark_orange text-white px-2 rounded-sm text-xs flex items-center justify-center">
                         <Remove/>{ product.discountPercentage }%
                     </p>
                     <Link href={`/products/${product.id}`} className="w-1/4 h-fit mb-4">
-                        <div className="relative size-52 self-center cursor-pointer rounded-t-md overflow-hidden text-[#6A7E8A] text-[15px]">
+                        <div className="relative size-52 self-center cursor-pointer rounded-md overflow-hidden text-[#6A7E8A] text-[15px]">
                             <Image
                                 src={product.thumbnail || '/src/assets/images/imagePlaceholder.jpeg'}
                                 alt={`${product.title} preview`}
                                 fill
-                                className="object-cover rounded-t-md transition-transform duration-300 ease-in-out transform hover:scale-105"
+                                className="object-cover rounded-md transition-transform duration-300 ease-in-out transform hover:scale-105"
                                 sizes="(max-width: 768px) 100vw, 50vw"
                             />
                         </div>

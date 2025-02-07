@@ -23,10 +23,10 @@ const CartSummary = () => {
                 
                 <InputTwo classes='w-full' floatingLabel='DISCOUNT CODE' />
                 {/* <input type="text" placeholder="discount code" className="w-2/3 border-2 border-secondary placeholder:uppercase rounded-lg py-2 px-1" /> */}
-                <Button btnText='apply' classes="bg-btn hover:bg-btn-hover py-[8px] lg:py-[9px] px-[16px] lg:px-[24px] capitalize font-bold rounded-xl text-lg text-primary hover:cursor-pointer shadow-md w-1/3" />
+                <Button btnText='apply' classes="bg-secondary hover:bg-secondary_hover py-[8px] lg:py-[9px] px-[16px] lg:px-[24px] capitalize font-bold rounded-xl text-lg text-primary hover:cursor-pointer shadow-md w-1/3" />
             </div>
         </div>
-        <Button btnText='Checkout' classes="w-full flex items-center justify-center gap-3 bg-btn hover:bg-btn-hover mt-2 font-bold rounded-xl text-lg text-primary py-[11px] px-[27px] hover:cursor-pointer shadow-md" />
+        <Button btnText='Checkout' classes="w-full flex items-center justify-center gap-3 bg-secondary hover:bg-secondary_hover mt-2 font-bold rounded-xl text-lg text-primary py-[11px] px-[27px] hover:cursor-pointer shadow-md" />
     </div>
   )
 }
