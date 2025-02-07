@@ -13,7 +13,7 @@ export const GET = async () => {
         
     } catch (error) {
         console.log(error);
-        throw new Error("Failed to fetch product");
+        throw new Error("Failed to fetch products");
     }
 }
 

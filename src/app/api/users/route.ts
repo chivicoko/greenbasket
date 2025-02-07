@@ -1,17 +1,45 @@
-import { NextResponse } from 'next/server'
- 
-export async function GET(request: Request) {
-  return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+import { NextRequest, NextResponse } from 'next/server';
+import { connectToDb } from '@/lib/mongodb';
+import { revalidatePath } from 'next/cache';
+import User from '@/models/UserModel';
+
+
+export const GET = async () => {
+    try {
+        await connectToDb();
+        const users = await User.find();
+        // console.log(users);
+        return NextResponse.json(users);
+        
+    } catch (error) {
+        console.log(error);
+        throw new Error("Failed to fetch users");
+    }
 }
 
-export async function POST(request: Request) {
-    return NextResponse.redirect(new URL('/new', request.url));
-}
- 
-export async function PUT(request: Request) {
-    return NextResponse.redirect(new URL('/new', request.url));
-}
- 
-export async function DELETE(request: Request) {
-    return NextResponse.redirect(new URL('/new', request.url));
+
+export const POST = async (req: NextRequest) => {
+    try {
+        await connectToDb();
+        const data = await req.json();
+      
+        const user = new User({
+          ...data,
+          // digestuser: data.digestuser || false,
+          // dailyDigest: data.dailyDigest || 'Daily',
+          // userStatus: data.userStatus === 'active' ? 'active' : 'inactive',
+        });
+      
+        try {
+          await user.save();
+          return NextResponse.json(user);
+        } catch (error) {
+            console.error("Error saving user:", error);
+          return NextResponse.json({ error }, { status: 400 });
+        }
+        
+    } catch (error) {
+        console.log(error);
+        throw new Error("Failed to post user");
+    }
 }

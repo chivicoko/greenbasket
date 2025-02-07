@@ -158,6 +158,7 @@ export interface ChartData {
 
 // for the user form three individual steps
 export type UserFormData = {
+  id?: string,
   email: string,
   fullName: string,
   userName: string,
