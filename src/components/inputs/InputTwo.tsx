@@ -6,7 +6,7 @@ type InputProps = {
   floatingLabel?: string;
   id?: string;
   classes?: string;
-  value?: string;
+  value?: string | number;
   type?: 'text' | 'email' | 'password' | 'number' | 'file' | 'checkbox';
   disabled?: boolean;
   required?: boolean;

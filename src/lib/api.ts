@@ -1,4 +1,4 @@
-import { Product } from '@/utils/types';
+import { Product2 } from '@/utils/types';
 import axios from 'axios';
 // import { revalidatePath } from 'next/cache';
 
@@ -26,7 +26,7 @@ export const getProductById = async (id: string | string[]) => {
   }
 };
 
-export const createProduct = async (ProductData: Product) => {
+export const createProduct = async (ProductData: Product2) => {
   try {
     // console.log('Data being sent:', ProductData);
     const response = await axios.post(`${API_URL}`, ProductData);
@@ -39,7 +39,7 @@ export const createProduct = async (ProductData: Product) => {
   }
 };
 
-export const updateProduct = async (id: string, ProductData: Product) => {
+export const updateProduct = async (id: string, ProductData: Product2) => {
   const response = await axios.put(`${API_URL}/${id}`, ProductData);
   return response.data;
 };

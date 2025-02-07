@@ -462,17 +462,17 @@ export const PRODUCT = {
 
 
 export const INITIAL_PRODUCT_DATA = {
-  id: '1',
-  title: 'Beef Steak',
-  description: 'High-quality beef steak, great for grilling or cooking to your preferred level of doneness.',
-  category: 'groceries',
-  price: 12.99,
-  discountPercentage: 17.99,
-  rating: 2.88,
-  stock: 96,
-  thumbnail: "/images/spinach.jpeg",
-  images: ['/images/spinach.jpeg', '/images/fish.jpeg', '/images/cake.jpeg', '/images/coffee.jpeg'],
-  weight: 9,
+  id: '',
+  title: '',
+  description: '',
+  category: '',
+  price: '',
+  discountPercentage: '',
+  rating: '',
+  stock: '',
+  thumbnail: "",
+  images: [],
+  weight: '',
   dimensions: {
     width: 23.35,
     height: 13.48,
@@ -484,7 +484,7 @@ export const INITIAL_PRODUCT_DATA = {
   tags: ['meat', 'goat meat', 'protein'],
   sku: 'BWWA2MSO',
   returnPolicy: '90 days return policy',
-  minimumOrderQuantity: 21,
+  minimumOrderQuantity: '',
   reviews: [
     {
       date: 'May 23, 2024',

@@ -24,7 +24,7 @@ export const ProductFormProvider: React.FC<{ children: React.ReactNode }> = ({ c
   const saveProductInfo = (productInfo: Product2) => {
     setProductInfo(productInfo);
     localStorage.setItem('productInfo', JSON.stringify(productInfo));
-    console.log(productInfo);
+    // console.log(productInfo);
   };
 
   const dropProductInfo = () => {

@@ -37,12 +37,12 @@ export interface ProductFormTwoProps {
 }
   
 export interface ProductFormThreeProps {
-  stock: number;
-  price: number;
-  discountPercentage: number;
+  stock: string;
+  price: string;
+  discountPercentage: string;
   returnPolicy: string;
-  minimumOrderQuantity: number;
-  weight: number;
+  minimumOrderQuantity: string;
+  weight: string;
 }
   
 
@@ -51,11 +51,11 @@ export interface Product2 {
   title: string;
   description: string;
   category: string;
-  price: number;
-  discountPercentage: number;
-  rating: number;
-  stock: number;
-  quantity?: number;
+  price: string;
+  discountPercentage: string;
+  rating: string;
+  stock: string;
+  quantity?: string;
   thumbnail: string;
   images: string[];
   dimensions: {
@@ -68,9 +68,9 @@ export interface Product2 {
   availabilityStatus: string;
   tags: string[];
   sku: string;
-  weight: number;
+  weight: string;
   returnPolicy: string;
-  minimumOrderQuantity: number;
+  minimumOrderQuantity: string;
   reviews: {
     date: string;
     rating: number;

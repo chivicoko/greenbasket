@@ -11,35 +11,34 @@ type productFormOneProps = ProductFormOneProps & {
 }
 
 const FormOne = ({title, description, category, thumbnail, updateFields}: productFormOneProps) => {
-  const [formData, setFormData] = useState({
-    image: ''
-  });
-
-  const [errors, setErrors] = useState({
-    image: ''
-  });
+  const [formImage, setFormImage] = useState('');
+  const [imageError, setImageError] = useState('');
 
   useEffect(() => {
-    setFormData({
-      image: ''
-    });
-    // if (product) {
-    //   setFormData(product);
-    // } else {
-    // }
-  }, []);
+    setFormImage('');
+    
+    updateFields({thumbnail: formImage});
+  }, [thumbnail]);
   
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
+    
     if (file) {
       if (file.type.startsWith('image/')) {
         const reader = new FileReader();
         reader.onloadend = () => {
-          setFormData(prev => ({ ...prev, image: reader.result as string }));
+          const result = reader.result as string;
+          
+          if (result && !result.startsWith('data:image')) {
+            setImageError(prev => ('Invalid image format.' ));
+          }
+          
+          setFormImage(prev => (result));
+          updateFields({thumbnail: result});
         };
         reader.readAsDataURL(file);
       } else {
-        setErrors(prev => ({ ...prev, image: 'Invalid image file type.' }));
+        setImageError(prev => ('Invalid image file type.' ));
       }
     }
   };
@@ -55,7 +54,7 @@ const FormOne = ({title, description, category, thumbnail, updateFields}: produc
         {/* <InputTwo required value={thumbnail} onChange={e => updateFields({thumbnail: e.target.value})} classes='w-full' floatingLabel='Thumbnail' /> */}
 
         
-        {thumbnail && (
+        {thumbnail ?
         // {formData.image && (
           <label
             htmlFor="imageFile" 
@@ -79,18 +78,15 @@ const FormOne = ({title, description, category, thumbnail, updateFields}: produc
               <Image
                 src={thumbnail}
                 // src={formData.image}
-                alt='{`${formData.name} preview`}'
+                alt='Image'
                 fill
                 className="object-cover rounded-lg"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
           </label>
-        )}
-
-        {!thumbnail && (
-        // {/* {!formData.image && ( */}
-          <label 
+          :
+          <label
             htmlFor="imageFile" 
             className='cursor-pointer flex-1 flex items-center gap-1 p-2 border border-gray-300 rounded-2xl focus-within:outline-none focus-within:ring-[1px] focus-within:ring-primary'
             tabIndex={0}
@@ -109,17 +105,22 @@ const FormOne = ({title, description, category, thumbnail, updateFields}: produc
               <span className='text-primary z-50 absolute top-4 md:top-5 left-1/2 transform -translate-x-1/2 transition-transform duration-300 ease-in-out hover:scale-125'> <Add className='text-7xl'/> </span>
               <Image
                 src='/images/imagePlaceholder.jpeg'
-                alt='{`${formData.name} preview`}'
+                alt='Placeholder Image'
                 fill
                 className="object-cover rounded-lg"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
           </label>
-        )}
+        }
+
+        {/* {thumbnail === '' && ( */}
+        {/* // {!formData.image && ( */}
+          
+        {/* // )} */}
 
         <InputOne onChange={handleImageChange} name="image" id="imageFile" type='file' classes="hidden" />
-        {errors.image && <p className="text-red-500 text-sm">{errors.image}</p>}
+        {imageError && <p className="text-red-500 text-sm">{imageError}</p>}
         
       </div>
     </div>

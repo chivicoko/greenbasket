@@ -1,16 +1,24 @@
+'use client';
+
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { NavbarProps } from '@/utils/types';
-import { Favorite, Search, ShoppingCart } from '@mui/icons-material';
+import { ArrowDropDown, Favorite, Search, ShoppingCart } from '@mui/icons-material';
 import Button from '../button/Button';
 import ButtonLink from '../button/ButtonLink';
 import { useCart } from '@/context/CartContext';
 import { useWishlist } from '@/context/WishlistContext';
+import ProfileDropdown from './ProfileDropdown';
 
 const Navbar: React.FC<NavbarProps> = ({ firstDivClasses, secondDivClasses }) => {
+  const [dropdown, setDropdown] = useState(false);
+  const [selectedImage, setSelectedImage] = useState('/images/default_avatar.png');
+
   const {totalCount} = useCart();
   const {totalWishlistCount} = useWishlist();
+
+  const dropdownToggle = () => setDropdown((prev) => !prev);
 
   return (    
     <nav className={`z-30 ${firstDivClasses}`}>
@@ -39,7 +47,7 @@ const Navbar: React.FC<NavbarProps> = ({ firstDivClasses, secondDivClasses }) =>
           <Button icon1={<Search className='h-4 w-4 md:h-6 md:w-6' />} classes="bg-secondary hover:bg-secondary_hover text-primary font-semibold rounded-full px-2 md:px-4 py-1 md:py-3 md:ml-2 focus:ring-2 focus:ring-[#bbea70d3]" />
         </div>
 
-        <div className="flex gap-2 items-center justify-end">
+        <div className="flex gap-3 items-center justify-end">
           <div className="relative">
             <ButtonLink url='/products/wishlist' icon1={<Favorite className='h-4 w-4 md:h-6 md:w-6' />} classes="bg-secondary hover:bg-secondary_hover flex items-center justify-center p-2 text-primary rounded-full text-sm" />
             {totalWishlistCount > 0 && 
@@ -53,6 +61,28 @@ const Navbar: React.FC<NavbarProps> = ({ firstDivClasses, secondDivClasses }) =>
             {totalCount > 0 && 
               <div className="absolute -top-2 -right-1 size-6 bg-white rounded-full">
                 <p className='w-full h-full flex items-center justify-center text-center text-black text-xs'>{totalCount}</p>
+              </div>
+            }
+          </div>
+
+          <div className='relative border-l pl-3'>
+            <button onClick={dropdownToggle} className="flex items-center gap-3">
+              <span className="relative size-8 md:size-10 rounded-full">
+                <Image
+                  src={selectedImage}
+                  alt="User Profile Image"
+                  fill
+                  className='rounded-full object-cover'
+                  sizes="100%"
+                />
+              </span>
+              <span className="text-white text-base font-semibold">Hi, { 'user' }</span>
+              <span className={`transform ${dropdown ? 'rotate-180' : ''} transition-all duration-300 ease-in-out`}><ArrowDropDown/></span>
+            </button>
+            
+            {dropdown && 
+              <div className="z-50 absolute top-[60px] -right-[73px] -translate-x-1/2 w-fit">
+                <ProfileDropdown />
               </div>
             }
           </div>
