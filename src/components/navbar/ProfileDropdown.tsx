@@ -1,16 +1,11 @@
 'use client';
 
+import { useUserForm } from '@/context/UserFormContext';
 import { Logout, PunchClock, Settings } from '@mui/icons-material';
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 
 const ProfileDropdown = () => {
-    const router = useRouter();
-
-    const logoutUser = () => {
-        localStorage.removeItem('currentUser');
-        router.push('/auth/login');
-    }
+  const {dropUserInfo, } = useUserForm();
 
   return (
     <ul className="w-fit bg-white rounded-b-xl shadow-xl py-6 space-y-2">
@@ -27,7 +22,7 @@ const ProfileDropdown = () => {
             </Link>
         </li>
         <li>
-            <button onClick={logoutUser} title="logout" className="w-full px-6 py-1 hover:bg-neutral-100 capitalize flex items-center gap-3 whitespace-nowrap text-primary font-semibold">
+            <button onClick={dropUserInfo} title="logout" className="w-full px-6 py-1 hover:bg-neutral-100 capitalize flex items-center gap-3 whitespace-nowrap text-primary font-semibold">
                 <Logout/>
                 <span>logout</span>
             </button>

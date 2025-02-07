@@ -6,11 +6,15 @@ import React, { useEffect, useState } from 'react';
 import { getProductById } from '@/lib/api';
 import { Product } from '@/utils/types';
 import Loading from '../../../loading';
+import { useUserForm } from '@/context/UserFormContext';
 // import { ArrowBack } from '@mui/icons-material';
 
 const SingleProduct = () => {  
-  const [product, setProduct] = useState<Product | null>(null); // Single product
+  const [product, setProduct] = useState<Product | null>(null);
+  const {userInfo} = useUserForm();
   const router = useRouter();
+  
+  if(!userInfo) router.push('/users/auth/register');
 
   const { _id } = useParams();
   

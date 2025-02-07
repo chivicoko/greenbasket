@@ -146,7 +146,17 @@ export interface ChartData {
   projects: number;
 }
 
-// about the user
+// export type UserProductsDataProps = {
+//   productTitle: string,
+//   productDesc: string,
+//   productPrice: string,
+//   productOldPrice: string,
+//   productCollections: string,
+//   productInventoryStocks: string,
+// }
+
+
+// for the user form three individual steps
 export type UserFormData = {
   email: string,
   fullName: string,
@@ -159,16 +169,6 @@ export type UserFormData = {
   storeCategory: string,
 }
 
-export type UserProductsDataProps = {
-  productTitle: string,
-  productDesc: string,
-  productPrice: string,
-  productOldPrice: string,
-  productCollections: string,
-  productInventoryStocks: string,
-}
-
-// for the user form three individual steps
 export type UserEmailProps = {
   email: string
 }

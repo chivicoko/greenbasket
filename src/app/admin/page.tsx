@@ -10,6 +10,8 @@ import { getProducts } from '@/lib/api';
 import Loading from '../loading';
 import UsageChart from '@/components/admin/UsageChart';
 import { UsageHistory } from '@/utils/data';
+import { useUserForm } from '@/context/UserFormContext';
+import { useRouter } from 'next/navigation';
 
 // export const generateMetadata = {
 //     title: "Admin Overview",
@@ -23,6 +25,10 @@ const AdminProductForm = () => {
     const [modalMode, setModalMode] = useState<'view' | 'edit'>('view');
     const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
+    const {userInfo} = useUserForm();
+    const router = useRouter();
+    
+    if(!userInfo) router.push('/users/auth/register');
 
     
     const addProduct = (p) => {

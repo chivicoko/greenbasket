@@ -18,7 +18,7 @@ const Header = () => {
 
   return (
     <>
-      <Navbar firstDivClasses={`transition-all duration-300 ease-in-out bg-zinc-50 ${isVisible ? "sticky top-0 left-0 right-0 z-50" : "text-white bg-white py-2 px-2 md:py-4 md:px-6"}`} secondDivClasses={`transition-all duration-300 ease-in-out flex items-center justify-between gap-2 ${isVisible ? "p-4 sticky top-0 left-0 right-0 z-50 bg-primary md:py-4 md:px-16 shadow-md" : "md:p-4 rounded-md md:rounded-lg px-4 py-3 bg-primary"}`}/>
+      <Navbar firstDivClasses={`transition-all duration-300 ease-in-out bg-zinc-50 text-white ${isVisible ? "sticky top-0 left-0 right-0 z-50" : "bg-white py-2 px-2 md:py-4 md:px-6"}`} secondDivClasses={`transition-all duration-300 ease-in-out flex items-center justify-between gap-2 ${isVisible ? "p-4 sticky top-0 left-0 right-0 z-50 bg-primary md:py-4 md:px-16 shadow-md" : "md:p-4 rounded-md md:rounded-lg px-4 py-3 bg-primary"}`}/>
 
       <header className="bennetCurve text-white bg-zinc-50 xl:h-[70vh] mb-6 px-2 md:px-6">
         <div className="relative text-white bg-primary mb-14 py-6 md:py-auto px-1 md:px-4 h-full rounded-lg flex flex-col lg:flex-row items-center justify-between" style={{ backgroundImage: `url('/images/bgHeader.jpeg')` }}>

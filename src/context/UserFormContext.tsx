@@ -1,6 +1,7 @@
 'use client';
 
 import { UserFormData } from '@/utils/types';
+import { useRouter } from 'next/navigation';
 import { createContext, useContext, useEffect, useState } from 'react';
 
 interface UserFormContextType {
@@ -13,6 +14,8 @@ const UserFormContext = createContext<UserFormContextType | undefined>(undefined
 
 export const UserFormProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [userInfo, setUserInfo] = useState<UserFormData | null>(null);
+
+  const router = useRouter();
 
   useEffect(() => {
     const storedUserInfo = localStorage.getItem('userInfo');
@@ -29,6 +32,7 @@ export const UserFormProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   const dropUserInfo = () => {
     setUserInfo(null);
     localStorage.removeItem('userInfo');
+    router.push('users/auth/register');
   };
 
   return (

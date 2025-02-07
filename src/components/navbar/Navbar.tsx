@@ -10,8 +10,10 @@ import ButtonLink from '../button/ButtonLink';
 import { useCart } from '@/context/CartContext';
 import { useWishlist } from '@/context/WishlistContext';
 import ProfileDropdown from './ProfileDropdown';
+import { useUserForm } from '@/context/UserFormContext';
 
 const Navbar: React.FC<NavbarProps> = ({ firstDivClasses, secondDivClasses }) => {
+  const {userInfo, } = useUserForm();
   const [dropdown, setDropdown] = useState(false);
   const [selectedImage, setSelectedImage] = useState('/images/default_avatar.png');
 
@@ -76,8 +78,8 @@ const Navbar: React.FC<NavbarProps> = ({ firstDivClasses, secondDivClasses }) =>
                   sizes="100%"
                 />
               </span>
-              <span className="text-white text-base font-semibold">Hi, { 'user' }</span>
-              <span className={`transform ${dropdown ? 'rotate-180' : ''} transition-all duration-300 ease-in-out`}><ArrowDropDown/></span>
+              <span className="text-white text-base font-semibold">Hi, { userInfo?.userName }</span>
+              <span className={`transform ${dropdown ? 'rotate-180' : ''} text-white transition-all duration-300 ease-in-out`}><ArrowDropDown/></span>
             </button>
             
             {dropdown && 

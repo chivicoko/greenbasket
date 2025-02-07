@@ -527,11 +527,5 @@ export const INITIAL_USER_DATA = {
   storePhoneNumber: '',
   storeEmail: '',
   storeCategory: '',
-  productTitle: '',
-  productDesc: '',
-  productPrice: '',
-  productOldPrice: '',
-  productCollections: '',
-  productInventoryStocks: '',
 }
 
