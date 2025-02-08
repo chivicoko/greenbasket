@@ -20,13 +20,14 @@ import Loading from '@/app/loading';
 //   description: string;
 // }
 
-interface CampaignTableProps {
-  // onEdit: (product: Product) => void;
-  error: string | null;
-}
+// interface CampaignTableProps {
+//   // onEdit: (product: Product) => void;
+//   error: string | null;
+// }
 
 // const ProductTable: React.FC<CampaignTableProps> = ({ onEdit, error }) => {
-const ProductTable: React.FC<CampaignTableProps> = ({ error }) => {
+const ProductTable: React.FC = () => {
+// const ProductTable: React.FC<CampaignTableProps> = () => {
   const router = useRouter();
   
   const params = useParams();
@@ -81,7 +82,7 @@ const ProductTable: React.FC<CampaignTableProps> = ({ error }) => {
   // ============== pagination =================
 
 
-  if (error) return <p className='text-red-500'>{error}</p>;
+  // if (error) return <p className='text-red-500'>{error}</p>;
 
   const handleAddEditProduct = (product?: Product) => {
     setSelectedProduct(product || null);

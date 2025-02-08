@@ -1,17 +1,16 @@
 "use client";
 
-import React, { useState } from 'react'
 import { DateRange, KeyboardArrowDown, Logout } from '@mui/icons-material';
 import ProductTable from '@/components/admin/ProductTable';
-import { useUserForm } from '@/context/UserFormContext';
-import { useRouter } from 'next/navigation';
+// import { useUserForm } from '@/context/UserFormContext';
+// import { useRouter } from 'next/navigation';
 
 const Products = () => {
-  const [error, setError] = useState<string | null>(null);
-  const {userInfo} = useUserForm();
-  const router = useRouter();
+//   const [error, setError] = useState<string | null>(null);
+//   const {userInfo} = useUserForm();
+//   const router = useRouter();
   
-  if(!userInfo) router.push('/users/auth/register');
+//   if(!userInfo) router.push('/users/auth/register');
 
   return (
     <section className='px-4 md:px-[85px] pt-8'>
@@ -36,7 +35,8 @@ const Products = () => {
         </div>
 
         <div className='mt-6'>
-            <ProductTable error={error} />
+            <ProductTable />
+            {/* <ProductTable error={error} /> */}
         </div>
     </section>
   )

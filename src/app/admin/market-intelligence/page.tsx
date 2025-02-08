@@ -1,3 +1,5 @@
+'use client';
+
 import { useUserForm } from '@/context/UserFormContext';
 import { useRouter } from 'next/navigation';
 import React from 'react'

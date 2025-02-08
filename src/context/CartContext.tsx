@@ -1,6 +1,5 @@
 "use client";
 
-import { products } from '@/utils/data';
 import { Product2 } from '@/utils/types';
 import React, { createContext, useState, useEffect, useContext, ReactNode } from 'react';
 

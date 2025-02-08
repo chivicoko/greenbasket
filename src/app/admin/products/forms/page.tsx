@@ -15,7 +15,7 @@ import { West } from '@mui/icons-material';
 import FormTwo from '@/components/forms/products/FormTwo';
 import FormOne from '@/components/forms/products/FormOne';
 import FormThree from '@/components/forms/products/FormThree';
-import { createProduct } from '@/lib/api';
+// import { createProduct } from '@/lib/api';
 import { useUserForm } from '@/context/UserFormContext';
 
 const PRODUCT_DATA: Product2 = INITIAL_PRODUCT_DATA;
@@ -57,10 +57,10 @@ const ProductForms = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!isLastStep) return handleContinue();
+    // console.log(data);
 
     saveProductInfo(data);
-    console.log(data);
-    await createProduct(data);
+    // await createProduct(data);
     router.push('/products');
   };
 

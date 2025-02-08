@@ -41,15 +41,15 @@ const AdminSidebar: React.FC<SidebarProps> = ({ show = 'hidden', closeSidebar = 
     };
 
 
-    const addProduct = (p) => {
-        console.log(null);
-        // console.log('Adding product',p);
-    }
+    // const addProduct = (p) => {
+    //     // console.log(null);
+    //     console.log('Adding product',p);
+    // }
 
 
-    const updateProduct = (po,p) => {
-        console.log('Updating product', po,p);
-    }
+    // const updateProduct = (po,p) => {
+    //     console.log('Updating product', po,p);
+    // }
     
   const handleAddEditProduct = (product?: Product) => {
     setSelectedProduct(product || null);
@@ -60,9 +60,11 @@ const AdminSidebar: React.FC<SidebarProps> = ({ show = 'hidden', closeSidebar = 
     
   const handleSaveProduct = (product: Product) => {
     if (selectedProduct) {
-      updateProduct(selectedProduct.id, product);
+    //   updateProduct(selectedProduct.id, product);
+      console.log(product);
     } else {
-      addProduct(product);
+    //   addProduct(product);
+    console.log(product);
     }
     setIsModalOpen(false);
   };

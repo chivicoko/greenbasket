@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectToDb } from '@/lib/mongodb';
-import { revalidatePath } from 'next/cache';
+// import { revalidatePath } from 'next/cache';
 import User from '@/models/UserModel';
 
 

@@ -5,7 +5,6 @@ import { Add, AddShoppingCart, Favorite, Remove } from '@mui/icons-material'
 import Image from 'next/image'
 import Link from 'next/link'
 import Button from './button/Button'
-import { useState } from 'react'
 import { useCart } from '@/context/CartContext';
 import { useWishlist } from '@/context/WishlistContext';
 

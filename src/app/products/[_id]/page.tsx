@@ -12,7 +12,8 @@ import { Product2 } from '@/utils/types';
 import { Add, AddShoppingCart, FavoriteBorder, Remove, Star, StarHalf, StarOutline, Storefront } from '@mui/icons-material';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useParams, usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
+// import { useParams, usePathname, useRouter, useSearchParams } from 'next/navigation';
 // import { useParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 // import { getProductById } from '@/lib/api';
@@ -22,7 +23,7 @@ import React, { useEffect, useState } from 'react';
 
 const SingleProduct = () => {  
   const [product, setProduct] = useState<Product2>(INITIAL_PRODUCT_DATA); // Single product
-  const [currentImage, setCurrentImage] = useState<string>('/images/spinach.jpeg');
+  // const [currentImage, setCurrentImage] = useState<string>('/images/spinach.jpeg');
   const {addToCart, isProductInCart, increaseProductQuantity, decreaseProductQuantity, getProductQuantity} = useCart();
   const {userInfo} = useUserForm();
   const router = useRouter();
@@ -67,11 +68,11 @@ const SingleProduct = () => {
   // console.log("searchParams: ", searchParams);
   // console.log("pathname: ", pathname);
 
-  const handleProductImagesViews = (id: number, image: string) => {
-    if (id) {
-      setCurrentImage(image);
-    }
-  }
+  // const handleProductImagesViews = (id: number, image: string) => {
+  //   if (id) {
+  //     setCurrentImage(image);
+  //   }
+  // }
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -122,7 +123,8 @@ const SingleProduct = () => {
               {
                 product.images && product.images.map((img, index) => {
                   return(
-                    <div key={index} onClick={() => handleProductImagesViews(index, img)} className='rounded-lg p-1 md:p-4 bg-zinc-50 flex items-center justify-center cursor-pointer'>
+                    <div key={index} className='rounded-lg p-1 md:p-4 bg-zinc-50 flex items-center justify-center cursor-pointer'>
+                    {/* <div key={index} onClick={() => handleProductImagesViews(index, img)} className='rounded-lg p-1 md:p-4 bg-zinc-50 flex items-center justify-center cursor-pointer'> */}
                       <div className="relative w-10 h-10 md:w-12 md:h-12">
                         <Image
                           src={img}

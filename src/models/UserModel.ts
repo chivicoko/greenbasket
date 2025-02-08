@@ -1,9 +1,7 @@
 import mongoose, { Schema, Document } from 'mongoose';
-import { categoryList } from '@/utils/data';
 
 // Interface for User
 export interface IUser extends Document {
-  id: string,
   email: string,
   fullName: string,
   userName: string,
@@ -18,11 +16,6 @@ export interface IUser extends Document {
 // Define the User Schema
 const UserSchema: Schema = new Schema(
   {
-    id: {
-      type: String,
-      unique: true,
-      required: true,
-    },
     email: {
       type: String,
       required: [true, 'Your username is required'],

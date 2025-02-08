@@ -55,13 +55,13 @@ export interface Product2 {
   discountPercentage: string;
   rating: string;
   stock: string;
-  quantity?: string;
+  quantity?: number;
   thumbnail: string;
   images: string[];
   dimensions: {
-    width: number;
-    height: number;
-    depth: number;
+    width: string;
+    height: string;
+    depth: string;
   };
   warrantyInformation: string;
   shippingInformation: string;
@@ -73,7 +73,7 @@ export interface Product2 {
   minimumOrderQuantity: string;
   reviews: {
     date: string;
-    rating: number;
+    rating: string;
     comment: string;
     reviewerName: string;
     reviewerEmail: string;
@@ -104,7 +104,7 @@ export interface SEOProps {
 //   description: string;
 //   price: string;
 //   category: string;
-//   discountPercentage: number;
+//   discountPercentage: string;
 //   rating: number;
 //   stock: number;
 //   thumbnail: string;
@@ -158,7 +158,6 @@ export interface ChartData {
 
 // for the user form three individual steps
 export type UserFormData = {
-  id?: string,
   email: string,
   fullName: string,
   userName: string,

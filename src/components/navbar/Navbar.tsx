@@ -17,7 +17,6 @@ const Navbar: React.FC<NavbarProps> = ({ firstDivClasses, secondDivClasses }) =>
   const {userInfo, } = useUserForm();
   const [dropdown, setDropdown] = useState(false);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState('/images/default_avatar.png');
 
   const {totalCount} = useCart();
   const {totalWishlistCount} = useWishlist();
@@ -28,6 +27,8 @@ const Navbar: React.FC<NavbarProps> = ({ firstDivClasses, secondDivClasses }) =>
   return (    
     <nav className={`z-30 ${firstDivClasses}`}>
       <div className={secondDivClasses}>
+        
+        <MobileNav isOpen={isMobileNavOpen} onHandleClose={toggleMobileNav} />
 
         <Link href="/" className="flex items-center space-x-2">
           <span className="relative w-8 h-8">
@@ -41,20 +42,18 @@ const Navbar: React.FC<NavbarProps> = ({ firstDivClasses, secondDivClasses }) =>
           </span>
           <span className='hidden md:block text-white text-xl md:text-2xl font-bold'>GreenBasket</span>
         </Link>
-        
-        <MobileNav isOpen={isMobileNavOpen} onHandleClose={toggleMobileNav} />
 
         <div className="bg-[#11192899] w-fit md:w-[40%] md:pl-3 flex items-center rounded-full focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 outline-none focus-within:shadow-[0_0_10px_0_rgba(142,68,173,0.5),0_0_20px_5px_rgba(142,68,173,0.05)]">
           <input
             type="text"
-            placeholder="Search for groceries, vegetables..."
+            placeholder="Search..."
             name="searchText"
             className="bg-transparent p-2 md:p-3 ml-2 w-full border-0 text-sm md:text-base text-white leading-tight focus:outline-0 focus:ring-0"
           />
           <Button icon1={<Search className='h-4 w-4 md:h-6 md:w-6' />} classes="bg-secondary hover:bg-secondary_hover text-primary font-semibold rounded-full px-2 md:px-4 py-1 md:py-3 md:ml-2 focus:ring-2 focus:ring-[#bbea70d3]" />
         </div>
 
-        <div className="flex gap-3 items-center justify-end">
+        <div className="flex gap-4 items-center justify-end">
           <div className="relative">
             <ButtonLink url='/products/wishlist' icon1={<Favorite className='h-4 w-4 md:h-6 md:w-6' />} classes="bg-secondary hover:bg-secondary_hover flex items-center justify-center p-1 md:p-2 text-primary rounded-full text-sm" />
             {totalWishlistCount > 0 && 
@@ -76,14 +75,14 @@ const Navbar: React.FC<NavbarProps> = ({ firstDivClasses, secondDivClasses }) =>
             <button onClick={dropdownToggle} className="flex items-center gap-3">
               <span className="relative size-8 md:size-10 rounded-full">
                 <Image
-                  src={selectedImage}
+                  src='/images/default_avatar.png'
                   alt="User Profile Image"
                   fill
                   className='rounded-full object-cover'
                   sizes="100%"
                 />
               </span>
-              <span className="text-white text-base font-semibold">Hi, { userInfo?.userName }</span>
+              <span className="text-white text-base font-semibold capitalize">Hi, { userInfo?.userName }</span>
               <span className={`transform ${dropdown ? 'rotate-180' : ''} text-white transition-all duration-300 ease-in-out`}><ArrowDropDown/></span>
             </button>
             
@@ -96,7 +95,7 @@ const Navbar: React.FC<NavbarProps> = ({ firstDivClasses, secondDivClasses }) =>
 
           {/* Hamburger menu for mobile */}
           <button
-            className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-700" 
+            className="inline-flex items-center p-1 text-sm text-secondary hover:text-primary rounded-lg md:hidden hover:bg-secondary focus:ring-2 focus:ring-primary focus:ring-offset-2 font-semibold transition-all duration-0 ease-in-out" 
             aria-controls="navbar-default" aria-expanded="false" onClick={toggleMobileNav}
           >
             <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">

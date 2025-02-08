@@ -8,28 +8,28 @@ export interface IProduct extends Document {
   description: string;
   category: string;
   price: string;
-  discountPercentage: number;
-  rating: number;
-  stock: number;
+  discountPercentage: string;
+  rating: string;
+  stock: string;
   quantity?: number;
   thumbnail: string;
   images: string[];
   dimensions: {
-    width: number;
-    height: number;
-    depth: number;
+    width: string;
+    height: string;
+    depth: string;
   };
   warrantyInformation: string;
   shippingInformation: string;
   availabilityStatus: string;
   tags: string[];
   sku: string;
-  weight: number;
+  weight: string;
   returnPolicy: string;
-  minimumOrderQuantity: number;
+  minimumOrderQuantity: string;
   reviews: {
     date: string;
-    rating: number;
+    rating: string;
     comment: string;
     reviewerName: string;
     reviewerEmail: string;
@@ -67,21 +67,21 @@ const ProductSchema: Schema = new Schema(
       enum: categoryList,
     },
     price: {
-      type: Number,
+      type: String,
       required: [true, 'Product price is required'],
-      min: [0, 'Price cannot be negative'],
+      default: '0',
     },
     discountPercentage: {
-      type: Number,
-      default: 0,
+      type: String,
+      default: '0',
     },
     rating: {
-      type: Number,
-      default: 0,
+      type: String,
+      default: '0',
     },
     stock: {
-      type: Number,
-      default: 0,
+      type: String,
+      default: '0',
     },
     quantity: {
       type: Number,
@@ -96,9 +96,9 @@ const ProductSchema: Schema = new Schema(
       default: [],
     },
     dimensions: {
-      width: { type: Number, default: 0 },
-      height: { type: Number, default: 0 },
-      depth: { type: Number, default: 0 },
+      width: { type: String, default: '0' },
+      height: { type: String, default: '0' },
+      depth: { type: String, default: '0' },
     },
     warrantyInformation: {
       type: String,
@@ -121,21 +121,21 @@ const ProductSchema: Schema = new Schema(
       required: true,
     },
     weight: {
-      type: Number,
-      default: 0,
+      type: String,
+      default: '0',
     },
     returnPolicy: {
       type: String,
       default: 'No return policy available',
     },
     minimumOrderQuantity: {
-      type: Number,
-      default: 1,
+      type: String,
+      default: '1',
     },
     reviews: [
       {
         date: { type: String, required: true },
-        rating: { type: Number, required: true },
+        rating: { type: String, required: true },
         comment: { type: String, required: true },
         reviewerName: { type: String, required: true },
         reviewerEmail: { type: String, required: true },

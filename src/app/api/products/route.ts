@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Product from '../../../models/ProductModel';
 import { connectToDb } from '@/lib/mongodb';
-import { revalidatePath } from 'next/cache';
+// import { revalidatePath } from 'next/cache';
 
 
 export const GET = async () => {

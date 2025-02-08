@@ -1,19 +1,16 @@
 import Loading from '@/app/loading';
 import { getProducts } from '@/lib/api';
-import { Product } from '@/utils/types';
 import React, { useEffect, useState } from 'react'
 import { usePathname, useRouter } from 'next/navigation';
 import ProductCard from './ProductCard';
 import FullPagination from './pagination/FullPagination';
-import ButtonLink from './button/ButtonLink';
-import { ArrowForward } from '@mui/icons-material';
 import Button from './button/Button';
+import { Product2 } from '@/utils/types';
 
 const Products: React.FC = () => {
-  const [gridView, setGridView] = useState<boolean>(true);
   const [loading, setLoading] = useState<boolean>(true);
-  const [products, setProducts] = useState<Product[]>([]);
-  const [cart, setCart] = useState<Product[]>([]);
+  const [products, setProducts] = useState<Product2[]>([]);
+  // const [cart, setCart] = useState<Product[]>([]);
   
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [productsPerPage, setProductsPerPage] = useState<number>(10);
@@ -26,7 +23,7 @@ const Products: React.FC = () => {
   useEffect(() => {
     const productCart = localStorage.getItem('cart');
     if (productCart) {
-      setCart(JSON.parse(productCart));
+      // setCart(JSON.parse(productCart));
     }
   }, []);
 
@@ -77,7 +74,7 @@ const Products: React.FC = () => {
         <div className="grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-6">
           {
             currentProducts.map(product =>
-              <ProductCard key={product._id} product={product} />
+              <ProductCard key={product.id} product={product} />
               // <ProductCard key={product._id} product={product} addToCart={addToCart} />
             )
           }

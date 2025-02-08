@@ -5,7 +5,6 @@ import Image from 'next/image';
 import InputTwo from '../../inputs/InputTwo';
 import { ProductFormTwoProps } from '@/utils/types';
 import InputOne from '../../inputs/InputOne';
-import TextAreaTwo from '@/components/inputs/TextAreaTwo';
 import ButtonNeutral from '@/components/button/ButtonNeutral';
 import { Add, Cancel } from '@mui/icons-material';
 
@@ -25,12 +24,12 @@ const FormTwo = ({images, tags, updateFields}: productFormTwoProps) => {
     setFormImages([]);
     
     updateFields({images: formImages});
-  }, []);
+  }, [formImages, updateFields]);
   
 
   useEffect(() => {
     updateFields({tags: productTags});
-  }, [tags, productTags]);
+  }, [tags, productTags, updateFields]);
 
   const handleTagTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTagText(e.target.value);
@@ -64,7 +63,7 @@ const FormTwo = ({images, tags, updateFields}: productFormTwoProps) => {
           const result = reader.result as string;
           
           if (result && !result.startsWith('data:image')) {
-            setImageError(prev => ('Invalid image format.' ));
+            setImageError('Invalid image format.' );
           } else {
             setSelectedImage(result);
           }
@@ -73,13 +72,13 @@ const FormTwo = ({images, tags, updateFields}: productFormTwoProps) => {
           if (formImages.length < 6) {
             updateFields({images: [...formImages, result]});
           } else {
-            setImageError(prev => ('You have reached the allowed maximum (6)' ));
+            setImageError('You have reached the allowed maximum (6)' );
           }
 
         };
         reader.readAsDataURL(file);
       } else {
-        setImageError(prev => ('Invalid image file type.' ));
+        setImageError('Invalid image file type.' );
       }
     }
   };

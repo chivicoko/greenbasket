@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import Image from 'next/image'
 import { Cancel, HomeOutlined, Logout, PunchClock, Settings } from '@mui/icons-material'
 import { useUserForm } from '@/context/UserFormContext'
@@ -13,7 +12,6 @@ type MobileNavProps = {
 
 const MobileNav = ({isOpen, onHandleClose}: MobileNavProps) => {
   const {userInfo, dropUserInfo} = useUserForm();
-  const [selectedImage, setSelectedImage] = useState('/images/default_avatar.png');
 
   return (
     <nav
@@ -28,18 +26,18 @@ const MobileNav = ({isOpen, onHandleClose}: MobileNavProps) => {
             icon1={<Cancel className='absolute top-10 right-10 transition-all duration-300 ease-in-out transform group-hover:-translate-x-1' />}
         />
         
-        <li className='relative md:hidden mb-24'>
+        <li className='relative md:hidden mb-24' tabIndex={1}>
             <span className="flex items-center gap-3">
                 <span className="relative size-10 rounded-full">
                 <Image
-                    src={selectedImage}
+                    src='/images/default_avatar.png'
                     alt="User Profile Image"
                     fill
                     className='rounded-full object-cover'
                     sizes="100%"
                 />
                 </span>
-                <span className="text-primary text-base font-semibold">Hi, { userInfo?.userName }</span>
+                <span className="text-primary text-base font-semibold capitalize">Hi, { userInfo?.userName }</span>
             </span>
         </li>
         <li>

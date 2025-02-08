@@ -1,8 +1,8 @@
 
-const ViewButton = ({gridView, setGridView}) => {
+const ViewButton = ({gridView, setGridView}: {gridView: boolean, setGridView: React.Dispatch<React.SetStateAction<boolean>>}) => {
     
     const toggleProductView = () => {
-    setGridView((prev) => !prev);
+    setGridView((prev: boolean) => !prev);
   };
   
   return (

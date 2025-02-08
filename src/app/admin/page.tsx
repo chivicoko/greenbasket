@@ -7,11 +7,11 @@ import { Add } from '@mui/icons-material';
 import { Product } from '@/utils/types';
 import ProductModal from '@/components/admin/ProductModal';
 import { getProducts } from '@/lib/api';
-import Loading from '../loading';
+// import Loading from '../loading';
 import UsageChart from '@/components/admin/UsageChart';
 import { UsageHistory } from '@/utils/data';
-import { useUserForm } from '@/context/UserFormContext';
-import { useRouter } from 'next/navigation';
+// import { useUserForm } from '@/context/UserFormContext';
+// import { useRouter } from 'next/navigation';
 
 // export const generateMetadata = {
 //     title: "Admin Overview",
@@ -24,21 +24,21 @@ const AdminProductForm = () => {
     const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
     const [modalMode, setModalMode] = useState<'view' | 'edit'>('view');
     const [products, setProducts] = useState<Product[]>([]);
-    const [loading, setLoading] = useState<boolean>(true);
-    const {userInfo} = useUserForm();
-    const router = useRouter();
+    // const [loading, setLoading] = useState<boolean>(true);
+    // const {userInfo} = useUserForm();
+    // const router = useRouter();
     
-    if(!userInfo) router.push('/users/auth/register');
+    // if(!userInfo) router.push('/users/auth/register');
 
     
-    const addProduct = (p) => {
-        console.log('Adding product',p);
-    }
+    // const addProduct = (p) => {
+    //     console.log('Adding product',p);
+    // }
 
 
-    const updateProduct = (po,p) => {
-        console.log('Updating product', po,p);
-    }
+    // const updateProduct = (po,p) => {
+    //     console.log('Updating product', po,p);
+    // }
     
   const handleAddEditProduct = (product?: Product) => {
     setSelectedProduct(product || null);
@@ -49,9 +49,11 @@ const AdminProductForm = () => {
     
   const handleSaveProduct = (product: Product) => {
     if (selectedProduct) {
-      updateProduct(selectedProduct._id, product);
+      // updateProduct(selectedProduct._id, product);
+      console.log(product);
     } else {
-      addProduct(product);
+      // addProduct(product);
+      console.log(product);
     }
     setIsModalOpen(false);
   };
@@ -61,7 +63,7 @@ const AdminProductForm = () => {
     const getData = async () => {
       const products = await getProducts();
       setProducts(products);
-      setLoading(false);
+      // setLoading(false);
     };
     getData();
   }, []);
@@ -73,10 +75,7 @@ const AdminProductForm = () => {
             <h1 className='text-primary text-xl font-bold'>Overview</h1>
         </div>
 
-        {
-          loading ? <Loading/> : 
-          products && products?.length > 0
-        ?
+        {products && products?.length > 0 ?
         <>
           <div className='py-8 flex flex-col sm:flex-row items-center justify-between flex-wrap gap-4 md:gap-6 lg:gap-10'>
               <div className='bg-[#bbea70] py-6 md:py-4 px-2 md:px-4 w-full flex-1 rounded-lg flex flex-col justify-center items-center gap-2 md:gap-4 h-40'>

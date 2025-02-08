@@ -18,7 +18,7 @@ const FormOne = ({title, description, category, thumbnail, updateFields}: produc
     setFormImage('');
     
     updateFields({thumbnail: formImage});
-  }, [thumbnail]);
+  }, [thumbnail, formImage, updateFields]);
   
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -30,15 +30,15 @@ const FormOne = ({title, description, category, thumbnail, updateFields}: produc
           const result = reader.result as string;
           
           if (result && !result.startsWith('data:image')) {
-            setImageError(prev => ('Invalid image format.' ));
+            setImageError('Invalid image format.');
           }
           
-          setFormImage(prev => (result));
+          setFormImage(result);
           updateFields({thumbnail: result});
         };
         reader.readAsDataURL(file);
       } else {
-        setImageError(prev => ('Invalid image file type.' ));
+        setImageError('Invalid image file type.' );
       }
     }
   };

@@ -1,12 +1,12 @@
 'use client';
 
-import { createProduct, updateProduct } from '@/lib/api';
+// import { createProduct, updateProduct } from '@/lib/api';
 import { categoryList } from '@/utils/data';
 import { Product } from '@/utils/types';
 import { Add } from '@mui/icons-material';
 import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
-import { useRouter, useParams, usePathname } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { v4 as uuidv4 } from 'uuid';
 
 interface ProductModalProps {
@@ -18,20 +18,21 @@ interface ProductModalProps {
 }
 
 const ProductModal: React.FC<ProductModalProps> = ({ isOpen, onClose, onSave, product, mode }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
-  const [modalMode, setModalMode] = useState<'view' | 'edit'>('view');
+  // const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  // const [modalMode, setModalMode] = useState<'view' | 'edit'>('view');
   
   const router = useRouter();
-  const params = useParams();
+  // const params = useParams();
   const pathname = usePathname();
 
-  const id = Array.isArray(params.id) ? params.id[0] : params.id;
+  // const id = Array.isArray(params.id) ? params.id[0] : params.id;
   
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [isEditMode, setIsEditMode] = useState(false);
 
   const [formData, setFormData] = useState<Product>({
+    _id: '',
     id: '',
     name: '',
     price: 0,
@@ -47,12 +48,13 @@ const ProductModal: React.FC<ProductModalProps> = ({ isOpen, onClose, onSave, pr
     description: '',
     image: ''
   });
-
+  
   useEffect(() => {
     if (product) {
       setFormData(product);
     } else {
       setFormData({
+        _id: '',
         id: '',
         name: '',
         price: 0,
@@ -153,9 +155,11 @@ const ProductModal: React.FC<ProductModalProps> = ({ isOpen, onClose, onSave, pr
       };
 
       if (isEditMode) {
-        await updateProduct(id!, payload);
+        // await updateProduct(id!, payload);
+        setIsEditMode((prev) => !prev);
       } else {
-        await createProduct(payload);
+        // await createProduct(payload);
+        console.log(payload);
       }
 
       // console.log(pathname);

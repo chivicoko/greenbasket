@@ -2,13 +2,14 @@ import { Product2, UserFormData } from '@/utils/types';
 import axios from 'axios';
 // import { revalidatePath } from 'next/cache';
 
-const API_URL = '/api';
+const USER_API_URL = '/api/users';
+const PRODUCT_API_URL = '/api/users';
 
 
 // Users
 export const getUser = async () => {
   try {
-    const response = await axios.get(`${API_URL}/users`);
+    const response = await axios.get(`${USER_API_URL}`);
   //   console.log(response.data);
     return response.data;
   } catch (error) {
@@ -19,7 +20,7 @@ export const getUser = async () => {
 
 export const getUserById = async (id: string | string[]) => {
   try {
-    const response = await axios.get(`${API_URL}/users/${id}`);
+    const response = await axios.get(`${USER_API_URL}/${id}`);
     // console.log(response.data);
     return response.data;
   } catch (error) {
@@ -30,9 +31,8 @@ export const getUserById = async (id: string | string[]) => {
 
 export const createUser = async (UserData: UserFormData) => {
   try {
-    // console.log('Data being sent:', UserData);
-    const response = await axios.post(`${API_URL}/users`, UserData);
-    // console.log(response.data);
+    const response = await axios.post(`${USER_API_URL}`, UserData);
+    console.log(response.data);
     // revalidatePath('/admin/users');
     return response.data;
   } catch (error) {
@@ -42,13 +42,13 @@ export const createUser = async (UserData: UserFormData) => {
 };
 
 export const updateUser = async (id: string, UserData: UserFormData) => {
-  const response = await axios.put(`${API_URL}/users/${id}`, UserData);
+  const response = await axios.put(`${USER_API_URL}/${id}`, UserData);
   return response.data;
 };
 
 export const deleteUser = async (id: string) => {
   try {
-    const response = await axios.delete(`${API_URL}/users/${id}`);
+    const response = await axios.delete(`${USER_API_URL}/${id}`);
     return response.data;
   } catch (error) {
     console.error('Failed to delete user: ', error);
@@ -60,7 +60,7 @@ export const deleteUser = async (id: string) => {
 // Products
 export const getProducts = async () => {
   try {
-    const response = await axios.get(`${API_URL}/products`);
+    const response = await axios.get(`${PRODUCT_API_URL}`);
   //   console.log(response.data);
     return response.data;
   } catch (error) {
@@ -71,7 +71,7 @@ export const getProducts = async () => {
 
 export const getProductById = async (id: string | string[]) => {
   try {
-    const response = await axios.get(`${API_URL}/products/${id}`);
+    const response = await axios.get(`${PRODUCT_API_URL}/${id}`);
     // console.log(response.data);
     return response.data;
   } catch (error) {
@@ -83,8 +83,8 @@ export const getProductById = async (id: string | string[]) => {
 export const createProduct = async (ProductData: Product2) => {
   try {
     // console.log('Data being sent:', ProductData);
-    const response = await axios.post(`${API_URL}/products`, ProductData);
-    // console.log(response.data);
+    const response = await axios.post(`${PRODUCT_API_URL}`, ProductData);
+    console.log(response.data);
     // revalidatePath('/admin/products');
     return response.data;
   } catch (error) {
@@ -94,13 +94,13 @@ export const createProduct = async (ProductData: Product2) => {
 };
 
 export const updateProduct = async (id: string, ProductData: Product2) => {
-  const response = await axios.put(`${API_URL}/products/${id}`, ProductData);
+  const response = await axios.put(`${PRODUCT_API_URL}/${id}`, ProductData);
   return response.data;
 };
 
 export const deleteProduct = async (id: string) => {
   try {
-    const response = await axios.delete(`${API_URL}/products/${id}`);
+    const response = await axios.delete(`${PRODUCT_API_URL}/${id}`);
     return response.data;
   } catch (error) {
     console.error('Failed to delete product: ', error);

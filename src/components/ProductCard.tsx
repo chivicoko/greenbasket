@@ -6,17 +6,18 @@ import { Add, AddShoppingCart, Remove } from '@mui/icons-material';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useCart } from '@/context/CartContext';
+import { Product2 } from '@/utils/types';
 
-const ProductCard = ({product, key}) => {
+const ProductCard = ({product, key}: {product: Product2, key: string}) => {
   const {addToCart, isProductInCart, increaseProductQuantity, decreaseProductQuantity, getProductQuantity} = useCart();
 
   return (
     <div key={key} className="pt-0 pb-4 flex-1 flex flex-col justify-center items-center bg-white rounded-xl shadow-md">
-        <Link href={`/products/${product._id}`} className="relative w-full h-48 mb-4 self-center cursor-pointer rounded-t-md overflow-hidden">
+        <Link href={`/products/${product.id}`} className="relative w-full h-48 mb-4 self-center cursor-pointer rounded-t-md overflow-hidden">
             <Image
-                // src={product.img}
-                src={product.image}
-                alt={`${product.name} preview`}
+                src={product.thumbnail}
+                // src={product.image}
+                alt={`${product.title} preview`}
                 fill
                 className="object-cover rounded-t-md transition-transform duration-300 ease-in-out transform hover:scale-105"
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -27,7 +28,7 @@ const ProductCard = ({product, key}) => {
         <div className='px-4 w-full h-1/2 flex flex-col items-center justify-between'>
             <h2 className='text-center text-lg font-semibold text-primary hover:text-black'>
             <Link href={`/products/${product.id}`} className="">
-                {product.name}
+                {product.title}
             </Link>
             </h2>
             
