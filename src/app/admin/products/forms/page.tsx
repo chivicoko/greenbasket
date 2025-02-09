@@ -16,7 +16,7 @@ import FormTwo from '@/components/forms/products/FormTwo';
 import FormOne from '@/components/forms/products/FormOne';
 import FormThree from '@/components/forms/products/FormThree';
 // import { createProduct } from '@/lib/api';
-import { useUserForm } from '@/context/UserFormContext';
+// import { useUserForm } from '@/context/UserFormContext';
 
 const PRODUCT_DATA: Product2 = INITIAL_PRODUCT_DATA;
 
@@ -24,9 +24,9 @@ const ProductForms = () => {
   const [data, setData] = useState(PRODUCT_DATA);
   const {saveProductInfo} = useProductForm();
   const router = useRouter();
-  const {userInfo} = useUserForm();
+  // const {userInfo} = useUserForm();
     
-  if(!userInfo) router.push('/users/auth/register');
+  // if(!userInfo) router.push('/users/auth/register');
 
   const updateFields = (fields: Partial<Product2>) => {
     setData(prev => {

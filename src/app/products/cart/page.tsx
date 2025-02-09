@@ -3,16 +3,16 @@
 import CartItems from '@/components/cart/CartItems';
 import CartSummary from '@/components/cart/CartSummary';
 import { useCart } from '@/context/CartContext';
-import { useUserForm } from '@/context/UserFormContext';
-import { useRouter } from 'next/navigation';
+// import { useUserForm } from '@/context/UserFormContext';
+// import { useRouter } from 'next/navigation';
 import React from 'react'
 
 const ProductsCart = () => {
   const { totalCount } = useCart();
-  const {userInfo} = useUserForm();
-  const router = useRouter();
+  // const {userInfo} = useUserForm();
+  // const router = useRouter();
   
-  if(!userInfo) router.push('/users/auth/register');
+  // if(!userInfo) router.push('/users/auth/register');
 
   return (
     <section className='px-4 md:px-[85px] pt-8'>

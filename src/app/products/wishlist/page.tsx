@@ -1,17 +1,17 @@
 'use client';
 
 import WishlistItems from '@/components/wishlist/WishlistItems';
-import { useUserForm } from '@/context/UserFormContext';
 import { useWishlist } from '@/context/WishlistContext';
-import { useRouter } from 'next/navigation';
+// import { useUserForm } from '@/context/UserFormContext';
+// import { useRouter } from 'next/navigation';
 import React from 'react'
 
 const ProductsWishlist = () => {
   const { totalWishlistCount } = useWishlist();
-  const {userInfo} = useUserForm();
-  const router = useRouter();
+  // const {userInfo} = useUserForm();
+  // const router = useRouter();
   
-  if(!userInfo) router.push('/users/auth/register');
+  // if(!userInfo) router.push('/users/auth/register');
 
   return (
     <section className='px-4 md:px-[85px] pt-8'>

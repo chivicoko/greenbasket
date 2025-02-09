@@ -5,14 +5,14 @@ import CountDownTimer from '@/components/CountDownTimer';
 import DiscountBadge from '@/components/DiscountBadge';
 import DiscountCardTwo from '@/components/DiscountCardTwo';
 import WeeklyBestSellingProducts from '@/components/WeeklyBestSellingProducts';
-import { useCart } from '@/context/CartContext';
 import { useUserForm } from '@/context/UserFormContext';
 import { INITIAL_PRODUCT_DATA, PRODUCT } from '@/utils/data';
 import { Product2 } from '@/utils/types';
 import { Add, AddShoppingCart, FavoriteBorder, Remove, Star, StarHalf, StarOutline, Storefront } from '@mui/icons-material';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useCart } from '@/context/CartContext';
+// import { useRouter } from 'next/navigation';
 // import { useParams, usePathname, useRouter, useSearchParams } from 'next/navigation';
 // import { useParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
@@ -25,10 +25,10 @@ const SingleProduct = () => {
   const [product, setProduct] = useState<Product2>(INITIAL_PRODUCT_DATA); // Single product
   // const [currentImage, setCurrentImage] = useState<string>('/images/spinach.jpeg');
   const {addToCart, isProductInCart, increaseProductQuantity, decreaseProductQuantity, getProductQuantity} = useCart();
-  const {userInfo} = useUserForm();
-  const router = useRouter();
+  // const {userInfo} = useUserForm();
+  // const router = useRouter();
   
-  if(!userInfo) router.push('/users/auth/register');
+  // if(!userInfo) router.push('/users/auth/register');
 
   // const { _id } = useParams();
   
