@@ -262,7 +262,7 @@ const SingleProduct = () => {
             
             <ul className="flex items-center justify-center gap-3 flex-wrap">
               {product.reviews.map((review, index) => (
-                <li key={index} className="border-2 border-primary rounded-lg pt-2 px-2 w-1/3 max-w-sm">
+                <li key={index} className="border-2 border-primary rounded-lg pt-2 px-2 w-full md:w-1/3 max-w-sm">
                   <div className="flex flex-col items-center justify-between border-b border-primary">
                     <p className="text-xl md:text-2xl">{review.reviewerName}</p>
                     <p className="text-sm">({review.reviewerEmail})</p>
