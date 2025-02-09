@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import './globals.css';
-import ScrollToTopButton from '@/components/ScrollToTopButton';
+import ScrollToTopButton from '@/components/button/ScrollToTopButton';
 import { CartProvider } from '@/context/CartContext';
 import { WishlistProvider } from '@/context/WishlistContext';
 import { ProductFormProvider } from '@/context/ProductFormContext';
@@ -18,7 +18,7 @@ export const metadata = {
   keywords: "Next.js, TypeScript, TailwindCSS, E-commerce, Groceries, store, Product Listing, Product Management, CRUD, Admin",
   openGraph: {
     type: 'website',
-    url: 'https://greenbasket.vercel.app',
+    url: 'https://greenbasket-cyan.vercel.app',
     title: "GreenBasket Stores",
     description: "GreenBasket is the number 1 e-commerce product listing platform which makes buying and selling really easy for everyone.",
     // images: [

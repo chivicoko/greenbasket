@@ -10,7 +10,7 @@ import FullPagination from './pagination/FullPagination';
 import Loading from '@/app/loading';
 import ProductListView from './ProductListView';
 import ProductGridView from './ProductGridView';
-import ViewButton from './ViewButton';
+import ViewButton from './button/ViewButton';
 
 const ProductsFromDummyJson: React.FC = () => {
   const [currentProducts, setCurrentProducts] = useState<Product2[]>([]);

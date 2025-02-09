@@ -5,7 +5,7 @@ import ButtonLink from './button/ButtonLink';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { Product2 } from '@/utils/types';
-import ViewButton from './ViewButton';
+import ViewButton from './button/ViewButton';
 import ProductGridView from './ProductGridView';
 import ProductListView from './ProductListView';
 import { getDummyJsonProducts } from '@/lib/api';

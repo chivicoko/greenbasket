@@ -20,9 +20,9 @@ const WeeklyBestSellingProducts: React.FC = () => {
 
       <div className="flex items-center flex-wrap gap-4 mb-8">
         {
-          categories.slice(0, 8).map(category => {
+          categories.slice(0, 8).map((category, index) => {
             return(
-              <Button key={category.id} btnText={category.name} classes="py-2 px-4 bg-white hover:bg-primary text-primary hover:text-white font-semibold text-sm rounded-full shadow-md" />
+              <Button key={category.id} btnText={category.name} classes={`${index === 0 ? 'bg-primary text-white' : 'bg-white hover:bg-primary text-primary hover:text-white'} py-2 px-4 font-semibold text-sm rounded-full shadow-md`} />
             )
           })
         }

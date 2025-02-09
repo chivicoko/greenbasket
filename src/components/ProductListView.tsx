@@ -15,8 +15,23 @@ interface ProductViewProps {
 
 const ProductListView = ({products}: ProductViewProps) => {
   const {addToCart, isProductInCart, increaseProductQuantity, decreaseProductQuantity, getProductQuantity} = useCart();
-    const {toggleWishlistBtn, isProductInWishlist} = useWishlist();
+  const {toggleWishlistBtn, isProductInWishlist} = useWishlist();
 
+  const formatPrice = (price: string | number): { integerPart: number; decimalPart: number } => {
+    const numericPrice = typeof price === 'string' ? parseFloat(price) : price;
+  
+    if (isNaN(numericPrice)) {
+      return { integerPart: 0, decimalPart: 0 };
+    }
+  
+    const [integerPart, decimalPart] = numericPrice.toFixed(2).split('.');
+  
+    return { 
+      integerPart: parseInt(integerPart, 10), 
+      decimalPart: parseInt(decimalPart, 10) 
+    };
+  };
+  
   return (
     <div className="w-full overflow-x-scroll custom-scrollbar">
       <table className="min-w-full custom-scrollbar">
@@ -48,7 +63,10 @@ const ProductListView = ({products}: ProductViewProps) => {
               <td className="relative pl-6 py-2 text-[15px] whitespace-nowrap w-2">
                 <Link href={`/products/${product.id}`} className="text-primary font-semibold">{ product.title }</Link>
               </td>
-              <td className="relative pl-6 py-2 text-[15px] whitespace-nowrap w-2">{ product.price } (<Remove/>{ product.discountPercentage }%)</td>
+              <td className="relative pl-6 py-2 text-[15px] whitespace-nowrap w-2">
+                <span className='text-[18px]'> ${formatPrice(product.price).integerPart}.<sup>{formatPrice(product.price).decimalPart}</sup> </span>
+                <span className=''>(<Remove/>{ product.discountPercentage }%)</span>
+              </td>
               <td className="relative pl-6 py-2 text-[15px] whitespace-nowrap w-2 capitalize">{ product.category }</td>
               <td className="relative pl-6 py-2 text-[15px] whitespace-nowrap w-2">
                 <div className="flex items-center justify-center">

@@ -16,6 +16,21 @@ const ProductGridView = ({products}: ProductViewProps) => {
   const {addToCart, isProductInCart, increaseProductQuantity, decreaseProductQuantity, getProductQuantity} = useCart();
   const {toggleWishlistBtn, isProductInWishlist} = useWishlist();
 
+  const formatPrice = (price: string | number): { integerPart: number; decimalPart: number } => {
+    const numericPrice = typeof price === 'string' ? parseFloat(price) : price;
+  
+    if (isNaN(numericPrice)) {
+      return { integerPart: 0, decimalPart: 0 };
+    }
+  
+    const [integerPart, decimalPart] = numericPrice.toFixed(2).split('.');
+  
+    return { 
+      integerPart: parseInt(integerPart, 10), 
+      decimalPart: parseInt(decimalPart, 10) 
+    };
+  };
+
   return (
     <div className="grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-6">
         {
@@ -46,7 +61,8 @@ const ProductGridView = ({products}: ProductViewProps) => {
                 
                 <div>
                   <p className='text-center text-sm text-gray-500 font-semibold'>{product.weight}gm</p>
-                  <p className='text-center text-xl py-3 font-bold text-primary'>${product.price}</p>
+                  <p className='text-center text-xl py-3 font-bold text-primary'>${formatPrice(product.price).integerPart}.<sup>{formatPrice(product.price).decimalPart}</sup></p>
+                  {/* <p className='text-center text-xl py-3 font-bold text-primary'>${product.price}</p> */}
                 </div>
 
                 <div className='bg-yellowish w-full flex items-center py-1 px-2 rounded-lg justify-around'>
