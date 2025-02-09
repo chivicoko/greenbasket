@@ -87,7 +87,7 @@ const Navbar: React.FC<NavbarProps> = ({ firstDivClasses, secondDivClasses }) =>
             </button>
             
             {dropdown && 
-              <div className="z-50 absolute top-[60px] -right-[73px] -translate-x-1/2 w-fit">
+              <div className="z-50 absolute top-[61px] -right-[73px] -translate-x-1/2 w-fit">
                 <ProfileDropdown />
               </div>
             }

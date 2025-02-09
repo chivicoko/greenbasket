@@ -15,7 +15,7 @@ import FormOne from '@/components/forms/users/FormOne';
 import FormTwo from '@/components/forms/users/FormTwo';
 import FormThree from '@/components/forms/users/FormThree';
 import { useUserForm } from '@/context/UserFormContext';
-// import { createUser } from '@/lib/api';
+import { createUser } from '@/lib/api';
 
 const USER_DATA: UserFormData = INITIAL_USER_DATA;
 
@@ -60,7 +60,7 @@ const UserForms = () => {
     // console.log(data);
 
     saveUserInfo(data);
-    // await createUser(data);
+    await createUser(data);
     router.push('/');
   };
 

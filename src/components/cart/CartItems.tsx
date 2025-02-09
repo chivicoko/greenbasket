@@ -51,9 +51,9 @@ const CartItems = () => {
             
                         <div className="w-full flex items-center gap-3 justify-between mt-4 pr-4">
                             <div className="flex items-center justify-between gap-6 px-2">
-                                <Button onClick={() => decreaseProductQuantity(product.id)} icon1={<Remove className='h-4 w-4 md:h-6 md:w-6' />} classes="bg-btn hover:bg-btn-hover flex items-center justify-center p-2 text-primary rounded-full text-sm shadow-md" />
+                                <Button onClick={() => decreaseProductQuantity(product.id)} icon1={<Remove className='h-4 w-4 md:h-6 md:w-6' />} classes="bg-secondary hover:bg-secondary_hover flex items-center justify-center p-2 text-primary rounded-full text-sm shadow-md" />
                                 <span className="flex items-center justify-center rounded-full text-primary text-2xl">{ getProductQuantity(product.id) }</span>
-                                <Button onClick={() => increaseProductQuantity(product.id)} icon1={<Add className='h-4 w-4 md:h-6 md:w-6' />} classes="bg-btn hover:bg-btn-hover flex items-center justify-center p-2 text-primary rounded-full text-sm shadow-md" />
+                                <Button onClick={() => increaseProductQuantity(product.id)} icon1={<Add className='h-4 w-4 md:h-6 md:w-6' />} classes="bg-secondary hover:bg-secondary_hover flex items-center justify-center p-2 text-primary rounded-full text-sm shadow-md" />
                             </div>
 
                             <Button icon1={<DeleteOutline className='h-4 w-4 md:h-6 md:w-6' />} onClick={() => removeFromCart(product.id)} classes="bg-delete hover:bg-delete_hover flex items-center justify-center p-2 text-white rounded-full text-sm shadow-md" />

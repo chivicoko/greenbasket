@@ -68,7 +68,7 @@ const UserSchema: Schema = new Schema(
 );
 
 // Create an index for better search performance on 'title' and 'category'
-UserSchema.index({ fullName: 'text', username: 'text', email: 'text' });
+UserSchema.index({ fullName: 'text', username: 'text' });
 
 const User = mongoose.models.User || mongoose.model<IUser>('User', UserSchema);
 
