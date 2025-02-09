@@ -14,13 +14,13 @@ const WishlistItems = () => {
 
   return (
     <div className="w-full space-y-6">
-        <div className="w-full grid grid-cols-2 gap-6">
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6">
             {wishlist.map(product => (
-                <div key={product.id} className="relative w-full rounded-2xl border border-primary p-2 flex items-center gap-12">
+                <div key={product.id} className="relative w-full rounded-2xl border border-primary p-2 flex flex-col md:flex-row items-center md:gap-12">
                     <p className="absolute top-2 left-2 z-40 bg-dark_orange text-white px-2 rounded-sm text-xs flex items-center justify-center">
                         <Remove/>{ product.discountPercentage }%
                     </p>
-                    <Link href={`/products/${product.id}`} className="w-1/4 h-fit mb-4">
+                    <Link href={`/products/${product.id}`} className="w-full md:w-1/4 h-fit flex justify-center mb-4">
                         <div className="relative size-52 self-center cursor-pointer rounded-md overflow-hidden text-[#6A7E8A] text-[15px]">
                             <Image
                                 src={product.thumbnail || '/src/assets/images/imagePlaceholder.jpeg'}
@@ -32,7 +32,7 @@ const WishlistItems = () => {
                         </div>
                     </Link>
             
-                    <div className="w-3/4 flex flex-col justify-center items-start gap-2">
+                    <div className="w-full md:w-3/4 flex flex-col justify-center items-start gap-2">
                         <p className="text-primary text-xl">
                             <Link href={`/products/${product.id}`} className="text-primary hover:underline font-semibold whitespace-wrap w-full">{ product.title }</Link>
                         </p>
@@ -74,7 +74,7 @@ const WishlistItems = () => {
         </div>
         
         <div className="flex items-center justify-center">
-            <Button onClick={clearWishlist} btnText='Clear Wishlist' classes="bg-delete hover:bg-delete_hover py-[8px] lg:py-[8px] px-[16px] lg:px-[24px] capitalize font-bold rounded-xl text-lg text-white hover:cursor-pointer shadow-md w-1/3" />
+            <Button onClick={clearWishlist} btnText='Clear Wishlist' classes="bg-delete hover:bg-delete_hover py-[8px] lg:py-[8px] px-[16px] lg:px-[24px] capitalize font-bold rounded-xl text-lg text-white hover:cursor-pointer shadow-md w-full md:w-1/3" />
         </div>
     </div>
   )

@@ -9,7 +9,7 @@ const CartSummary = () => {
     const { totalCount, getTotalPrice } = useCart();
 
   return (
-    <div className="w-1/4 h-fit p-4 border border-primary rounded-xl">
+    <div className="w-full md:w-1/4 h-fit p-4 border border-primary rounded-xl">
         <h2 className="font-semibold text-2xl text-primary py-2">Summary</h2>
         <div className="border-y border-primary py-4 space-y-2">
             <p className="text-lg text-primary flex items-center justify-between"><span className="font-semibold">Subtotal: </span> ${parseInt(getTotalPrice()).toFixed(2)}</p>
