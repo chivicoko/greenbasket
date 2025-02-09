@@ -25,7 +25,7 @@ const ProductGridView = ({products}: ProductViewProps) => {
                 <Remove/>{ product.discountPercentage }%
               </p>
 
-              <Button onClick={() => toggleWishlistBtn(product)} icon1={isProductInWishlist(product.id) ? <Favorite className="text-red-700" /> : <FavoriteBorder />} classes="absolute top-2 right-2 z-40 flex items-center justify-center rounded-full text-sm" />
+              <Button onClick={() => toggleWishlistBtn(product)} icon1={isProductInWishlist(product.id) ? <Favorite className="text-red-700" /> : <FavoriteBorder />} classes="absolute top-2 right-2 z-30 flex items-center justify-center rounded-full text-sm" />
 
               <Link href={`/products/${product.id}`} className="relative w-full h-48 mb-4 self-center cursor-pointer rounded-t-md overflow-hidden">
                 <Image
