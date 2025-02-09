@@ -3,7 +3,7 @@
 import { useCart } from '@/context/CartContext';
 import { tableHead } from '@/utils/data'
 import { Product2 } from '@/utils/types'
-import { Add, AddShoppingCart, Favorite, Remove } from '@mui/icons-material'
+import { Add, AddShoppingCart, Favorite, FavoriteBorder, Remove } from '@mui/icons-material'
 import Image from 'next/image'
 import Link from 'next/link'
 import Button from './button/Button';
@@ -52,7 +52,7 @@ const ProductListView = ({products}: ProductViewProps) => {
               <td className="relative pl-6 py-2 text-[15px] whitespace-nowrap w-2 capitalize">{ product.category }</td>
               <td className="relative pl-6 py-2 text-[15px] whitespace-nowrap w-2">
                 <div className="flex items-center justify-center">
-                  <Button onClick={() => toggleWishlistBtn(product)} icon1={<Favorite className={`${isProductInWishlist(product.id) ? 'text-red-700' : 'text-primary'} h-4 w-4 md:h-6 md:w-6`} />} classes="flex items-center justify-center rounded-full text-sm" />
+                  <Button onClick={() => toggleWishlistBtn(product)} icon1={isProductInWishlist(product.id) ? <Favorite className="text-red-700" /> : <FavoriteBorder />} classes="flex items-center justify-center rounded-full text-sm" />
                 </div>
               </td>
               <td className="relative pl-6 text-[15px] whitespace-nowrap w-2">

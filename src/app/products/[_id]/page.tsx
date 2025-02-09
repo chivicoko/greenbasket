@@ -8,7 +8,7 @@ import DiscountCardTwo from '@/components/DiscountCardTwo';
 // import { useUserForm } from '@/context/UserFormContext';
 import { INITIAL_PRODUCT_DATA, PRODUCT } from '@/utils/data';
 import { Product2 } from '@/utils/types';
-import { Add, AddShoppingCart, FavoriteBorder, Remove, Star, StarHalf, StarOutline, Storefront } from '@mui/icons-material';
+import { Add, AddShoppingCart, Favorite, FavoriteBorder, Remove, Star, StarHalf, StarOutline, Storefront } from '@mui/icons-material';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useCart } from '@/context/CartContext';
@@ -16,6 +16,7 @@ import { useCart } from '@/context/CartContext';
 // import { useParams, usePathname, useRouter, useSearchParams } from 'next/navigation';
 // import { useParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
+import { useWishlist } from '@/context/WishlistContext';
 // import { getProductById } from '@/lib/api';
 // import { Product } from '@/utils/types';
 // import { ArrowBack } from '@mui/icons-material';
@@ -25,6 +26,7 @@ const SingleProduct = () => {
   const [product, setProduct] = useState<Product2>(INITIAL_PRODUCT_DATA); // Single product
   // const [currentImage, setCurrentImage] = useState<string>('/images/spinach.jpeg');
   const {addToCart, isProductInCart, increaseProductQuantity, decreaseProductQuantity, getProductQuantity} = useCart();
+  const {toggleWishlistBtn, isProductInWishlist} = useWishlist();
   // const {userInfo} = useUserForm();
   // const router = useRouter();
   
@@ -196,7 +198,7 @@ const SingleProduct = () => {
                 </div>
 
                 <div className="flex items-center gap-4 md:gap-7 flex-wrap">
-                  <Button btnText="Add to favorite" icon1={<FavoriteBorder />} classes="gap-2 md:gap-3 font-bold hover:cursor-pointer underline uppercase md:border-r md:pr-7" />
+                  <Button onClick={() => toggleWishlistBtn(product)} btnText="Add to favorite" icon1={isProductInWishlist(product.id) ? <Favorite className="text-red-700" /> : <FavoriteBorder />} classes="gap-2 md:gap-3 font-bold hover:cursor-pointer underline uppercase md:border-r md:pr-7" />
                   <Button btnText="Compare with other vendors" icon1={<Storefront />} classes="gap-2 md:gap-3 font-bold hover:cursor-pointer underline" />
                 </div>
               </div>
