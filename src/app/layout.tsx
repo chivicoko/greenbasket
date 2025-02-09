@@ -5,6 +5,9 @@ import { CartProvider } from '@/context/CartContext';
 import { WishlistProvider } from '@/context/WishlistContext';
 import { ProductFormProvider } from '@/context/ProductFormContext';
 import { UserFormProvider } from '@/context/UserFormContext';
+import { Jost } from 'next/font/google';
+
+const jost = Jost({ subsets: ['latin'], weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'], variable: '--font-jost' });
 
 export const metadata = {
   title: {
@@ -38,7 +41,7 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${jost.variable}`}>
       <body className='font-jost overflow-x-hidden bg-zinc-50'>
         <CartProvider>
           <WishlistProvider>
@@ -51,11 +54,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         </CartProvider>
         
         <ScrollToTopButton/>
-
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
       </body>
     </html>
   );

@@ -5,39 +5,28 @@ import Footer from "@/components/footer/Footer";
 import Header from "@/components/Header";
 import Products from "@/components/Products";
 import { useUserForm } from "@/context/UserFormContext";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense } from "react";
 import Loading from "./loading";
+import UserForms from "./users/auth/register/page";
 
 
 const HomePage: React.FC = () => {
-  const [loading, setLoading] = useState(true);
-
   const {userInfo} = useUserForm();
-  const router = useRouter();
-  console.log(userInfo);
-  
-  useEffect(() => {
-    if (userInfo === null) {
-      setLoading(true);
-    } else {
-      setLoading(false);
-      if(!userInfo) router.push('/users/auth/register');
-    }
-  }, [userInfo, router]);
-
-  if (loading) {
-    return <Loading/>;
-  }
+  // console.log(userInfo);
 
   return (
     <div className="">
-      <div className="">
-        <Header />
-        <Categories/>
-        <Products/>
-        <Footer />
-      </div>
+      <Suspense fallback={<Loading/>}>
+        {userInfo ? 
+          <div className="">
+            <Header />
+            <Categories/>
+            <Products/>
+            <Footer />
+          </div>
+        : 
+        <UserForms />}
+      </Suspense>
     </div>
   );
 };
