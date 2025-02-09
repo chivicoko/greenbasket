@@ -8,11 +8,11 @@ import { footerLinks } from "@/utils/data";
 
 
 const myLinks = [
-  { id: 1, url: 'https://www.victorokoye.com/', icon: <Language className="h-4 w-4 md:h-6 md:w-6" />, },
+  { id: 1, url: 'https://www.victorokoye.vercel.app/', icon: <Language className="h-4 w-4 md:h-6 md:w-6" />, },
   { id: 2, url: 'https://www.instagram.com/chivicoko', icon: <Instagram className="h-4 w-4 md:h-6 md:w-6" />, },
-  { id: 3, url: 'https://twitter.com/chivicoko', icon: <Twitter className="h-4 w-4 md:h-6 md:w-6" />, },
+  { id: 3, url: 'https://twitter.com/codes_victor_', icon: <Twitter className="h-4 w-4 md:h-6 md:w-6" />, },
   { id: 4, url: 'https://github.com/chivicoko', icon: <GitHub className="h-4 w-4 md:h-6 md:w-6" />, },
-  { id: 5, url: 'https://www.linkedin.com/in/chivicoko', icon: <LinkedIn className="h-4 w-4 md:h-6 md:w-6" />, },
+  { id: 5, url: 'https://www.linkedin.com/in/codesvictor', icon: <LinkedIn className="h-4 w-4 md:h-6 md:w-6" />, },
   { id: 6, url: 'https://wa.me/+2348028845693', icon: <WhatsApp className="h-4 w-4 md:h-6 md:w-6" />, },
 ];
 

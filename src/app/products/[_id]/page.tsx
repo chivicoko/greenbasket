@@ -24,7 +24,7 @@ import { useWishlist } from '@/context/WishlistContext';
 
 const SingleProduct = () => {  
   const [product, setProduct] = useState<Product2>(INITIAL_PRODUCT_DATA); // Single product
-  // const [currentImage, setCurrentImage] = useState<string>('/images/spinach.jpeg');
+  const [currentImage, setCurrentImage] = useState<string>('/images/spinach.jpeg');
   const {addToCart, isProductInCart, increaseProductQuantity, decreaseProductQuantity, getProductQuantity} = useCart();
   const {toggleWishlistBtn, isProductInWishlist} = useWishlist();
   // const {userInfo} = useUserForm();
@@ -70,11 +70,11 @@ const SingleProduct = () => {
   // console.log("searchParams: ", searchParams);
   // console.log("pathname: ", pathname);
 
-  // const handleProductImagesViews = (id: number, image: string) => {
-  //   if (id) {
-  //     setCurrentImage(image);
-  //   }
-  // }
+  const handleProductImagesViews = (id: number, image: string) => {
+    if (id) {
+      setCurrentImage(image);
+    }
+  }
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -111,7 +111,8 @@ const SingleProduct = () => {
                 product.thumbnail && 
                 <div className="relative w-44 h-44 md:w-64 md:h-64">
                   <Image
-                    src={product.thumbnail}
+                    src={currentImage}
+                    // src={product.thumbnail}
                     alt="product image"
                     fill
                     className="object-cover rounded-lg md:hover:scale-110"
@@ -125,8 +126,8 @@ const SingleProduct = () => {
               {
                 product.images && product.images.map((img, index) => {
                   return(
-                    <div key={index} className='rounded-lg p-1 md:p-4 bg-zinc-50 flex items-center justify-center cursor-pointer'>
-                    {/* <div key={index} onClick={() => handleProductImagesViews(index, img)} className='rounded-lg p-1 md:p-4 bg-zinc-50 flex items-center justify-center cursor-pointer'> */}
+                    // <div key={index} className='rounded-lg p-1 md:p-4 bg-zinc-50 flex items-center justify-center cursor-pointer'>
+                    <div key={index} onClick={() => handleProductImagesViews(index, img)} className='rounded-lg p-1 md:p-4 bg-zinc-50 flex items-center justify-center cursor-pointer'>
                       <div className="relative w-10 h-10 md:w-12 md:h-12">
                         <Image
                           src={img}
