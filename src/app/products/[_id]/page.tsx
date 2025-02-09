@@ -4,7 +4,7 @@ import Button from '@/components/button/Button';
 import CountDownTimer from '@/components/CountDownTimer';
 import DiscountBadge from '@/components/DiscountBadge';
 import DiscountCardTwo from '@/components/DiscountCardTwo';
-import WeeklyBestSellingProducts from '@/components/WeeklyBestSellingProducts';
+// import WeeklyBestSellingProducts from '@/components/WeeklyBestSellingProducts';
 // import { useUserForm } from '@/context/UserFormContext';
 import { INITIAL_PRODUCT_DATA, PRODUCT } from '@/utils/data';
 import { Product2 } from '@/utils/types';
