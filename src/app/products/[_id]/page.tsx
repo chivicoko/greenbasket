@@ -282,7 +282,7 @@ const SingleProduct = () => {
 
       <DiscountCardTwo/>
 
-      <WeeklyBestSellingProducts/>
+      {/* <WeeklyBestSellingProducts/> */}
     </section>
   );
 }
