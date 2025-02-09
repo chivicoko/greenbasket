@@ -1,7 +1,6 @@
 
 # GreenBasket
-
-  This is Users management dashboard task
+GreenBasket Stores is an Online store for groceries of all sorts, that is aimed at making buying and selling of groceries of all sorts really easy for everyone. This is a Progressive Web Application (PWA) made so so as to further make usage really easy and hassle free.
 
 ## Project Setup
 
@@ -18,7 +17,7 @@ npm run dev
 ```
 This will start the application at `http://localhost:3000/`.
 
-Visit [the preview of the application here](https://greenbasket.vercel.app/) .
+Visit [the demo of the application here](https://greenbasket-cyan.vercel.app/) .
 
 More information in the `PROJECT_DOCUMENTATION.md` file.
 

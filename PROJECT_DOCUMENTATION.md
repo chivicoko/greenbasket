@@ -2,7 +2,7 @@
   # Project Documentation
 
   ## Overview
-  This is Users management dashboard task. Using a horizontally scrollable table of users, I made sure it's easy to use in all devices.
+  GreenBasket Stores is an Online store for groceries of all sorts, that is aimed at making buying and selling of groceries of all sorts really easy for everyone. This is a Progressive Web Application (PWA) made so so as to further make usage really easy and hassle free.
   
   ## Technology Stack
 
@@ -17,11 +17,11 @@
   ```
 
   ### 3. Serve the project:
-
+  
   ```bash
   npm run dev
   ```
 
   The application will be available at `http://localhost:3000`.
 
-  Visit [the preview of the application here](https://greenbasket.vercel.app/) .
+Visit [the demo of the application here](https://greenbasket-cyan.vercel.app/) .
