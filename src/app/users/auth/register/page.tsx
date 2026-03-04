@@ -57,10 +57,10 @@ const UserForms = () => {
     e.preventDefault();
 
     if (!isLastStep) return handleContinue();
-    // console.log(data);
+    console.log(data);
 
-    saveUserInfo(data);
     // await createUser(data);
+    saveUserInfo(data);
     router.push('/');
   };
 

@@ -1,12 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Product from '../../../models/ProductModel';
-import { connectToDb } from '@/lib/mongodb';
 // import { revalidatePath } from 'next/cache';
 
 
 export const GET = async () => {
     try {
-        await connectToDb();
         const products = await Product.find();
         // console.log(products);
         return NextResponse.json(products);
@@ -20,7 +18,6 @@ export const GET = async () => {
 
 export const POST = async (req: NextRequest) => {
     try {
-        await connectToDb();
         const data = await req.json();
       
         const product = new Product({

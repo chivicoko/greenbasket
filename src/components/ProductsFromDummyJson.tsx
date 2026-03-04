@@ -36,10 +36,12 @@ const ProductsFromDummyJson: React.FC = () => {
 
       try {
         const res = await getDummyJsonProducts();
-        const products = res.products;
-        setProducts(products);
-        // console.log(products);
-        setTotalProducts(products.length);
+        const groceryProducts = res.products.filter(
+          (product: Product2) => product.category === "groceries"
+        );
+        setProducts(groceryProducts);
+        // console.log("groceryProducts: ", groceryProducts);
+        setTotalProducts(groceryProducts.length);
       } catch (error) {
         console.error('Error fetching products:', error);
         // setError('Failed to fetch products.');
@@ -51,7 +53,6 @@ const ProductsFromDummyJson: React.FC = () => {
     getData();
   }, []);
 
-  
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProductsForPagination = products.slice(indexOfFirstProduct, indexOfLastProduct);
@@ -80,6 +81,18 @@ const ProductsFromDummyJson: React.FC = () => {
           }
         </div>
       </div>
+
+      {/* <div className='flex items-center justify-center'>
+        <Image
+          src={fetchedProductsImage}
+          alt={`${'--'} preview`}
+          // fill
+          width={300}
+          height={400}
+          className="object-cover rounded-t-md transition-transform duration-300 ease-in-out transform hover:scale-105"
+          sizes="(max-width: 768px) 100vw, 50vw"
+        />
+      </div> */}
 
       {gridView ?
         <ProductGridView products={calculatedProducts} /> 

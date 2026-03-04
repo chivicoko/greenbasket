@@ -3,7 +3,7 @@ import axios from 'axios';
 // import { revalidatePath } from 'next/cache';
 
 const USER_API_URL = '/api/users';
-const PRODUCT_API_URL = '/api/users';
+const PRODUCT_API_URL = '/api/products';
 
 
 // Users

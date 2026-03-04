@@ -191,7 +191,7 @@ const ProductModal: React.FC<ProductModalProps> = ({ isOpen, onClose, onSave, pr
 
   return (
     isOpen ? (
-      <div className="fixed inset-0 p-2 flex items-center justify-center bg-black bg-opacity-50 z-50">
+      <div className="fixed inset-0 p-2 flex items-center justify-center bg-black opacity-50 z-50">
         <div className="relative bg-white rounded-lg shadow-lg w-full max-w-lg py-8 px-6 md:px-10">
           <h2 className="text-xl font-bold mb-4">{mode === 'view' ? formData.name : formData.id ? 'Edit Product' : 'Add Product'}</h2>
 

@@ -2,12 +2,10 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import Product from '../../../../models/ProductModel';
-import { connectToDb } from '@/lib/mongodb';
 
 // GET product by ID
 export const GET = async (req: NextRequest, { params }: { params: { id: string } }) => {
     try {
-        await connectToDb();
         const product = await Product.findById(params.id);
         // console.log(product);
         if (!product) {
@@ -25,7 +23,6 @@ export const GET = async (req: NextRequest, { params }: { params: { id: string }
 // PUT (update) product by ID
 export const PUT = async (req: NextRequest, { params }: { params: { id: string } }) => {
     try {
-        await connectToDb();
         const updatedData = await req.json();
       
         const product = await Product.findByIdAndUpdate(params.id, updatedData, { new: true });
@@ -45,7 +42,6 @@ export const PUT = async (req: NextRequest, { params }: { params: { id: string }
 // DELETE product by ID
 export const DELETE = async (req: NextRequest, { params }: { params: { id: string } }) => {
     try {
-        await connectToDb();
         const result = await Product.findByIdAndDelete(params.id);
       
         if (!result) {

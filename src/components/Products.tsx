@@ -20,12 +20,12 @@ const Products: React.FC = () => {
   const pathName = usePathname();
 
   // Load cart from localStorage on mount
-  useEffect(() => {
-    const productCart = localStorage.getItem('cart');
-    if (productCart) {
-      // setCart(JSON.parse(productCart));
-    }
-  }, []);
+  // useEffect(() => {
+  //   const productCart = localStorage.getItem('cart');
+  //   if (productCart) {
+  //     // setCart(JSON.parse(productCart));
+  //   }
+  // }, []);
 
   // Fetch products data
   useEffect(() => {
@@ -34,6 +34,7 @@ const Products: React.FC = () => {
 
       try {
         const products = await getProducts();
+        console.log(products)
         setProducts(products);
         setTotalProducts(products.length);
       } catch (error) {
@@ -73,8 +74,8 @@ const Products: React.FC = () => {
       <section className='py-3 md:py-5 px-2 md:px-6'>
         <div className="grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-6">
           {
-            currentProducts.map(product =>
-              <ProductCard key={product.id} product={product} />
+            currentProducts.map((product, index) =>
+              <ProductCard key={index} product={product} />
               // <ProductCard key={product._id} product={product} addToCart={addToCart} />
             )
           }
@@ -94,7 +95,7 @@ const Products: React.FC = () => {
       </section>
     : 
     <div className='w-full flex flex-col items-center gap-4'>
-      <p>Products could not be fetched at this time</p>
+      <p>No Products available at this time</p>
       <Button onClick={refreshPage} btnText='Refresh Page' classes="flex items-center gap-3 bg-secondary hover:bg-secondary_hover font-bold rounded-xl text-primary py-[11px] px-[27px] hover:cursor-pointer shadow-md" />
     </div>
   );

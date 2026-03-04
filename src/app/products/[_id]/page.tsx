@@ -17,6 +17,8 @@ import { useCart } from '@/context/CartContext';
 // import { useParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { useWishlist } from '@/context/WishlistContext';
+import { useParams } from 'next/navigation';
+import { getProductById } from '@/lib/api';
 // import { getProductById } from '@/lib/api';
 // import { Product } from '@/utils/types';
 // import { ArrowBack } from '@mui/icons-material';
@@ -32,25 +34,26 @@ const SingleProduct = () => {
   
   // if(!userInfo) router.push('/users/auth/register');
 
-  // const { _id } = useParams();
+  const { _id } = useParams();
+  // console.log("_id: ", _id);
   
   // Ensure params.id is a string
   // const productId = Array.isArray(params.id) ? params.id[0] : params.id;
 
-  // useEffect(() => {
-  //   if (_id) {
-  //     const getData = async () => {
-  //       try {
-  //         const product = await getProductById(_id);
-  //         // console.log('Product:', product);
-  //         setProduct(product);
-  //       } catch (error) {
-  //         console.error('Error fetching product:', error);
-  //       }
-  //     };
-  //     getData();
-  //   }
-  // }, [_id]);
+  useEffect(() => {
+    if (_id) {
+      const getData = async () => {
+        try {
+          const product = await getProductById(_id);
+          console.log('Product: ', product);
+          setProduct(product);
+        } catch (error) {
+          console.error('Error fetching product:', error);
+        }
+      };
+      getData();
+    }
+  }, [_id]);
 
   // Check if product is null (data hasn't been fetched yet)
   // if (!product) {
@@ -61,14 +64,6 @@ const SingleProduct = () => {
   useEffect(() => {
     setProduct(PRODUCT);
   }, []);
-  
-  // const params = useParams();
-  // const searchParams = useSearchParams();
-  // const pathname = usePathname();
-
-  // console.log("Params: ", params._id);
-  // console.log("searchParams: ", searchParams);
-  // console.log("pathname: ", pathname);
 
   const handleProductImagesViews = (id: number, image: string) => {
     if (id) {
@@ -111,8 +106,8 @@ const SingleProduct = () => {
                 product.thumbnail && 
                 <div className="relative w-44 h-44 md:w-64 md:h-64">
                   <Image
-                    src={currentImage}
-                    // src={product.thumbnail}
+                    // src={currentImage}
+                    src={product.thumbnail}
                     alt="product image"
                     fill
                     className="object-cover rounded-lg md:hover:scale-110"

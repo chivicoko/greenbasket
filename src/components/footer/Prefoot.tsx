@@ -77,16 +77,17 @@ const Prefoot = () => {
       }
 
       {pathName === '/' ?
-        <div className='w-full h-[80vh]'>
+        <div className='w-full h-[70vh]'>
           <div
-              className="bennetCurve2 relative w-full h-full bg-cover bg-center"
+              className="bennetCurve2 relative w-full h-full bg-cover bg-center flex flex-col items-center justify-center"
               style={{ backgroundImage: `url('/images/bg-3.jpg')` }}
             >
               <div className="bennetCurve2 absolute inset-0 bg-[#bbea70] bg-opacity-80"></div>
               
-              <div className="relative z-10 text-primary p-4 pt-24 px-16 sm:px-32 md:px-36 lg:px-72 xl:px-96 text-center flex flex-col justify-center items-center gap-6">
+              <div className="relative z-10 text-primary p-4 pt-24 w-full md:w-[55vw] lg:w-[60vw] xl:w-[40vw] mx-auto text-center space-y-6 md:space-y-12">
+              {/* <div className="relative z-10 text-primary p-4 pt-24 px-16 sm:px-32 md:px-36 lg:px-72 xl:px-96 text-center flex flex-col justify-center items-center gap-6"> */}
                 <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold">We always provide you with the best in town</h1>
-                <p>Since 2007, we have been delivering excellence in product development, support & updates for frictionless shopping experience.</p>
+                <p className='text-lg md:text-xl lg:text-2xl font-semibold'>Since 2007, we have been delivering excellence in product development, support & updates for frictionless shopping experience.</p>
               </div>
             </div>
         </div>

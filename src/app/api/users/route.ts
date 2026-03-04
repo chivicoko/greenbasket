@@ -1,12 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { connectToDb } from '@/lib/mongodb';
 // import { revalidatePath } from 'next/cache';
 import User from '@/models/UserModel';
 
 
 export const GET = async () => {
     try {
-        await connectToDb();
         const users = await User.find();
         // console.log(users);
         return NextResponse.json(users);
@@ -20,7 +18,6 @@ export const GET = async () => {
 
 export const POST = async (req: NextRequest) => {
     try {
-        await connectToDb();
         const data = await req.json();
       
         const user = new User({

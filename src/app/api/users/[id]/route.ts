@@ -1,13 +1,11 @@
 
 
 import { NextRequest, NextResponse } from 'next/server';
-import { connectToDb } from '@/lib/mongodb';
 import User from '@/models/UserModel';
 
 // GET user by ID
 export const GET = async (req: NextRequest, { params }: { params: { id: string } }) => {
     try {
-        await connectToDb();
         const user = await User.findById(params.id);
         // console.log(user);
         if (!user) {
@@ -25,7 +23,6 @@ export const GET = async (req: NextRequest, { params }: { params: { id: string }
 // PUT (update) user by ID
 export const PUT = async (req: NextRequest, { params }: { params: { id: string } }) => {
     try {
-        await connectToDb();
         const updatedData = await req.json();
       
         const user = await User.findByIdAndUpdate(params.id, updatedData, { new: true });
@@ -45,7 +42,6 @@ export const PUT = async (req: NextRequest, { params }: { params: { id: string }
 // DELETE user by ID
 export const DELETE = async (req: NextRequest, { params }: { params: { id: string } }) => {
     try {
-        await connectToDb();
         const result = await User.findByIdAndDelete(params.id);
       
         if (!result) {

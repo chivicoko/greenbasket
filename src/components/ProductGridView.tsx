@@ -40,7 +40,17 @@ const ProductGridView = ({products}: ProductViewProps) => {
                 <Remove/>{ product.discountPercentage }%
               </p>
 
-              <Button onClick={() => toggleWishlistBtn(product)} icon1={isProductInWishlist(product.id) ? <Favorite className="text-red-700" /> : <FavoriteBorder />} classes="absolute top-2 right-2 z-30 flex items-center justify-center rounded-full text-sm" />
+              <Button 
+                onClick={() => {
+                  if (!isProductInCart(product.id)) {
+                    toggleWishlistBtn(product);
+                  } else {
+                    alert("This product is already in cart.");
+                  }
+                }} 
+                icon1={isProductInWishlist(product.id) ? <Favorite className="text-red-700" /> : <FavoriteBorder />} 
+                classes="absolute top-2 right-2 z-30 flex items-center justify-center rounded-full text-sm" 
+              />
 
               <Link href={`/products/${product.id}`} className="relative w-full h-48 mb-4 self-center cursor-pointer rounded-t-md overflow-hidden">
                 <Image
@@ -66,7 +76,15 @@ const ProductGridView = ({products}: ProductViewProps) => {
                 </div>
 
                 <div className='bg-yellowish w-full flex items-center py-1 px-2 rounded-lg justify-around'>
-                  <button onClick={() => addToCart(product)} className={`${isProductInCart(product.id) ? 'hidden' : 'flex items-center justify-center'} w-full`} > 
+                  <button 
+                    onClick={() => {
+                      if (isProductInWishlist(product.id)) {
+                        toggleWishlistBtn(product);
+                      }
+                      addToCart(product);
+                    }} 
+                    className={`${isProductInCart(product.id) ? 'hidden' : 'flex items-center justify-center'} w-full`}
+                  > 
                     <span className="py-[5px] px-2 bg-white hover:bg-yellowish_hover rounded-full transition-all duration-200 ease-in-out">
                       <AddShoppingCart style={{fontSize: '16px'}} />
                     </span>

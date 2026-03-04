@@ -60,7 +60,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     setCart([]);
   };
 
-  const totalCount = cart.reduce((total, product) => total + (product.quantity || 1), 0);
+  const totalCount = cart?.reduce((total, product) => total + (product.quantity || 1), 0);
   const totalCartCount = cart.length;
 
   const getProductQuantity = (productId: string): number => {

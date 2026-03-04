@@ -27,8 +27,6 @@ const ProductsJustForYou: React.FC = () => {
         // if (pathName !== '/products') {
         // }
         setProducts(products.slice(10, 15));
-        // console.log(res);
-        // console.log(products);
       } catch (error) {
         console.error('Error fetching products:', error);
         // setError('Failed to fetch products.');

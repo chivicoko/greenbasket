@@ -38,7 +38,7 @@ const ProductListView = ({products}: ProductViewProps) => {
         <thead className="bg-transparent rounded-xl">
           <tr className="border bg-neutral-300 rounded-[4px]">
             {tableHead.map(item => (
-            <th key="item.id" className={`${item.title === 'Cart' || item.title === 'Wishlist' ? 'text-center' : 'text-left'} pl-6 py-3 text-primary uppercase text-xs font-bold tracking-wider`}>{ item.title }</th>
+            <th key={item.id} className={`${item.title === 'Cart' || item.title === 'Wishlist' ? 'text-center' : 'text-left'} pl-6 py-3 text-primary uppercase text-xs font-bold tracking-wider`}>{ item.title }</th>
             ))}
           </tr>
         </thead>
@@ -70,12 +70,30 @@ const ProductListView = ({products}: ProductViewProps) => {
               <td className="relative pl-6 py-2 text-[15px] whitespace-nowrap w-2 capitalize">{ product.category }</td>
               <td className="relative pl-6 py-2 text-[15px] whitespace-nowrap w-2">
                 <div className="flex items-center justify-center">
-                  <Button onClick={() => toggleWishlistBtn(product)} icon1={isProductInWishlist(product.id) ? <Favorite className="text-red-700" /> : <FavoriteBorder />} classes="flex items-center justify-center rounded-full text-sm" />
+                  <Button 
+                    onClick={() => {
+                      if (!isProductInCart(product.id)) {
+                        toggleWishlistBtn(product);
+                      } else {
+                        alert("This product is already in cart.");
+                      }
+                    }}
+                    icon1={isProductInWishlist(product.id) ? <Favorite className="text-red-700" /> : <FavoriteBorder />} 
+                    classes="flex items-center justify-center rounded-full text-sm" 
+                  />
                 </div>
               </td>
               <td className="relative pl-6 text-[15px] whitespace-nowrap w-2">
                 <div className='bg-yellowish w-full mx-auto flex items-center py-1 px-2 rounded-lg justify-around'>
-                  <button onClick={() => addToCart(product)} className={`${isProductInCart(product.id) ? 'hidden' : 'flex items-center justify-center'} w-full`} > 
+                  <button 
+                    onClick={() => {
+                      if (isProductInWishlist(product.id)) {
+                        toggleWishlistBtn(product);
+                      }
+                      addToCart(product);
+                    }}
+                    className={`${isProductInCart(product.id) ? 'hidden' : 'flex items-center justify-center'} w-full`}
+                  > 
                     <span className="py-[5px] px-2 bg-white hover:bg-yellowish_hover rounded-full transition-all duration-200 ease-in-out">
                       <AddShoppingCart style={{fontSize: '16px'}} />
                     </span>
