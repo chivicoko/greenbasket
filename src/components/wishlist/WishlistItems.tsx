@@ -9,7 +9,7 @@ import Button from '../button/Button';
 import { useWishlist } from '@/context/WishlistContext';
 
 const WishlistItems = () => {
-  const { wishlist, clearWishlist, toggleWishlistBtn } = useWishlist();
+  const { wishlist, clearWishlist, toggleWishlistBtn, isProductInWishlist } = useWishlist();
     const {addToCart, isProductInCart, increaseProductQuantity, decreaseProductQuantity, getProductQuantity} = useCart();
 
   return (
@@ -53,10 +53,19 @@ const WishlistItems = () => {
             
                         <div className="w-full flex items-center gap-3 justify-between mt-4 pr-4">
                             <div className='bg-yellowish w-fit flex items-center py-1 px-2 rounded-lg justify-around'>
-                                <button onClick={() => addToCart(product)} className={`${isProductInCart(product.id) ? 'hidden' : 'flex items-center justify-center'} w-full`} > 
-                                <span className="py-[5px] px-2 bg-white hover:bg-yellowish_hover rounded-full transition-all duration-200 ease-in-out">
-                                    <AddShoppingCart style={{fontSize: '16px'}} />
-                                </span>
+                                <button 
+                                    // onClick={() => addToCart(product)} 
+                                    onClick={() => {
+                                        if (isProductInWishlist(product.id)) {
+                                            toggleWishlistBtn(product);
+                                        }
+                                        addToCart(product);
+                                    }}
+                                    className={`${isProductInCart(product.id) ? 'hidden' : 'flex items-center justify-center'} w-full`} 
+                                > 
+                                    <span className="py-[5px] px-2 bg-white hover:bg-yellowish_hover rounded-full transition-all duration-200 ease-in-out">
+                                        <AddShoppingCart style={{fontSize: '16px'}} />
+                                    </span>
                                 </button>
                                 <div className={`${isProductInCart(product.id) ? 'flex items-center justify-around gap-3' : 'hidden'} w-full`} >
                                     <Button onClick={() => decreaseProductQuantity(product.id)} icon1={<Remove/>} classes="p-1 bg-white hover:bg-yellowish_hover text-theme rounded-full" />

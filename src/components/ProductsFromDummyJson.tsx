@@ -40,7 +40,7 @@ const ProductsFromDummyJson: React.FC = () => {
           (product: Product2) => product.category === "groceries"
         );
         setProducts(groceryProducts);
-        // console.log("groceryProducts: ", groceryProducts);
+        console.log("groceryProducts: ", groceryProducts);
         setTotalProducts(groceryProducts.length);
       } catch (error) {
         console.error('Error fetching products:', error);

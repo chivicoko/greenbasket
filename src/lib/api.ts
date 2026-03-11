@@ -123,7 +123,7 @@ export const getDummyJsonProducts = async () => {
 };
 // getDummyJsonProducts();
 
-export const getDummyJsonProductById = async (id: string) => {
+export const getDummyJsonProductById = async (id: string | string[]) => {
   try {
     const response = await axios.get(`${process.env.NEXT_PUBLIC_DummyJson_API_URL}/${id}`);
   //   console.log(response.data);

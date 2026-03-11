@@ -15,8 +15,8 @@ import { useCart } from '@/context/CartContext';
 // import { useParams, usePathname, useRouter, useSearchParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { useWishlist } from '@/context/WishlistContext';
-import { useParams } from 'next/navigation';
-import { getProductById } from '@/lib/api';
+import { useParams, usePathname } from 'next/navigation';
+import { getDummyJsonProductById, getProductById } from '@/lib/api';
 // import { Product } from '@/utils/types';
 // import { ArrowBack } from '@mui/icons-material';
 // import Loading from '@/app/loading';
@@ -29,20 +29,23 @@ const SingleProduct = () => {
   // const {userInfo} = useUserForm();
   // const router = useRouter();
   
+  const pathName = usePathname();
+  console.log("pathName: ", pathName);
+
   // if(!userInfo) router.push('/users/auth/register');
 
-  const { _id } = useParams();
-  // console.log("_id: ", _id);
+  const { id } = useParams();
+//   console.log("id: ", id);
   
   // Ensure params.id is a string
   // const productId = Array.isArray(params.id) ? params.id[0] : params.id;
 
   useEffect(() => {
-    if (_id) {
+    if (id) {
       const getData = async () => {
         try {
-          const product = await getProductById(_id);
-          // console.log('Product: ', product);
+          const product = await getDummyJsonProductById(id);
+          console.log('Product: ', product);
           setProduct(product);
           setCurrentImage(product.thumbnail);
         } catch (error) {
@@ -51,7 +54,7 @@ const SingleProduct = () => {
       };
       getData();
     }
-  }, [_id]);
+  }, [id]);
 
   // Check if product is null (data hasn't been fetched yet)
   // if (!product) {

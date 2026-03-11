@@ -7,6 +7,7 @@ import Link from 'next/link'
 import Button from './button/Button'
 import { useCart } from '@/context/CartContext';
 import { useWishlist } from '@/context/WishlistContext';
+import { usePathname } from 'next/navigation';
 
 interface ProductViewProps {
   products: Product2[],
@@ -15,6 +16,8 @@ interface ProductViewProps {
 const ProductGridView = ({products}: ProductViewProps) => {
   const {addToCart, isProductInCart, increaseProductQuantity, decreaseProductQuantity, getProductQuantity} = useCart();
   const {toggleWishlistBtn, isProductInWishlist} = useWishlist();
+
+  const pathName = usePathname();
 
   const formatPrice = (price: string | number): { integerPart: number; decimalPart: number } => {
     const numericPrice = typeof price === 'string' ? parseFloat(price) : price;
@@ -52,7 +55,7 @@ const ProductGridView = ({products}: ProductViewProps) => {
                 classes="absolute top-2 right-2 z-30 flex items-center justify-center rounded-full text-sm" 
               />
 
-              <Link href={`/products/${product.id}`} className="relative w-full h-48 mb-4 self-center cursor-pointer rounded-t-md overflow-hidden">
+              <Link href={pathName === '/dummyjson-products' ? `/dummyjson-products/${product.id}` : `/products/${product.id}`} className="relative w-full h-48 mb-4 self-center cursor-pointer rounded-t-md overflow-hidden">
                 <Image
                   src={product.thumbnail}
                   alt={`${product.title} preview`}
@@ -64,7 +67,7 @@ const ProductGridView = ({products}: ProductViewProps) => {
 
               <div className='px-4 w-full h-1/2 flex flex-col items-center justify-between'>
                 <h2 className='text-center text-lg font-semibold text-primary hover:text-black'>
-                  <Link href={`/products/${product.id}`} className="">
+                  <Link href={pathName === '/dummyjson-products' ? `/dummyjson-products/${product.id}` : `/products/${product.id}`} className="">
                     {product.title}
                   </Link>
                 </h2>

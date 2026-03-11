@@ -12,10 +12,10 @@ const CartSummary = () => {
     <div className="w-full md:w-1/4 h-fit p-4 border border-primary rounded-xl">
         <h2 className="font-semibold text-2xl text-primary py-2">Summary</h2>
         <div className="border-y border-primary py-4 space-y-2">
-            <p className="text-lg text-primary flex items-center justify-between"><span className="font-semibold">Subtotal: </span> ${parseInt(getTotalPrice()).toFixed(2)}</p>
-            <p className="text-lg text-primary flex items-center justify-between"><span className="font-semibold">Delivery: </span> ${ (totalCount > 0 ? 1000.00 : 0.00).toFixed(2) }</p>
+            <p className="text-lg text-primary flex items-center justify-between"><span className="font-semibold">Subtotal: </span> ${getTotalPrice()}</p>
+            <p className="text-lg text-primary flex items-center justify-between"><span className="font-semibold">Delivery: </span> ${ (totalCount > 0 ? 55.10 : 0.00).toFixed(2) }</p>
         </div>
-        <p className="border-b border-primary py-2 text-lg flex items-center justify-between"><span className="font-semibold">Total: </span> ${(parseInt(getTotalPrice()) + (totalCount > 0 ? 1000.00 : 0.00)).toFixed(2)}</p>
+        <p className="border-b border-primary py-2 text-lg flex items-center justify-between"><span className="font-semibold">Total: </span> ${(Number(getTotalPrice()) + (totalCount > 0 ? 55.10 : 0.00)).toFixed(2)}</p>
 
         <div className="my-8">
             <p className='text-primary'>Do you have a discount?</p>

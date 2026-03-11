@@ -8,6 +8,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Button from './button/Button';
 import { useWishlist } from '@/context/WishlistContext';
+import { usePathname } from 'next/navigation';
 
 interface ProductViewProps {
   products: Product2[],
@@ -16,6 +17,8 @@ interface ProductViewProps {
 const ProductListView = ({products}: ProductViewProps) => {
   const {addToCart, isProductInCart, increaseProductQuantity, decreaseProductQuantity, getProductQuantity} = useCart();
   const {toggleWishlistBtn, isProductInWishlist} = useWishlist();
+  
+  const pathName = usePathname();
 
   const formatPrice = (price: string | number): { integerPart: number; decimalPart: number } => {
     const numericPrice = typeof price === 'string' ? parseFloat(price) : price;
@@ -50,7 +53,7 @@ const ProductListView = ({products}: ProductViewProps) => {
             >
               <td className="relative pl-6 py-2 text-[15px] whitespace-nowrap w-2">{ product.id }</td>
               <td className="pl-6 py-2 w-2">
-                <Link href={`/products/${product.id}`} className="relative block size-12 cursor-pointer">
+                <Link href={pathName === '/dummyjson-products' ? `/dummyjson-products/${product.id}` : `/products/${product.id}`} className="relative block size-12 cursor-pointer">
                   <Image
                     src={product.thumbnail || '/images/imagePlaceholder.jpeg'}
                     alt={`${product.title} preview`}
@@ -61,7 +64,7 @@ const ProductListView = ({products}: ProductViewProps) => {
                 </Link>
               </td>
               <td className="relative pl-6 py-2 text-[15px] whitespace-nowrap w-2">
-                <Link href={`/products/${product.id}`} className="text-primary font-semibold">{ product.title }</Link>
+                <Link href={pathName === '/dummyjson-products' ? `/dummyjson-products/${product.id}` : `/products/${product.id}`} className="text-primary font-semibold">{ product.title }</Link>
               </td>
               <td className="relative pl-6 py-2 text-[15px] whitespace-nowrap w-2">
                 <span className='text-[18px]'> ${formatPrice(product.price).integerPart}.<sup>{formatPrice(product.price).decimalPart}</sup> </span>
