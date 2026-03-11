@@ -1,57 +1,54 @@
+import { deleteProduct, getProduct, updateProduct } from "@/lib/services/productService";
+import { NextRequest, NextResponse } from "next/server";
 
+export async function GET(
+  req: NextRequest,
+  { params }: { params: { id: string } }
+) {
+  const product = await getProduct(params.id);
 
-import { NextRequest, NextResponse } from 'next/server';
-import Product from '../../../../models/ProductModel';
+  if (!product) {
+    return NextResponse.json(
+      { error: "Product not found" },
+      { status: 404 }
+    );
+  }
 
-// GET product by ID
-export const GET = async (req: NextRequest, { params }: { params: { id: string } }) => {
-    try {
-        const product = await Product.findById(params.id);
-        // console.log(product);
-        if (!product) {
-          return NextResponse.json({ error: 'Product not found' }, { status: 404 });
-        }
-      
-        return NextResponse.json(product);
-        
-    } catch (error) {
-        console.log(error);
-        throw new Error("Failed to fetch product");
-    }
+  return NextResponse.json(product, { status: 200 });
 }
 
-// PUT (update) product by ID
-export const PUT = async (req: NextRequest, { params }: { params: { id: string } }) => {
-    try {
-        const updatedData = await req.json();
-      
-        const product = await Product.findByIdAndUpdate(params.id, updatedData, { new: true });
-      
-        if (!product) {
-          return NextResponse.json({ error: 'Product not found' }, { status: 404 });
-        }
-      
-        return NextResponse.json(product);
-        
-    } catch (error) {
-        console.log(error);
-        throw new Error("Failed to update product");
-    }
+export async function PUT(
+  req: NextRequest,
+  { params }: { params: { id: string } }
+) {
+  const body = await req.json();
+  const updated = await updateProduct(params.id, body);
+
+  if (!updated) {
+    return NextResponse.json(
+      { error: "Product not found" },
+      { status: 404 }
+    );
+  }
+
+  return NextResponse.json(updated, { status: 200 });
 }
 
-// DELETE product by ID
-export const DELETE = async (req: NextRequest, { params }: { params: { id: string } }) => {
-    try {
-        const result = await Product.findByIdAndDelete(params.id);
-      
-        if (!result) {
-          return NextResponse.json({ error: 'Product not found' }, { status: 404 });
-        }
-      
-        return NextResponse.json({ message: 'Product deleted' });
-        
-    } catch (error) {
-        console.log(error);
-        throw new Error("Failed to delete product");
-    }
+export async function DELETE(
+  req: NextRequest,
+  { params }: { params: { id: string } }
+) {
+  const deleted = await deleteProduct(params.id);
+
+  if (!deleted) {
+    return NextResponse.json(
+      { error: "Product not found" },
+      { status: 404 }
+    );
+  }
+
+  return NextResponse.json(
+    { message: "Product deleted" },
+    { status: 204 }
+  );
 }

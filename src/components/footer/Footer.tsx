@@ -5,6 +5,7 @@ import Prefoot from "./Prefoot";
 import Button from "../button/Button";
 import ButtonLink from "../button/ButtonLink";
 import { footerLinks } from "@/utils/data";
+import React from "react";
 
 
 const myLinks = [
@@ -106,7 +107,9 @@ const Footer = () => {
               {
                 myLinks.map(link => {
                   return(
-                    <ButtonLink key={link.id} target="_blank" url={link.url} icon1={link.icon} classes="bg-secondary hover:bg-secondary_hover p-2 text-primary rounded-full text-sm transition-transform duration-300 ease-in-out transform hover:translate-y-1" />
+                    <React.Fragment key={link.id}>
+                      <ButtonLink target="_blank" url={link.url} icon1={link.icon} classes="bg-secondary hover:bg-secondary_hover p-2 text-primary rounded-full text-sm transition-transform duration-300 ease-in-out transform hover:translate-y-1" />
+                    </React.Fragment>
                   )
                 })
               }

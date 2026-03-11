@@ -8,14 +8,14 @@ import Image from 'next/image';
 import { useCart } from '@/context/CartContext';
 import { Product2 } from '@/utils/types';
 
-const ProductCard = ({product, key}: {product: Product2, key: string | number}) => {
+const ProductCard = ({product}: {product: Product2,}) => {
   const {addToCart, isProductInCart, increaseProductQuantity, decreaseProductQuantity, getProductQuantity} = useCart();
-  console.log(product);
+//   console.log(product);
 
   return (
     <>
     {product && 
-    <div key={key} className="pt-0 pb-4 flex-1 flex flex-col justify-center items-center bg-white rounded-xl shadow-md">
+    <div className="pt-0 pb-4 flex-1 flex flex-col justify-center items-center bg-white rounded-xl shadow-md">
         <Link href={`/products/${product.id}`} className="relative w-full h-48 mb-4 self-center cursor-pointer rounded-t-md overflow-hidden">
             <Image
                 src={product.thumbnail}

@@ -4,7 +4,6 @@ import Link from 'next/link';
 import React, { ReactNode } from 'react';
 
 type ButtonLinkProps = {
-  key?: number;
   btnText?: string;
   url: string;
   target?: string;
@@ -14,7 +13,6 @@ type ButtonLinkProps = {
 };
 
 const ButtonLinkOne: React.FC<ButtonLinkProps> = ({
-  key = null,
   btnText = '',
   url = '/',
   target = '',
@@ -25,7 +23,6 @@ const ButtonLinkOne: React.FC<ButtonLinkProps> = ({
 
   return (
     <Link
-      key={key}
       href={url}
       target={target}
       className={`flex items-center justify-center shadow-custom-xl bg-primary hover:bg-primary_hover text-white rounded-full px-4 py-2 focus:ring-2 focus:ring-primary focus:ring-offset-2 outline-none text-sm font-semibold ${classes}`}

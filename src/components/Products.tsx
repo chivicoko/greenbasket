@@ -34,9 +34,10 @@ const Products: React.FC = () => {
 
       try {
         const products = await getProducts();
-        console.log(products)
-        setProducts(products);
-        setTotalProducts(products.length);
+        // console.log("products?.data: ", products?.data)
+        // console.log("products?.meta: ", products?.meta)
+        setProducts(products?.data);
+        setTotalProducts(products?.data.length);
       } catch (error) {
         console.error('Error fetching products:', error);
       } finally {
@@ -50,7 +51,7 @@ const Products: React.FC = () => {
   // Paginate products
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+  const currentProducts = products?.slice(indexOfFirstProduct, indexOfLastProduct);
   const totalPages = Math.ceil(totalProducts / productsPerPage);
   
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
@@ -75,7 +76,9 @@ const Products: React.FC = () => {
         <div className="grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-6">
           {
             currentProducts.map((product, index) =>
-              <ProductCard key={index} product={product} />
+              <React.Fragment key={index}>
+                <ProductCard product={product} />
+              </React.Fragment>
               // <ProductCard key={product._id} product={product} addToCart={addToCart} />
             )
           }

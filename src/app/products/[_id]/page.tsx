@@ -106,8 +106,7 @@ const SingleProduct = () => {
                 product.thumbnail && 
                 <div className="relative w-44 h-44 md:w-64 md:h-64">
                   <Image
-                    // src={currentImage}
-                    src={product.thumbnail}
+                    src={product.thumbnail ?? currentImage}
                     alt="product image"
                     fill
                     className="object-cover rounded-lg md:hover:scale-110"
@@ -182,7 +181,18 @@ const SingleProduct = () => {
                       <AddShoppingCart style={{fontSize: '16px'}} />
                     </span>
                   </button> */}
-                  <Button onClick={() => addToCart(product)} btnText="Add to cart" icon1={<AddShoppingCart className='h-4 w-4 md:h-5 md:w-5' />} classes={`${isProductInCart(product.id) ? 'hidden' : 'flex items-center justify-center gap-2 md:gap-3'} bg-[#cee1af90] text-primary font-bold rounded-full py-[11px] px-[27px] hover:cursor-pointer shadow-md hover:shadow-sm`} />
+                  <Button 
+                    // onClick={() => addToCart(product)} 
+                    onClick={() => {
+                      if (isProductInWishlist(product.id)) {
+                        toggleWishlistBtn(product);
+                      }
+                      addToCart(product);
+                    }}
+                    btnText="Add to cart" 
+                    icon1={<AddShoppingCart className='h-4 w-4 md:h-5 md:w-5' />} 
+                    classes={`${isProductInCart(product.id) ? 'hidden' : 'flex items-center justify-center gap-2 md:gap-3'} bg-[#cee1af90] text-primary font-bold rounded-full py-[11px] px-[27px] hover:cursor-pointer shadow-md hover:shadow-sm`} 
+                  />
                   <div className={`${isProductInCart(product.id) ? 'flex items-center justify-around gap-3' : 'hidden'} bg-yellowish py-[6px] px-[20px] rounded-full shadow-md`} >
                     <Button onClick={() => decreaseProductQuantity(product.id)} icon1={<Remove/>} classes="p-1 bg-white hover:bg-yellowish_hover text-primary rounded-full" />
                     <p className='text-2xl w-10 text-center'>{getProductQuantity(product.id)}</p>
@@ -194,7 +204,19 @@ const SingleProduct = () => {
                 </div>
 
                 <div className="flex items-center gap-4 md:gap-7 flex-wrap">
-                  <Button onClick={() => toggleWishlistBtn(product)} btnText="Add to favorite" icon1={isProductInWishlist(product.id) ? <Favorite className="text-red-700" /> : <FavoriteBorder />} classes="gap-2 md:gap-3 font-bold hover:cursor-pointer underline uppercase md:border-r md:pr-7" />
+                  <Button 
+                    // onClick={() => toggleWishlistBtn(product)} 
+                    onClick={() => {
+                      if (!isProductInCart(product.id)) {
+                        toggleWishlistBtn(product);
+                      } else {
+                        alert("This product is already in cart.");
+                      }
+                    }}
+                    btnText="Add to favorite" 
+                    icon1={isProductInWishlist(product.id) ? <Favorite className="text-red-700" /> : <FavoriteBorder />} 
+                    classes="gap-2 md:gap-3 font-bold hover:cursor-pointer underline uppercase md:border-r md:pr-7" 
+                  />
                   <Button btnText="Compare with other vendors" icon1={<Storefront />} classes="gap-2 md:gap-3 font-bold hover:cursor-pointer underline" />
                 </div>
               </div>

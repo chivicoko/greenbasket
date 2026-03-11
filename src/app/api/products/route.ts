@@ -1,42 +1,41 @@
-import { NextRequest, NextResponse } from 'next/server';
-import Product from '../../../models/ProductModel';
-// import { revalidatePath } from 'next/cache';
+import { NextRequest, NextResponse } from "next/server";
+import { productSchema } from "@/lib/validators/product.schema";
+import { createProduct, listProducts } from "@/lib/services/productService";
 
+export async function GET(req: NextRequest) {
+  try {
+    const { searchParams } = req.nextUrl;
 
-export const GET = async () => {
-    try {
-        const products = await Product.find();
-        // console.log(products);
-        return NextResponse.json(products);
-        
-    } catch (error) {
-        console.log(error);
-        throw new Error("Failed to fetch products");
-    }
+    const result = listProducts({
+      page: Number(searchParams.get("page")),
+      limit: Number(searchParams.get("limit")),
+      category: searchParams.get("category") || undefined,
+      search: searchParams.get("search") || undefined,
+      sort: searchParams.get("sort") || undefined,
+      order: searchParams.get("order") as "asc" | "desc" | undefined,
+    });
+
+    return NextResponse.json(result, { status: 200 });
+  } catch {
+    return NextResponse.json(
+      { error: "Failed to fetch products" },
+      { status: 500 }
+    );
+  }
 }
 
+export async function POST(req: NextRequest) {
+  try {
+    const body = await req.json();
+    const validated = productSchema.parse(body);
 
-export const POST = async (req: NextRequest) => {
-    try {
-        const data = await req.json();
-      
-        const product = new Product({
-          ...data,
-          // digestproduct: data.digestproduct || false,
-          // dailyDigest: data.dailyDigest || 'Daily',
-          // productStatus: data.productStatus === 'active' ? 'active' : 'inactive',
-        });
-      
-        try {
-          await product.save();
-          return NextResponse.json(product);
-        } catch (error) {
-            console.error("Error saving product:", error);
-          return NextResponse.json({ error }, { status: 400 });
-        }
-        
-    } catch (error) {
-        console.log(error);
-        throw new Error("Failed to post product");
-    }
+    const product = createProduct(validated);
+
+    return NextResponse.json(product, { status: 201 });
+  } catch (error: any) {
+    return NextResponse.json(
+      { error: error.message },
+      { status: 400 }
+    );
+  }
 }
